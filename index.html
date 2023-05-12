@@ -54,21 +54,13 @@
 
         function talk() {
             var input = document.getElementById("coolInput").value;
-            fetch('https://api.openai.com/v1/chat/completions', {
+            fetch('https://sam-backend.vercel.app/chatgpt', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer sk-EshPyEDRzRMeTTkDz1ER9T3BlbkFJrKXMVIuMCTxcnzGRbjda'
                 },
                 body: JSON.stringify({
-                    'model': 'gpt-3.5-turbo',
-                    'messages': [
-                        {
-
-                            'role': 'user',
-                            'content': input,
-                        }
-                    ]
+                    'message': input,
                 })
             }).then((response) => response.json())
                 .then(data => {
@@ -76,6 +68,7 @@
                     let message = data.choices[0].message.content;
                     sam.speak(message);
                     send(message);
+                    document.getElementById("message").innerHTML = message;
 
                 });
         }
@@ -96,11 +89,13 @@
     <center>
         <img src="https://media3.giphy.com/media/l3q2LNVExEP0z9CrS/giphy.gif?cid=ecf05e477slxqe6q9zsgqaiq5dpcilo6bw2d3c2d78yupta9&ep=v1_gifs_search&rid=giphy.gif&ct=g"
             height="200" width="200">
-        <p>
-            “Forty-two,” said Deep Thought, with infinite majesty and calm.
 
+        <p style="color:rgb(0, 0, 0);">“Forty-two,” said Deep Thought, with infinite majesty and calm.</p>
+        <hr>
+    </center>
+    <span> S.A.M: </span> <span id="message"></span></h1>
 
-        </p>
+    <center>
         <hr>
         <input id="coolInput" type="text" title="Input"></input>
         <button onclick="talk()">talk to SAM</button>
@@ -132,7 +127,7 @@
         connectButton.addEventListener('click', connect);
         sendButton.addEventListener('click', send);
     </script>
-    <center><a href="https://www.instagram.com/oxyhadron/">@oxyhadron</a>
+    <center><a href="https://www.instagram.com/oxyhadron/">oxyhadron</a>
     </center>
 
 </body>
