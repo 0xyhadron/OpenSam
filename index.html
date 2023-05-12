@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <style>
         body {
@@ -50,7 +51,15 @@
     <title>openSAM</title>
     <script src="https://cdn.jsdelivr.net/npm/sam-js/dist/samjs.min.js"></script>
     <script>
-        let sam = new SamJs({ speed: 72, pitch: 160, throat: 128, mouth: 128 });
+        opts = {
+            debug: 1,
+            pitch: 64,
+            speed: 72,
+            mouth: 128,
+            throat: 128
+        };
+
+        let sam = new SamJs(opts);
 
         function talk() {
             var input = document.getElementById("coolInput").value;
@@ -99,7 +108,8 @@
         <hr>
         <input id="coolInput" type="text" title="Input"></input>
         <button onclick="talk()">talk to SAM</button>
-        <button id="connectButton">Connect</button>
+        <button id="connectButton"> C Serial</button>
+
     </center>
 
     <hr>
@@ -124,11 +134,13 @@
             //await writer.close();
         }
 
-        connectButton.addEventListener('click', connect);
+        connectButton.addEventListener('click', serial);
         sendButton.addEventListener('click', send);
     </script>
+
     <center><a href="https://www.instagram.com/oxyhadron/">oxyhadron</a>
     </center>
+
 
 </body>
 
