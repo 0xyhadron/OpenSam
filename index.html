@@ -128,10 +128,18 @@
 
         async function send(tek) {
             const writer = port.writable.getWriter();
-            const str = tek
             const encoder = new TextEncoder();
-            const data = encoder.encode(str);
-            await writer.write(data);
+            const chunkSize = 1; // use a smaller chunk size
+
+            // Split the data into chunks and send each chunk with a delay
+            for (let i = 0; i < tek.length; i += chunkSize) {
+                const chunk = tek.substring(i, i + chunkSize);
+                const data = encoder.encode(chunk);
+                await writer.write(data);
+                await new Promise((resolve) => setTimeout(resolve, 70)); // delay for 100 milliseconds between chunks
+            }
+
+            // Close the writer when all chunks have been sent
             await writer.close();
         }
 
