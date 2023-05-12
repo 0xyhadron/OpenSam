@@ -5,6 +5,12 @@
     <meta charset="utf-8">
     <style>
         body {
+            background-color: #E6E6FA;
+        }
+
+
+
+        body {
             max-width: 12cm;
             margin: 0 auto;
             font-family: sans-serif;
@@ -52,7 +58,7 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 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'
+                    'Authorization': 'Bearer sk-EshPyEDRzRMeTTkDz1ER9T3BlbkFJrKXMVIuMCTxcnzGRbjda'
                 },
                 body: JSON.stringify({
                     'model': 'gpt-3.5-turbo',
@@ -78,23 +84,29 @@
 
 </head>
 
+
+
 <body>
-    <button id="connectButton">Connect</button>
-    <button id="sendButton">Send</button>
-    <textarea id="inputTextarea"></textarea>
+
+
 
     <h1>Software Automatic Mouth</h1>
-    <h2>
-        openai powered SAM
-    </h2>
-    <p>
-        he is a friendly man
-        <hr>
-    </p>
+
+
     <center>
+        <img src="https://media3.giphy.com/media/l3q2LNVExEP0z9CrS/giphy.gif?cid=ecf05e477slxqe6q9zsgqaiq5dpcilo6bw2d3c2d78yupta9&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+            height="200" width="200">
+        <p>
+            “Forty-two,” said Deep Thought, with infinite majesty and calm.
+
+
+        </p>
+        <hr>
         <input id="coolInput" type="text" title="Input"></input>
-        <button onclick="talk()">talk to sam</button>
+        <button onclick="talk()">talk to SAM</button>
+        <button id="connectButton">Connect</button>
     </center>
+
     <hr>
     <script>
         let port;
@@ -120,6 +132,9 @@
         connectButton.addEventListener('click', connect);
         sendButton.addEventListener('click', send);
     </script>
+    <center><a href="https://www.instagram.com/oxyhadron/">@oxyhadron</a>
+    </center>
+
 </body>
 
 </html>
