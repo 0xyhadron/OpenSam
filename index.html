@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            max-width: 12cm;
+            margin: 0 auto;
+            font-family: sans-serif;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        label,
+        input {
+            display: inline-block;
+        }
+
+        label {
+            width: 30%
+        }
+
+        input {
+            width: 60%
+        }
+
+        input[type="submit"] {
+            width: 100%;
+        }
+
+        input[type="range"] {
+            transform: rotate(180deg);
+        }
+    </style>
+    <meta charset="UTF-8" />
+    <title>openSAM</title>
+    <script src="https://cdn.jsdelivr.net/npm/sam-js/dist/samjs.min.js"></script>
+    <script>
+        let sam = new SamJs({ speed: 72, pitch: 160, throat: 128, mouth: 128 });
+
+        function talk() {
+            var input = document.getElementById("coolInput").value;
+            fetch('https://api.openai.com/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer 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'
+                },
+                body: JSON.stringify({
+                    'model': 'gpt-3.5-turbo',
+                    'messages': [
+                        {
+
+                            'role': 'user',
+                            'content': input,
+                        }
+                    ]
+                })
+            }).then((response) => response.json())
+                .then(data => {
+                    console.log(data);
+                    let message = data.choices[0].message.content;
+                    sam.speak(message);
+                    send(message);
+
+                });
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <button id="connectButton">Connect</button>
+    <button id="sendButton">Send</button>
+    <textarea id="inputTextarea"></textarea>
+
+    <h1>Software Automatic Mouth</h1>
+    <h2>
+        openai powered SAM
+    </h2>
+    <p>
+        he is a friendly man
+        <hr>
+    </p>
+    <center>
+        <input id="coolInput" type="text" title="Input"></input>
+        <button onclick="talk()">talk to sam</button>
+    </center>
+    <hr>
+    <script>
+        let port;
+        const connectButton = document.querySelector('#connectButton');
+        const sendButton = document.querySelector('#sendButton');
+        const inputTextarea = document.querySelector('#inputTextarea');
+
+        async function connect() {
+            port = await navigator.serial.requestPort();
+            await port.open({ baudRate: 9600 });
+            console.log('Connected to port:', port.getInfo());
+        }
+
+        async function send(tek) {
+            const writer = port.writable.getWriter();
+            const str = tek
+            const encoder = new TextEncoder();
+            const data = encoder.encode(str);
+            await writer.write(data);
+            //await writer.close();
+        }
+
+        connectButton.addEventListener('click', connect);
+        sendButton.addEventListener('click', send);
+    </script>
+</body>
+
+</html>
