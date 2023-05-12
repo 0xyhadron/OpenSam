@@ -61,9 +61,10 @@
 
         let sam = new SamJs(opts);
 
+
         function talk() {
             var input = document.getElementById("coolInput").value;
-            fetch('https://sam-backend.vercel.app/chatgpt', {
+            fetch('https://sambackend-production-19b0.up.railway.app/chatgpt', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
