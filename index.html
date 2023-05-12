@@ -109,7 +109,7 @@
         <hr>
         <input id="coolInput" type="text" title="Input"></input>
         <button onclick="talk()">talk to SAM</button>
-        <button id="connectButton"> C Serial</button>
+        <button id="connectButton"> Connect</button>
 
     </center>
 
@@ -132,10 +132,10 @@
             const encoder = new TextEncoder();
             const data = encoder.encode(str);
             await writer.write(data);
-            //await writer.close();
+            await writer.close();
         }
 
-        connectButton.addEventListener('click', serial);
+        connectButton.addEventListener('click', connect);
         sendButton.addEventListener('click', send);
     </script>
 
