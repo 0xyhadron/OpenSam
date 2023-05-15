@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <meta charset="utf-8">
     <style>
         body {
-            background-color: #E6E6FA;
+            background-color: #6eb195;
         }
 
 
 
         body {
-            max-width: 12cm;
+            max-width: 13.3cm;
             margin: 0 auto;
             font-family: sans-serif;
         }
@@ -23,7 +22,7 @@
         }
 
         p {
-            text-align: center;
+            text-align: center; 
         }
 
         label,
@@ -47,110 +46,62 @@
             transform: rotate(180deg);
         }
     </style>
-    <meta charset="UTF-8" />
-    <title>openSAM</title>
-    <script src="https://cdn.jsdelivr.net/npm/sam-js/dist/samjs.min.js"></script>
-    <script>
-        opts = {
-            debug: 1,
-            pitch: 64,
-            speed: 72,
-            mouth: 128,
-            throat: 128
-        };
-
-        let sam = new SamJs(opts);
-
-
-        function talk() {
-            var input = document.getElementById("coolInput").value;
-            fetch('https://sambackend-production-19b0.up.railway.app/chatgpt', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    'message': input,
-                })
-            }).then((response) => response.json())
-                .then(data => {
-                    console.log(data);
-                    let message = data.choices[0].message.content;
-                    sam.speak(message);
-                    send(message);
-                    document.getElementById("message").innerHTML = message;
-
-                });
-        }
-
-    </script>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
 </head>
-
-
-
 <body>
+    <div style="background-color:rgb(72, 152, 101)">
+        <center>        <nav>
+            <button style="background-color: rgb(72, 152, 101)" id="ASong" onClick="playPause()">
+                <audio
+                  src="poop.mp3"
+                  autoplay
+                  loop
+                ></audio>
+                enable music
+              </button>
+              
+              <script>
+                var aud = document.getElementById("ASong").children[0];
+                var isPlaying = false;
+                aud.pause();
+              
+                function playPause() {
+                  if (isPlaying) {
+                    aud.pause();
+                  } else {
+                    aud.play();
+                  }
+                  isPlaying = !isPlaying;
+                }
+              </script>
+            <a href="./OpenSAm.html">openSAM</a>
+            <a href="./portfolio.html">portfolio</a>
+            <a href="https://www.instagram.com/oxyhadron/">instagram</a>
+        </nav></center>
+        
+    </div>
+    <hr color=rgb(72, 152, 101)>
+    <h1> HELLO! THIS IS MY SPACESHIP.</h1>
+    <hr color=rgb(72, 152, 101)>
 
-
-
-    <h1>Software Automatic Mouth</h1>
-
-
-    <center>
-        <img src="https://media3.giphy.com/media/l3q2LNVExEP0z9CrS/giphy.gif?cid=ecf05e477slxqe6q9zsgqaiq5dpcilo6bw2d3c2d78yupta9&ep=v1_gifs_search&rid=giphy.gif&ct=g"
-            height="200" width="200">
-
-        <p style="color:rgb(0, 0, 0);">“Forty-two,” said Deep Thought, with infinite majesty and calm.</p>
-        <hr>
-    </center>
-    <span> S.A.M: </span> <span id="message"></span></h1>
-
-    <center>
-        <hr>
-        <input id="coolInput" type="text" title="Input"></input>
-        <button onclick="talk()">talk to SAM</button>
-        <button id="connectButton"> Connect</button>
-
-    </center>
-
-    <hr>
-    <script>
-        let port;
-        const connectButton = document.querySelector('#connectButton');
-        const sendButton = document.querySelector('#sendButton');
-        const inputTextarea = document.querySelector('#inputTextarea');
-
-        async function connect() {
-            port = await navigator.serial.requestPort();
-            await port.open({ baudRate: 9600 });
-            console.log('Connected to port:', port.getInfo());
-        }
-
-        async function send(tek) {
-            const writer = port.writable.getWriter();
-            const encoder = new TextEncoder();
-            const chunkSize = 1; // use a smaller chunk size
-
-            // Split the data into chunks and send each chunk with a delay
-            for (let i = 0; i < tek.length; i += chunkSize) {
-                const chunk = tek.substring(i, i + chunkSize);
-                const data = encoder.encode(chunk);
-                await writer.write(data);
-                await new Promise((resolve) => setTimeout(resolve, 70)); // delay for 100 milliseconds between chunks
-            }
-
-            // Close the writer when all chunks have been sent
-            await writer.close();
-        }
-
-        connectButton.addEventListener('click', connect);
-        sendButton.addEventListener('click', send);
-    </script>
-
-    <center><a href="https://www.instagram.com/oxyhadron/">oxyhadron</a>
-    </center>
-
-
+        <div style="background-color:rgb(72, 152, 101)">
+            <center> <img src="https://64.media.tumblr.com/6145e92feb466b4c9ebe4f53934e2c1f/tumblr_nsft1ebtff1tysz53o1_500.gifv"
+                height="270" width="502"></center>
+            <p style="font-family: monospace">“Pleasure to me is wonder—the unexplored, the unexpected, the thing that is hidden and the changeless thing that lurks behind superficial mutability.”
+                ― H.P. Lovecraft
+            </p>
+            <br>
+        </div>
+    
+   
+    <div style="background-color:rgb(72, 152, 101)">
+        
+    </div>
+    
 </body>
-
 </html>
+

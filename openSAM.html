@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <meta charset="utf-8">
+    <style>
+        body {
+            background-color: #babae9;
+        }
+
+
+
+        body {
+            max-width: 12cm;
+            margin: 0 auto;
+            font-family: sans-serif;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center; 
+        }
+
+        label,
+        input {
+            display: inline-block;
+        }
+
+        label {
+            width: 30%
+        }
+
+        input {
+            width: 60%
+        }
+
+        input[type="submit"] {
+            width: 100%;
+        }
+
+        input[type="range"] {
+            transform: rotate(180deg);
+        }
+    </style>
+    <meta charset="UTF-8" />
+    <title>openSAM</title>
+    <script src="https://cdn.jsdelivr.net/npm/sam-js/dist/samjs.min.js"></script>
+    <script>
+        opts = {
+            debug: 1,
+            pitch: 64,
+            speed: 72,
+            mouth: 128,
+            throat: 128
+        };
+
+        let sam = new SamJs(opts);
+
+
+        function talk() {
+            var input = document.getElementById("coolInput").value;
+            fetch('https://sambackend-production-19b0.up.railway.app/chatgpt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'message': input,
+                })
+            }).then((response) => response.json())
+                .then(data => {
+                    console.log(data);
+                    let message = data.choices[0].message.content;
+                    sam.speak(message);
+                    send(message);
+                    document.getElementById("message").innerHTML = message;
+
+                });
+        }
+
+    </script>
+
+</head>
+
+
+
+<body>
+
+
+
+    <h1>Software Automatic Mouth</h1>
+
+
+    <center>
+        <img src="https://media3.giphy.com/media/l3q2LNVExEP0z9CrS/giphy.gif?cid=ecf05e477slxqe6q9zsgqaiq5dpcilo6bw2d3c2d78yupta9&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+            height="200" width="200">
+
+        <p style="color:rgb(0, 0, 0);">“Forty-two,” said Deep Thought, with infinite majesty and calm.</p>
+        
+    </center>
+    <div style="background-color: #9e9ee0;">
+        <hr>
+    <span> &nbsp; S.A.M: </span> <span id="message"></span></h1>
+
+    <center>
+        <hr>
+        <input id="coolInput" type="text" title="Input"></input>
+        <button onclick="talk()">talk to SAM</button>
+        <button id="connectButton"> Connect</button>
+
+    </center>
+
+    <hr>
+    </div>
+    <script>
+        let port;
+        const connectButton = document.querySelector('#connectButton');
+        const sendButton = document.querySelector('#sendButton');
+        const inputTextarea = document.querySelector('#inputTextarea');
+
+        async function connect() {
+            port = await navigator.serial.requestPort();
+            await port.open({ baudRate: 9600 });
+            console.log('Connected to port:', port.getInfo());
+        }
+
+        async function send(tek) {
+            const writer = port.writable.getWriter();
+            const encoder = new TextEncoder();
+            const chunkSize = 1; // use a smaller chunk size
+
+            // Split the data into chunks and send each chunk with a delay
+            for (let i = 0; i < tek.length; i += chunkSize) {
+                const chunk = tek.substring(i, i + chunkSize);
+                const data = encoder.encode(chunk);
+                await writer.write(data);
+                await new Promise((resolve) => setTimeout(resolve, 70)); // delay for 100 milliseconds between chunks
+            }
+
+            // Close the writer when all chunks have been sent
+            await writer.close();
+        }
+
+        connectButton.addEventListener('click', connect);
+        sendButton.addEventListener('click', send);
+    </script>
+    <div style="background-color:rgb(144, 148, 220)">
+        <center>        <nav>
+            <a href="./index.html">Home</a>
+          
+        </nav></center>
+    </div>
+
+ 
+
+
+</body>
+
+</html>
