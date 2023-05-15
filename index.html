@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <meta charset="utf-8">
     <style>
+        a:link {
+            color: rgb(7, 36, 7);
+            background-color: transparent;
+
+            text-size-adjust: 50%;
+        }
+
+        button {
+            font-weight: bold;
+            border: #2d5242;
+            border-style: ridge;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
         body {
             background-color: #6eb195;
+
         }
 
         img {
-    max-width: 100%;
-    height: auto;
-    width: auto\9; /* ie8 */
-}
+
+            max-width: 100%;
+            height: auto;
+            width: auto\9;
+            /* ie8 */
+
+        }
+
+
 
         body {
             max-width: 13.3cm;
@@ -26,7 +48,7 @@
         }
 
         p {
-            text-align: center; 
+            text-align: center;
         }
 
         label,
@@ -54,62 +76,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+
 </head>
+
 <body>
     <div style="background-color:rgb(72, 152, 101)">
-        <center>        <nav>
-            <button style="background-color: rgb(72, 152, 101)" id="ASong" onClick="playPause()">
-                <audio
-                  src="media\poop.mp3"
-                  autoplay
-                  loop
-                ></audio>
-                enable music to poop instantly
-              </button>
-              
-              <script>
-                var aud = document.getElementById("ASong").children[0];
-                var isPlaying = false;
-                aud.pause();
-              
-                function playPause() {
-                  if (isPlaying) {
+        <center>
+            <nav>
+                <button style="background-color: rgb(60, 126, 84)" id="ASong" onClick="playPause()">
+                    <audio src="media\poop.mp3" autoplay loop></audio>
+                    enable to poop instantly
+                </button>
+
+                <script>
+                    var aud = document.getElementById("ASong").children[0];
+                    var isPlaying = false;
                     aud.pause();
-                  } else {
-                    aud.play();
-                  }
-                  isPlaying = !isPlaying;
-                }
-              </script>
-              &nbsp;
-              &nbsp;
-              &nbsp;&nbsp;
-            <a href="./openSAM.html">openSAM</a>
-            <a href="./portfolio.html">portfolio</a>
-            <a href="./about.html">about</a>
-            <a href="./webcomic.html">webcomic</a>
-        </nav></center>
-        
+
+                    function playPause() {
+                        if (isPlaying) {
+                            aud.pause();
+                        } else {
+                            aud.play();
+                        }
+                        isPlaying = !isPlaying;
+                    }
+                </script>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="./about.html">about</a>
+                |
+                <a href="./openSAM.html">opensam</a>
+                |
+                <a href="./portfolio.html">portfolio</a>
+                |
+
+                <a href="./webcomic.html">webcomic</a>
+                &nbsp;
+            </nav>
+        </center>
+
     </div>
     <hr color=rgb(72, 152, 101)>
     <h1> HELLO! THIS IS MY SPACESHIP.</h1>
     <hr color=rgb(72, 152, 101)>
 
-        <div style="background-color:rgb(72, 152, 101)">
-            <center> <img src="media\akira.gif"
-                height="270" width="502"></center>
-            <p style="font-family: monospace">“Pleasure to me is wonder—the unexplored, the unexpected, the thing that is hidden and the changeless thing that lurks behind superficial mutability.”
-                ― H.P. Lovecraft
-            </p>
-            <br>
-        </div>
-    
-   
     <div style="background-color:rgb(72, 152, 101)">
-        
+        <center> <img src="media\akira.gif" height="270" width="502"></center>
+        <p>THIS PAGE IS UNDER CONSTRUCTION</p>
+        <p style="font-family: monospace">“Pleasure to me is wonder—the unexplored, the unexpected, the thing that is
+            hidden and the changeless thing that lurks behind superficial mutability.”
+            ― H.P. Lovecraft
+        </p>
+        <br>
     </div>
-    
-</body>
-</html>
 
+
+    <div style="background-color:rgb(72, 152, 101)">
+
+    </div>
+
+</body>
+
+</html>
