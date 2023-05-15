@@ -49,6 +49,10 @@ input {
     display: inline-block;
 }
 
+:root {
+    color-scheme: light only;
+}
+
 label {
     width: 30%
 }
