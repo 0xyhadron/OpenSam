@@ -1,0 +1,66 @@
+a:link {
+    color: rgb(7, 36, 7);
+    background-color: transparent;
+    text-size-adjust: 50%;
+}
+
+a:visited {
+    color: rgb(7, 36, 7);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+button {
+    font-weight: bold;
+    border: #2d5242;
+    border-style: ridge;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+body {
+    background-color: #6eb195;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
+    /* ie8 */
+}
+
+body {
+    max-width: 13.3cm;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+label,
+input {
+    display: inline-block;
+}
+
+label {
+    width: 30%
+}
+
+input {
+    width: 60%
+}
+
+input[type="submit"] {
+    width: 100%;
+}
+
+input[type="range"] {
+    transform: rotate(180deg);
+}
