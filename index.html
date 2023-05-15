@@ -13,37 +13,37 @@
 
 <body>
     <div style="background-color:rgb(72, 152, 101)">
-        <center>
-            <nav>
-                <button style="background-color: rgb(60, 126, 84)" id="ASong" onClick="playPause()">
-                    <audio src="media\poop.mp3" autoplay loop></audio>
-                    enable to poop instantly
-                </button>
-                <script>
-                    var aud = document.getElementById("ASong").children[0];
-                    var isPlaying = false;
-                    aud.pause();
 
-                    function playPause() {
-                        if (isPlaying) {
-                            aud.pause();
-                        } else {
-                            aud.play();
-                        }
-                        isPlaying = !isPlaying;
+        <nav>
+            <button style="background-color: rgb(60, 126, 84)" id="ASong" onClick="playPause()">
+                <audio src="media\poop.mp3" autoplay loop></audio>
+                enable to poop instantly
+            </button>
+            <script>
+                var aud = document.getElementById("ASong").children[0];
+                var isPlaying = false;
+                aud.pause();
+
+                function playPause() {
+                    if (isPlaying) {
+                        aud.pause();
+                    } else {
+                        aud.play();
                     }
-                </script>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="./about.html">about</a>
-                |
-                <a href="./openSAM.html">opensam</a>
-                |
-                <a href="./portfolio.html">portfolio</a>
-                |
-                <a href="./webcomic.html">webcomic</a>
-                &nbsp;
-            </nav>
-        </center>
+                    isPlaying = !isPlaying;
+                }
+            </script>
+
+            <a href="./about.html">about</a>
+            |
+            <a href="./openSAM.html">opensam</a>
+            |
+            <a href="./webcomic.html">webcomic</a>
+            |
+            <a href="./portfolio.html">portfolio</a>
+
+        </nav>
+
     </div>
     <hr color=rgb(72, 152, 101)>
     <h1> HELLO! THIS IS MY SPACESHIP.</h1>

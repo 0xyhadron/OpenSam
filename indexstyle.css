@@ -49,7 +49,7 @@ input {
     display: inline-block;
 }
 
-:root {
+root {
     color-scheme: light only;
 }
 
