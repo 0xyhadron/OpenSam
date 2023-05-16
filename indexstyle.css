@@ -40,8 +40,16 @@ h2 {
     text-align: center;
 }
 
+h3 {
+    text-align: end;
+}
+
 p {
     text-align: center;
+}
+
+p3 {
+    text-align: right;
 }
 
 label,
@@ -49,7 +57,7 @@ input {
     display: inline-block;
 }
 
-root {
+:root {
     color-scheme: light only;
 }
 

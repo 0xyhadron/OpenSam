@@ -15,10 +15,13 @@
     <div style="background-color:rgb(72, 152, 101)">
 
         <nav>
-            <button style="background-color: rgb(60, 126, 84);; margin-left:  0.4em;" id="ASong" onClick="playPause()">
-                <audio src="media\poop.mp3" autoplay loop></audio>
-                enable to poop instantly
-            </button>
+            <p style="text-align: left;">
+                <button style="background-color: rgb(60, 126, 84); margin-left:  0.4em;" id="ASong"
+                    onClick="playPause()">
+                    <audio src="media\poop.mp3" autoplay loop></audio>
+                    enable to poop instantly
+                </button>
+            </p>
             <script>
                 var aud = document.getElementById("ASong").children[0];
                 var isPlaying = false;
@@ -33,14 +36,15 @@
                     isPlaying = !isPlaying;
                 }
             </script>
-            &nbsp; &nbsp; &nbsp;&nbsp;
-            <a href="./about.html">about</a>
-            |
-            <a href="./openSAM.html">opensam</a>
-            |
-            <a href="./webcomic.html">webcomic</a>
+            <p style="text-align: end;">
 
+                <a href="./about.html">about</a>
+                |
+                <a href="./openSAM.html">opensam</a>
+                |
+                <a href="./webcomic.html">webcomic</a>
 
+            </p>
         </nav>
 
     </div>
@@ -49,7 +53,9 @@
     <hr color=rgb(72, 152, 101)>
     <div style="background-color:rgb(72, 152, 101)">
         <center> <img src="media\akira.gif" height="270" width="502"></center>
-        <p>THIS PAGE IS UNDER CONSTRUCTION</p>
+        <p>
+            <?php include('counter.php'); ?>
+        </p>
         <p style="font-family: monospace">“Pleasure to me is wonder—the unexplored, the unexpected, the thing that is
             hidden and the changeless thing that lurks behind superficial mutability.”
             ― H.P. Lovecraft
