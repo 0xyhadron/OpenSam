@@ -15,19 +15,13 @@
     <div style="background-color:rgb(72, 152, 101)">
 
         <nav>
-            <div style="
-    display: flex;
-    
-    align-items: center;
-   
-">
+            <div style="display: flex; align-items: center;">
                 <button style="background-color: rgb(60, 126, 84); margin-left: 0.3em;" id="ASong"
                     onClick="playPause()">
                     <audio src="media\poop.mp3" autoplay loop></audio>
                     enable to poop instantly
                 </button>
-                <span style="text-align: centers; width:90px; height:19px; margin-top: -0.3em;"
-                    id="sfc1tultnydt4zu51mr3nr6kwk3jznpq9e2">
+                <span style="width:90px; height:19px; margin-top: -0.3em;" id="sfc1tultnydt4zu51mr3nr6kwk3jznpq9e2">
                     viewer
                     counter </span>
 
@@ -38,26 +32,34 @@
                 <noscript> <a href="https://www.freecounterstat.com" title="page counter"><img
                             src="https://counter10.optistats.ovh/private/freecounterstat.php?c=1tultnydt4zu51mr3nr6kwk3jznpq9e2"
                             border="0" title="page counter" alt="page counter"></a></noscript>
-                <span style="text-align: right; margin-right: 0.5em; margin-top: 0.3em;">
-                    hoi
 
-                </span>
-            </div>
+                <div class="dropdown">
+                    <button class="dropbtn"><img src="media\dropdown.png" height="25" width="25">
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="./about.html">about</a>
+                        <a href="./openSAM.html">opensam</a>
+                        <a href="./webcomic.html">webcomic</a>
+                    </div>
 
-            <script>
-                var aud = document.getElementById("ASong").children[0];
-                var isPlaying = false;
-                aud.pause();
 
-                function playPause() {
-                    if (isPlaying) {
-                        aud.pause();
-                    } else {
-                        aud.play();
+                </div>
+
+                <script>
+                    var aud = document.getElementById("ASong").children[0];
+                    var isPlaying = false;
+                    aud.pause();
+
+                    function playPause() {
+                        if (isPlaying) {
+                            aud.pause();
+                        } else {
+                            aud.play();
+                        }
+                        isPlaying = !isPlaying;
                     }
-                    isPlaying = !isPlaying;
-                }
-            </script>
+                </script>
 
 
 
