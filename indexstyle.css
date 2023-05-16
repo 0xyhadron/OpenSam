@@ -35,6 +35,12 @@ body {
     font-family: sans-serif;
 }
 
+div1 {
+    display: flex;
+
+    justify-content: space-around;
+}
+
 h1,
 h2 {
     text-align: center;
