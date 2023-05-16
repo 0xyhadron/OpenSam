@@ -37,7 +37,11 @@ body {
 
 
 
-h1,
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: x-large
+}
+
 h2 {
     text-align: center;
 }
