@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <div style="background-color:rgb(34, 75, 49)" class="crt" id="myDIV">
+    <div style=" background-color:rgb(34, 75, 49)" class="crt" id="myDIV">
         <nav>
             <div style="display: flex; align-items: center; justify-content: space-between; margin: 0.4rem;">
                 <button style=" background-color: rgb(47, 94, 64); width: 11rem;" id="ASong" onClick="playPause()">
@@ -175,11 +175,11 @@
 
 
                     audio.addEventListener("timeupdate", function () {
-                        var currentTime = audio.currentTime; // Get the current playtime in seconds
+                        var currentTime = (audio.currentTime / audio.duration); // Get the current playtime in seconds
 
                         // Calculate the desired size of the image based on the current playtime
-                        var newSize = currentTime * 5 + 500 + "px";
-                        var newSize2 = currentTime * -3 + 500 + "px";
+                        var newSize = currentTime * 100 + 500 + "px";
+                        var newSize2 = currentTime * -100 + 500 + "px";
                         // Apply the new size to the image
                         image.style.width = newSize;
                         spol2.style.width = newSize2;
