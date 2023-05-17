@@ -126,6 +126,24 @@ input[type="range"] {
     background-color: #205a21;
 }
 
+
+
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+    margin-left: 0px;
+    background-color: rgb(60, 126, 84);
+    ;
+    color: #000000;
+    cursor: pointer;
+    padding: 3px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 13px;
+}
+
 @keyframes flicker {
     0% {
         opacity: 0.27861;
@@ -331,122 +349,6 @@ input[type="range"] {
     animation: textShadow 1.6s infinite;
 }
 
-@keyframes flicker {
-    0% {
-        opacity: 0.27861;
-    }
-
-    5% {
-        opacity: 0.34769;
-    }
-
-    10% {
-        opacity: 0.23604;
-    }
-
-    15% {
-        opacity: 0.90626;
-    }
-
-    20% {
-        opacity: 0.18128;
-    }
-
-    25% {
-        opacity: 0.83891;
-    }
-
-    30% {
-        opacity: 0.65583;
-    }
-
-    35% {
-        opacity: 0.67807;
-    }
-
-    40% {
-        opacity: 0.26559;
-    }
-
-    45% {
-        opacity: 0.84693;
-    }
-
-    50% {
-        opacity: 0.96019;
-    }
-
-    55% {
-        opacity: 0.08594;
-    }
-
-    60% {
-        opacity: 0.20313;
-    }
-
-    65% {
-        opacity: 0.71988;
-    }
-
-    70% {
-        opacity: 0.53455;
-    }
-
-    75% {
-        opacity: 0.37288;
-    }
-
-    80% {
-        opacity: 0.71428;
-    }
-
-    85% {
-        opacity: 0.70419;
-    }
-
-    90% {
-        opacity: 0.7003;
-    }
-
-    95% {
-        opacity: 0.36108;
-    }
-
-    100% {
-        opacity: 0.24387;
-    }
-}
-
-.crt::after {
-    content: " ";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(18, 16, 16, 0.1);
-    opacity: 0;
-    z-index: 2;
-    pointer-events: none;
-    animation: flicker 0.15s infinite;
-}
-
-/* Style the button that is used to open and close the collapsible content */
-.collapsible {
-    margin-left: 0px;
-    background-color: rgb(60, 126, 84);
-    ;
-    color: #000000;
-    cursor: pointer;
-    padding: 3px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 13px;
-}
-
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active,
 .collapsible:hover {
@@ -510,8 +412,6 @@ input[type="range"] {
 }
 
 
-
-
 #playerControls {
 
     margin-bottom: 10px;
@@ -566,4 +466,51 @@ input[type="range"] {
     transform: perspective(1000px) rotatex(-20deg);
     color: #009e00;
     text-shadow: 0 0 2px #00739e;
+}
+
+.imageContainer {
+    position: relative;
+    /* Set the container to relative positioning */
+}
+
+#secondImage {
+    position: absolute;
+    transform-origin: center center;
+    /* Ensure the bottom image is positioned relative to the container */
+    z-index: 1;
+    /* Set a higher z-index to make it appear below the spinning image */
+    top: 600;
+    left: 600;
+}
+
+#myElement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#myImage {
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    transform-origin: center center;
+    /* Position the spinning image absolutely within the container */
+
+}
+
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+        /* Starting rotation angle */
+    }
+
+    100% {
+        transform: rotate(360deg);
+        /* Ending rotation angle */
+    }
+}
+
+.rotating {
+    animation: rotation 2s infinite linear;
+    /* Rotate image continuously */
 }
