@@ -111,21 +111,24 @@
 
             <audio id="myAudio" src="music\Frequency.mp3"></audio>
             <! tape player>
-                <table style="width:100%; height: 80px; background-color: rgb(34, 75, 49); border-style: solid; ">
+                <table
+                    style="width: 370px; height: 200px; background-color: rgb(34, 75, 49); border-style: solid; display: flex; display: flex; margin: 0.4rem; align-items: center; justify-content: center; ">
                     <tr>
                         <td>
-                            <div style="width: 300px" id="myElement">
+                            <div id="myElement">
 
                                 <img id="secondImage" style="scale: 0.3;" src="media\spool-spokes.png" alt="Image 2">
                                 <img id="myImage" style="scale: 0.1;" src="media\14.png" alt="Image 1">
 
                             </div>
                         </td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        </td>
                         <td>
-                            <div style="width: 40%" id="myElement">
+                            <div id="myElement">
 
-                                <img id="secondImage" style="scale: 0.3;" src="media\spool-spokes.png" alt="Image 2">
-                                <img id="myImage" style="scale: 0.1;" src="media\14.png" alt="Image 1">
+                                <img id="reel2" style="scale: 0.3;" src="media\spool-spokes.png" alt="Image 2">
+                                <img id="spool2" style="scale: 0.3;" src="media\14.png" alt="Image 1">
 
                             </div>
                         </td>
@@ -209,15 +212,18 @@
                 <script>
                     var audio = document.getElementById("myAudio");
                     var image = document.getElementById("myImage");
+                    var spol2 = document.getElementById("spool2");
+
 
                     audio.addEventListener("timeupdate", function () {
                         var currentTime = audio.currentTime; // Get the current playtime in seconds
 
                         // Calculate the desired size of the image based on the current playtime
                         var newSize = currentTime * 3 + 500 + "px";
-
+                        var newSize2 = currentTime * -3 + 500 + "px";
                         // Apply the new size to the image
                         image.style.width = newSize;
+                        spol2.style.width = newSize2;
                     });
 
                 </script>
@@ -227,16 +233,22 @@
                     const stopButton = document.getElementById('stopButton');
                     const myImage = document.getElementById('myImage');
                     const secondImage = document.getElementById('secondImage');
+                    const spool2 = document.getElementById('spool2');
+                    const reel2 = document.getElementById('reel2');
                     let rotationInterval;
 
                     startButton.addEventListener('click', function () {
                         myImage.classList.add('rotating');
                         secondImage.classList.add('rotating'); // Add 'rotating' class to start the rotation animation
+                        spool2.classList.add('rotating');
+                        reel2.classList.add('rotating');
                     });
 
                     stopButton.addEventListener('click', function () {
                         myImage.classList.remove('rotating'); // Remove 'rotating' class to stop the rotation animation
                         secondImage.classList.remove('rotating'); // Remove 'rotating' class to stop the rotation animation
+                        spool2.classList.remove('rotating');
+                        reel2.classList.remove('rotating');
                     });
                 </script>
 </body>

@@ -483,6 +483,16 @@ input[type="range"] {
     left: 600;
 }
 
+#reel2 {
+    position: absolute;
+    transform-origin: center center;
+    /* Ensure the bottom image is positioned relative to the container */
+    z-index: 1;
+    /* Set a higher z-index to make it appear below the spinning image */
+    top: 600;
+    left: 600;
+}
+
 #myElement {
     display: flex;
     justify-content: center;
@@ -490,6 +500,14 @@ input[type="range"] {
 }
 
 #myImage {
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    transform-origin: center center;
+    /* Position the spinning image absolutely within the container */
+
+}
+
+#spool2 {
     transition: transform 0.3s ease-in-out;
     position: absolute;
     transform-origin: center center;
