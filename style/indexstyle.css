@@ -508,3 +508,65 @@ input[type="range"] {
     right: 0;
     margin: auto;
 }
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+#playerControls {
+
+    margin-bottom: 10px;
+    float: center;
+    border-radius: 1px;
+}
+
+#playerControls button {
+    position: relative;
+    font-size: 1.2em;
+    background: #111;
+    color: #75756e;
+    height: 46px;
+    border: 0;
+    border-radius: 2px;
+    border-top: solid 1px #222;
+    width: 60px;
+    margin: 5px 2px;
+    padding: 10px 0px 30px;
+    transition: 0.2s ease-in;
+    transform-origin: top center;
+}
+
+#playerControls button:after {
+    content: " ";
+    height: 4px;
+    width: 80%;
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    left: 10%;
+    border-radius: 3px;
+    border-bottom: solid 1px #222;
+
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #333333 0%, #111111 30%, #111111 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #333333 0%, #111111 30%, #111111 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #333333 0%, #111111 30%, #111111 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#111111', GradientType=0);
+    /* IE6-9 */
+}
+
+#playerControls button:focus {
+    outline: 0;
+}
+
+#playerControls button:hover {
+    opacity: 0.8;
+    transform: perspective(1000px) rotatex(-20deg);
+    color: #00739e;
+    text-shadow: 0 0 2px #00739e;
+}

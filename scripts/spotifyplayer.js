@@ -15,7 +15,7 @@ function updatePlayer() {
                 return;
             }
             songData = data;
-            document.getElementById("player-song").innerHTML = data.item.name + "  -  " + data.item.artists[0].name;
+            document.getElementById("player-song").innerHTML = data.item.name;
             document.getElementById("player-artist").innerHTML =
                 data.item.artists[0].name;
             document.getElementById("player-status").innerHTML = data.is_playing
