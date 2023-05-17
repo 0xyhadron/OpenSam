@@ -112,7 +112,7 @@
             <audio id="myAudio" src="music\Frequency.mp3"></audio>
             <! tape player>
                 <table
-                    style="width: 370px; height: 200px; background-color: rgb(34, 75, 49); border-style: solid; display: flex; display: flex; margin: 0.4rem; align-items: center; justify-content: center; ">
+                    style="width: 370px; height: 170px; background-color: rgb(34, 75, 49); border-style: solid; border-color: #01220f; border-radius: 4px; ; display: flex; display: flex; margin: 0.4rem; align-items: center; justify-content: center; ">
                     <tr>
                         <td>
                             <div id="myElement">
@@ -219,7 +219,7 @@
                         var currentTime = audio.currentTime; // Get the current playtime in seconds
 
                         // Calculate the desired size of the image based on the current playtime
-                        var newSize = currentTime * 3 + 500 + "px";
+                        var newSize = currentTime * 5 + 500 + "px";
                         var newSize2 = currentTime * -3 + 500 + "px";
                         // Apply the new size to the image
                         image.style.width = newSize;
