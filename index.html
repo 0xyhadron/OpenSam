@@ -105,16 +105,19 @@
             </div>
             <div style=" display: flex; margin: 0.4rem; align-items: center; justify-content: center; background-color:rgb(60, 126, 84)"
                 id='playerControls'>
-                <button id="startButton" onClick=" playAudio()"><img src="media\multimedia controlls\play.png"
+                <button id="startButton" onClick=" playAudio(), buttonSVX()"><img
+                        src="media\multimedia controlls\play.png" height=20; width=20;></button>
+                <button id="stopButton" onClick="pauseAudio(), buttonSVX()"><img
+                        src="media\multimedia controlls\stop.png" height=20; width=20;></button>
+                <button id="ASong" onClick="getCurTime(), buttonSVX()"><img src="media\multimedia controlls\rewind.png"
                         height=20; width=20;></button>
-                <button id="stopButton" onClick="pauseAudio()"><img src="media\multimedia controlls\stop.png" height=20;
+                <button onClick="buttonSVX()"><img src="media\multimedia controlls\fastforward.png" height=20;
                         width=20;></button>
-                <button id="ASong" onClick="getCurTime()"><img src="media\multimedia controlls\rewind.png" height=20;
+                <button onClick="buttonSVX()"><img src="media\multimedia controlls\play.png" height=20;
                         width=20;></button>
-                <button><img src="media\multimedia controlls\fastforward.png" height=20; width=20;></button>
-                <button><img src="media\multimedia controlls\play.png" height=20; width=20;></button>
             </div>
             <audio id="myAudio" src="music\MACINTOSH PLUS - リサフランク420 現代のコンピュー (reupload).mp3"></audio>
+            <audio id="tapeButton" src="music\button.mp3"></audio>
             <! tape player>
                 <table
                     style=" height: 170px; background-color: rgb(34, 75, 49); border-style: solid; border-color: #01220f; border-radius: 4px; ; display: flex; display: flex; margin: 0.4rem; align-items: center; justify-content: center; ">
@@ -150,8 +153,12 @@
                 <script src="scripts/collapsible.js"></script>
                 <script>
                     var x = document.getElementById("myAudio");
+                    var b = document.getElementById("tapeButton");
                     function playAudio() {
                         x.play();
+                    }
+                    function buttonSVX() {
+                        b.play();
                     }
 
                     function pauseAudio() {
