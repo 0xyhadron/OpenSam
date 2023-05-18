@@ -23,8 +23,8 @@
     <div style=" background-color:rgb(34, 75, 49)" class="crt" id="myDIV">
         <nav>
             <div style="display: flex; align-items: center; justify-content: space-between; margin: 0.4rem;">
-                <button style=" background-color: rgb(47, 94, 64); width: 11rem;" id="ASong" onClick="playPause()">
-                    <audio src="music\Frequency.mp3" autoplay loop></audio>
+                <button style=" background-color: rgb(47, 94, 64); width: 11rem;" id="ASong" id="startButton" onClick=" poop()">
+                  
                     enable to poop instantly
                 </button>
                 <div style=" display: flex; justify-content: flex-end;">
@@ -60,7 +60,7 @@
         <hr color=rgb(18, 39, 26)>
         <div style=" background-color:rgb(45, 92, 61)">
             <center> <img src="media\akira.gif" height="270" width="502"></center>
-            <button type="button" class="collapsible">-F.A.Q <span id="moment"></span></button>
+            <button type="button" class="collapsible" style="text-align: center;">F.A.Q <span id="moment"></span></button>
             <div class="content">
                 <button type="button" class="collapsible">What is this website?</button>
                 <div class="content">
@@ -118,6 +118,7 @@
             </div>
             <audio id="myAudio" src="music\MACINTOSH PLUS - リサフランク420 現代のコンピュー (reupload).mp3"></audio>
             <audio id="tapeButton" src="music\button.mp3"></audio>
+            <audio id="poopie" src="music\poop.mp3"></audio>
             <! tape player>
                 <table
                     style=" height: 170px; background-color: rgb(34, 75, 49); border-style: solid; border-color: #01220f; border-radius: 4px; ; display: flex; display: flex; margin: 0.4rem; align-items: center; justify-content: center; ">
@@ -125,7 +126,7 @@
                         <td>
                             <div id="myElement">
                                 <img id="secondImage" style="scale: 0.3;" src="media\spool-spokes.png" alt="Image 2">
-                                <img id="myImage" style="scale: 0.1;" src="media\14.png" alt="Image 1">
+                                <img id="myImage" style="scale: 0.3;" src="media\14.png" alt="Image 1">
                             </div>
                         </td>
                         <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -154,12 +155,17 @@
                 <script>
                     var x = document.getElementById("myAudio");
                     var b = document.getElementById("tapeButton");
+                    var c = document.getElementById("poopie");
                     function playAudio() {
                         x.play();
                     }
                     function buttonSVX() {
                         b.play();
                     }
+                    function poop() {
+                        c.play();
+                    }
+
 
                     function pauseAudio() {
                         x.pause();
@@ -170,8 +176,8 @@
                     var x = document.getElementById("myAudio");
                     function getCurTime() {
 
-
-                        alert(x.currentTime);
+x.currentTime = x.duration;
+                        
                     }
 
                 </script>
@@ -182,11 +188,11 @@
 
 
                     audio.addEventListener("timeupdate", function () {
-                        var currentTime = (audio.currentTime / audio.duration); // Get the current playtime in seconds
+                        var currentTime = (audio.currentTime/audio.duration); // Get the current playtime in seconds
 
                         // Calculate the desired size of the image based on the current playtime
-                        var newSize = currentTime * 100 + 500 + "px";
-                        var newSize2 = currentTime * -100 + 500 + "px";
+                        var newSize = currentTime * 250 + 250+ "px";
+                        var newSize2 = currentTime * -250 + 500 + "px";
                         // Apply the new size to the image
                         image.style.width = newSize;
                         spol2.style.width = newSize2;
@@ -216,6 +222,9 @@
                         reel2.classList.remove('rotating');
                     });
                 </script>
+                <script>if (x.currentTime = x.duration){
+                    x.pause;
+                }</script>
 </body>
 
 </html>
