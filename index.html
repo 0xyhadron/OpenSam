@@ -23,8 +23,9 @@
     <div style=" background-color:rgb(34, 75, 49)" class="crt" id="myDIV">
         <nav>
             <div style="display: flex; align-items: center; justify-content: space-between; margin: 0.4rem;">
-                <button style=" background-color: rgb(47, 94, 64); width: 11rem;" id="ASong" id="startButton" onClick=" poop()">
-                  
+                <button style=" background-color: rgb(47, 94, 64); width: 11rem;" id="ASong" id="startButton"
+                    onClick=" poop()">
+
                     enable to poop instantly
                 </button>
                 <div style=" display: flex; justify-content: flex-end;">
@@ -46,9 +47,9 @@
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="dropdown-content">
-                            <a href="./about.html">about</a>
-                            <a href="./openSAM.html">opensam</a>
-                            <a href="./webcomic.html">webcomic</a>
+                            <a href="about.html">about</a>
+                            <a href="openSAM.html">opensam</a>
+                            <a href="webcomic.html">webcomic</a>
                         </div>
                     </div>
                 </div>
@@ -60,7 +61,8 @@
         <hr color=rgb(18, 39, 26)>
         <div style=" background-color:rgb(45, 92, 61)">
             <center> <img src="media\akira.gif" height="270" width="502"></center>
-            <button type="button" class="collapsible" style="text-align: center;">F.A.Q <span id="moment"></span></button>
+            <button type="button" class="collapsible" style="text-align: center;">F.A.Q <span
+                    id="moment"></span></button>
             <div class="content">
                 <button type="button" class="collapsible">What is this website?</button>
                 <div class="content">
@@ -101,8 +103,31 @@
                 </table>
             </div>
             <div style=" background-color:rgb(34, 75, 49)">
-                TAPE DECK
+                EVERTHING BELOW IS STILL IN DEVELOPMENT
             </div>
+            <hr>
+            <form id="playground">
+                <div>
+                    piano sam:
+                    <input size="60" id="speechinput" name="textfield" value="">
+                    <hr>
+                    on desktop works with keyboard (still needs tuning)
+                </div>
+            </form>
+            <hr>
+            <div class="keyboard" id='playerControls2'>
+                <button class="button" data-pitch="110" data-speed="80" data-key="A">A</button>
+                <button class="buttonb" data-pitch="100" data-speed="80" data-key="S">B</button>
+                <button class="button" data-pitch="90" data-speed="80" data-key="D">C</button>
+                <button class="buttonb" data-pitch="80" data-speed="80" data-key="F">D</button>
+                <button class="button" data-pitch="70" data-speed="80" data-key="G">E</button>
+                <button class="button" data-pitch="60" data-speed="80" data-key="H">F</button>
+                <button class="buttonb" data-pitch="50" data-speed="80" data-key="J">G</button>
+                <button class="button" data-pitch="40" data-speed="80" data-key="K">H</button>
+                <button class="buttonb" data-pitch="30" data-speed="80" data-key="L">I</button>
+                <button class="button" data-pitch="20" data-speed="80" data-key=";">J</button>
+            </div>
+
             <div style=" display: flex; margin: 0.4rem; align-items: center; justify-content: center; background-color:rgb(60, 126, 84)"
                 id='playerControls'>
                 <button id="startButton" onClick=" playAudio(), buttonSVX()"><img
@@ -119,6 +144,7 @@
             <audio id="myAudio" src="music\MACINTOSH PLUS - リサフランク420 現代のコンピュー (reupload).mp3"></audio>
             <audio id="tapeButton" src="music\button.mp3"></audio>
             <audio id="poopie" src="music\poop.mp3"></audio>
+
             <! tape player>
                 <table
                     style=" height: 170px; background-color: rgb(34, 75, 49); border-style: solid; border-color: #01220f; border-radius: 4px; ; display: flex; display: flex; margin: 0.4rem; align-items: center; justify-content: center; ">
@@ -139,11 +165,24 @@
                         </td>
                     </tr>
                 </table>
+
+
                 <div style="background-color:rgb(34, 75, 49)">
                     <H>UNDER CONSTRUCTION PLEASE COME AGAIN LATER</H>
                     <p>editors note - bruh my marquee not looping properly</p>
                     <br><br><br><br><br><br><br>
                 </div>
+                <button onclick="generatePrompt()">bored?</button>
+                <div1 style="background-color: rgb(34, 112, 53); display: flex;">
+                    <label><input type="checkbox" name="category" value="Books">Books</label>
+                    <label><input type="checkbox" name="category" value="anime">Anime</label>
+                    <label><input type="checkbox" name="category" value="Movies">Movies</label>
+                    <label><input type="checkbox" name="category" value="manga">Manga</label>
+                    <label><input type="checkbox" name="category" value="video games">Games</label>
+                </div1>
+                <p id="prompt"></p>
+
+                <script src="scripts\randomentertainment.js"></script>
                 <script>
                     function ToggleCRT() {
                         var element = document.getElementById("myDIV");
@@ -176,8 +215,8 @@
                     var x = document.getElementById("myAudio");
                     function getCurTime() {
 
-x.currentTime = x.duration;
-                        
+                        x.currentTime = x.duration;
+
                     }
 
                 </script>
@@ -188,10 +227,10 @@ x.currentTime = x.duration;
 
 
                     audio.addEventListener("timeupdate", function () {
-                        var currentTime = (audio.currentTime/audio.duration); // Get the current playtime in seconds
+                        var currentTime = (audio.currentTime / audio.duration); // Get the current playtime in seconds
 
                         // Calculate the desired size of the image based on the current playtime
-                        var newSize = currentTime * 250 + 250+ "px";
+                        var newSize = currentTime * 250 + 250 + "px";
                         var newSize2 = currentTime * -250 + 500 + "px";
                         // Apply the new size to the image
                         image.style.width = newSize;
@@ -222,9 +261,84 @@ x.currentTime = x.duration;
                         reel2.classList.remove('rotating');
                     });
                 </script>
-                <script>if (x.currentTime = x.duration){
-                    x.pause;
-                }</script>
+                <script>if (x.currentTime = x.duration) {
+                        x.pause;
+                    }</script>
+                <script src="https://cdn.jsdelivr.net/npm/sam-js/dist/samjs.min.js"></script>
+
+                <script>
+                    opts = {
+                        debug: 1,
+                        pitch: 64,
+                        speed: 72,
+                        mouth: 128,
+                        throat: 128
+                    };
+                    var speech;
+                    var words = [];
+                    var wordIndex = 0;
+
+                    function speakNextWord() {
+                        if (wordIndex >= words.length) {
+                            wordIndex = 0; // Reset the word index to loop back to the beginning
+                        }
+                        var sam = new SamJs(opts);
+                        if (speech) speech.abort();
+                        sam.speak(words[wordIndex]);
+                        wordIndex++;
+                    }
+
+                    function speakWord(word, pitch, speed) {
+                        opts.pitch = pitch; // Update the pitch value
+                        opts.speed = speed; // Update the speed value
+                        if (wordIndex >= words.length) {
+                            wordIndex = 0; // Reset the word index to loop back to the beginning
+                        }
+                        var sam = new SamJs(opts);
+                        if (speech) speech.abort();
+                        sam.speak(words[wordIndex]);
+                        wordIndex++;
+                    }
+
+                    document.addEventListener('DOMContentLoaded', function () {
+                        var speechInput = document.getElementById('speechinput');
+                        speechInput.addEventListener('input', function () {
+                            words = speechInput.value.trim().split(' ');
+                            wordIndex = 0;
+                        });
+
+                        var sayButton = document.getElementById('sayButton');
+                        sayButton.addEventListener('click', speakNextWord);
+
+                        var keyboard = document.querySelector('.keyboard');
+                        keyboard.addEventListener('click', function (event) {
+                            if (event.target.tagName === 'BUTTON') {
+                                var word = words[wordIndex];
+                                var pitch = event.target.dataset.pitch; // Get the pitch value from the button's data attribute
+                                var speed = event.target.dataset.speed; // Get the speed value from the button's data attribute
+                                speakWord(word, pitch, speed);
+                            }
+                        });
+
+                        document.addEventListener('keydown', function (event) {
+                            var key = event.key.toUpperCase();
+                            var button = document.querySelector('.keyboard button[data-key="' + key + '"]');
+                            if (button) {
+                                button.click(); // Trigger the button's click event
+                            }
+                        });
+
+                        ['mouth', 'throat'].forEach((name) => {
+                            var e = document.getElementById(name);
+                            e.onchange = function (e) {
+                                opts[e.target.id] = e.target.value;
+                                document.getElementById(e.target.id + '-lbl').innerText =
+                                    e.target.id.charAt(0).toUpperCase() + e.target.id.substr(1) + ': ' + e.target.value;
+                            };
+                            e.value = opts[name];
+                        });
+                    });
+                </script>
 </body>
 
 </html>

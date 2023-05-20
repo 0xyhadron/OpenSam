@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+            width: auto\9;
+            /* ie8 */
+        }
+
+        body {
+            background-color: #babae9;
+        }
+
+
+
+        body {
+            max-width: 13.3cm;
+            margin: 0 auto;
+            font-family: sans-serif;
+        }
+
+        .slideshow {
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px;
+            background: #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slideshow">
+        <img class="slide active" src="media\webcomic\1.png">
+        <img class="slide" src="media\webcomic\2.png">
+        <img class="slide" src="media\webcomic\3.png">
+        <img class="slide" src="media\webcomic\4.png">
+    </div>
+
+    <button class="button" onclick="previousSlide()">Previous</button>
+    <button class="button" onclick="nextSlide()">Next</button>
+
+    <script>
+        var slides = document.querySelectorAll('.slide');
+        var currentSlide = 0;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+    </script>
+</body>
+
+</html>
