@@ -105,17 +105,33 @@
             <div style=" background-color:rgb(34, 75, 49)">
                 EVERTHING BELOW IS STILL IN DEVELOPMENT
             </div>
-            <hr>
+
             <form id="playground">
                 <div>
                     piano sam:
                     <input size="60" id="speechinput" name="textfield" value="">
-                    <button type="button" id="sayButton">Say Next Word</button>
-                    <hr>
-                    on desktop works with keyboard (still needs tuning)
+                    <button type="button" id="sayButton">Next</button>
+
+                    <table style="width:100%;  border: 1px solid rgb(21, 51, 26);">
+                        <tr>
+                            <td><input style="margin-left: 10px;" type="range" id="mouth" min="0" max="255"
+                                    value="128" />
+                                <span id="mouth-lbl">Mouth: 128</span>
+
+
+                                <input style="margin-left: 10px;" type="range" id="throat" min="0" max="255"
+                                    value="128" />
+                                <span id="throat-lbl">Throat: 128</span>
+                            </td>
+                            <td> <canvas style="margin-right: 10px;" id="canvas" width="100" height="50"></canvas></td>
+
+                        </tr>
+                    </table>
+
+
                 </div>
             </form>
-            <hr>
+
             <div class="keyboard" id='playerControls2'>
                 <button data-pitch="91" data-speed="80" data-key="A">A</button>
                 <button data-pitch="82" data-speed="80" data-key="S">B</button>
@@ -128,6 +144,7 @@
                 <button data-pitch="30" data-speed="80" data-key="L">L</button>
                 <button data-pitch="20" data-speed="80" data-key=";">;</button>
             </div>
+
 
             <div style=" display: flex; margin: 0.4rem; align-items: center; justify-content: center; background-color:rgb(60, 126, 84)"
                 id='playerControls'>
@@ -341,6 +358,73 @@
                         });
                     });
                 </script>
-</body>
+
+
+                <label for="frequency">Frequency:</label>
+                <input type="range" id="frequency" min="1" max="10" value="5">
+                <br>
+                <label for="amplitude">Amplitude:</label>
+                <input type="range" id="amplitude" min="10" max="100" value="15">
+                <br>
+                <label for="speed">Speed:</label>
+                <input type="range" id="speed" min="0.1" max="1" step="0.1" value="0.2">
+                <br>
+                <label for="gradientColor1">Gradient Color 1:</label>
+                <input type="color" id="gradientColor1" value="#a8ff7f">
+                <br>
+                <label for="gradientColor2">Gradient Color 2:</label>
+                <input type="color" id="gradientColor2" value="#036114">
+                <br>
+
+
+                <script>
+                    const canvas = document.getElementById('canvas');
+                    const context = canvas.getContext('2d');
+                    const frequencySlider = document.getElementById('frequency');
+                    const amplitudeSlider = document.getElementById('amplitude');
+                    const speedSlider = document.getElementById('speed');
+                    const gradientColor1Input = document.getElementById('gradientColor1');
+                    const gradientColor2Input = document.getElementById('gradientColor2');
+
+                    let time = 0;
+
+                    function drawWave() {
+                        const frequency = parseFloat(frequencySlider.value);
+                        const amplitude = parseFloat(amplitudeSlider.value);
+                        const speed = parseFloat(speedSlider.value);
+                        const gradientColor1 = gradientColor1Input.value;
+                        const gradientColor2 = gradientColor2Input.value;
+
+                        context.clearRect(0, 0, canvas.width, canvas.height);
+                        context.beginPath();
+                        context.moveTo(0, canvas.height / 2);
+
+                        const gradient = context.createLinearGradient(0, 0, canvas.width, 0);
+                        gradient.addColorStop(0, gradientColor1);
+                        gradient.addColorStop(1, gradientColor2);
+                        context.strokeStyle = gradient;
+
+                        for (let x = 0; x < canvas.width; x++) {
+                            const y = Math.sin((x / canvas.width) * frequency + time) * amplitude + canvas.height / 2;
+                            context.lineTo(x, y);
+                        }
+
+                        context.lineWidth = 3;
+                        context.stroke();
+
+                        time += speed;
+                    }
+
+                    frequencySlider.addEventListener('input', drawWave);
+                    amplitudeSlider.addEventListener('input', drawWave);
+                    speedSlider.addEventListener('input', drawWave);
+                    gradientColor1Input.addEventListener('input', drawWave);
+                    gradientColor2Input.addEventListener('input', drawWave);
+
+                    drawWave(); // Initial drawing
+
+                    setInterval(drawWave, 20); // Redraw every 20 milliseconds
+                </script>
+
 
 </html>

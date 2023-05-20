@@ -18,6 +18,10 @@ button {
     cursor: pointer;
 }
 
+#canvas {
+    border: 2px solid rgb(21, 51, 26);
+}
+
 body {
     background-color: #6eb195;
 }
@@ -522,7 +526,7 @@ input[type="range"] {
     text-shadow: 0 0 2px #00739e;
 }
 
-#playerControls2 button:active {
+#playerControls2 button:hover {
     opacity: 0.8;
     transform: perspective(1000px) rotatex(-20deg);
     color: #009e00;

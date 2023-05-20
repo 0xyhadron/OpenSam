@@ -2,199 +2,79 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>SAM: Software Automatic Mouth</title>
     <style>
-        body {
-            max-width: 12cm;
-            margin: 0 auto;
-            font-family: sans-serif;
-        }
-
-        h1,
-        h2 {
-            text-align: center;
-        }
-
-        label,
-        input {
-            display: inline-block;
-        }
-
-        label {
-            width: 30%
-        }
-
-        input {
-            width: 60%
-        }
-
-        input[type="submit"] {
-            width: 100%;
-        }
-
-        input[type="range"] {
-            transform: rotate(180deg);
-        }
-
-        .keyboard {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            grid-gap: 5px;
-            margin-top: 20px;
-        }
-
-        .keyboard button {
-            width: 100%;
-        }
-
-        .slider {
-            width: 200px;
-            height: 200px;
-            position: relative;
-            margin: 20px auto;
-            transform-origin: center center;
-        }
-
-
-
-        .slider input[type="range"]::-webkit-slider-runnable-track {
-            width: 100%;
-            height: 4px;
-            background: #ddd;
-            border-radius: 2px;
-        }
-
-        .slider input[type="range"]::-webkit-slider-thumb {
-            position: relative;
-            appearance: none;
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            background: #4CAF50;
-            cursor: pointer;
-            z-index: 2;
+        #canvas {
+            border: 1px solid black;
         }
     </style>
 </head>
 
 <body>
-    <h1> SAM Software Automatic Mouth</h1>
+    <label for="frequency">Frequency:</label>
+    <input type="range" id="frequency" min="1" max="10" value="5">
+    <br>
+    <label for="amplitude">Amplitude:</label>
+    <input type="range" id="amplitude" min="10" max="100" value="50">
+    <br>
+    <label for="speed">Speed:</label>
+    <input type="range" id="speed" min="0.1" max="1" step="0.1" value="0.5">
+    <br>
+    <label for="gradientColor1">Gradient Color 1:</label>
+    <input type="color" id="gradientColor1" value="#ff0000">
+    <br>
+    <label for="gradientColor2">Gradient Color 2:</label>
+    <input type="color" id="gradientColor2" value="#0000ff">
+    <br>
+    <canvas id="canvas" width="400" height="200"></canvas>
 
-    <script src="https://cdn.jsdelivr.net/npm/sam-js/dist/samjs.min.js"></script>
     <script>
-        opts = {
-            debug: 1,
-            pitch: 64,
-            speed: 72,
-            mouth: 128,
-            throat: 128
-        };
-        var speech;
-        var syllables = [];
-        var syllableIndex = 0;
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const frequencySlider = document.getElementById('frequency');
+        const amplitudeSlider = document.getElementById('amplitude');
+        const speedSlider = document.getElementById('speed');
+        const gradientColor1Input = document.getElementById('gradientColor1');
+        const gradientColor2Input = document.getElementById('gradientColor2');
 
-        function speakNextSyllable() {
-            if (syllableIndex >= syllables.length) {
-                syllableIndex = 0; // Reset the syllable index to loop back to the beginning
+        let time = 0;
+
+        function drawWave() {
+            const frequency = parseFloat(frequencySlider.value);
+            const amplitude = parseFloat(amplitudeSlider.value);
+            const speed = parseFloat(speedSlider.value);
+            const gradientColor1 = gradientColor1Input.value;
+            const gradientColor2 = gradientColor2Input.value;
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.beginPath();
+            context.moveTo(0, canvas.height / 2);
+
+            const gradient = context.createLinearGradient(0, 0, canvas.width, 0);
+            gradient.addColorStop(0, gradientColor1);
+            gradient.addColorStop(1, gradientColor2);
+            context.strokeStyle = gradient;
+
+            for (let x = 0; x < canvas.width; x++) {
+                const y = Math.sin((x / canvas.width) * frequency + time) * amplitude + canvas.height / 2;
+                context.lineTo(x, y);
             }
-            var sam = new SamJs(opts);
-            if (speech) speech.abort();
-            sam.speak(syllables[syllableIndex]);
-            syllableIndex++;
+
+            context.lineWidth = 3;
+            context.stroke();
+
+            time += speed;
         }
 
-        function splitIntoSyllables(word) {
-            // Split the word into syllables (logic for syllable splitting can be implemented separately)
-            // For demonstration purposes, let's assume each letter is a syllable
-            return word.split('');
-        }
+        frequencySlider.addEventListener('input', drawWave);
+        amplitudeSlider.addEventListener('input', drawWave);
+        speedSlider.addEventListener('input', drawWave);
+        gradientColor1Input.addEventListener('input', drawWave);
+        gradientColor2Input.addEventListener('input', drawWave);
 
-        function speakWord(word, pitch, speed) {
-            opts.pitch = pitch; // Update the pitch value
-            opts.speed = speed; // Update the speed value
-            syllables = splitIntoSyllables(word);
-            syllableIndex = 0;
-            speakNextSyllable();
-        }
+        drawWave(); // Initial drawing
 
-        document.addEventListener('DOMContentLoaded', function () {
-            var speechInput = document.getElementById('speechinput');
-            speechInput.addEventListener('input', function () {
-                var words = speechInput.value.trim().split(' ');
-                syllables = [];
-                words.forEach(function (word) {
-                    syllables = syllables.concat(splitIntoSyllables(word));
-                });
-                syllableIndex = 0;
-            });
-
-            var sayButton = document.getElementById('sayButton');
-            sayButton.addEventListener('click', speakNextSyllable);
-
-            var keyboard = document.querySelector('.keyboard');
-            keyboard.addEventListener('click', function (event) {
-                if (event.target.tagName === 'BUTTON') {
-                    var syllable = syllables[syllableIndex];
-                    var pitch = event.target.dataset.pitch; // Get the pitch value from the button's data attribute
-                    var speed = event.target.dataset.speed; // Get the speed value from the button's data attribute
-                    speakWord(syllable, pitch, speed);
-                }
-            });
-
-            document.addEventListener('keydown', function (event) {
-                var key = event.key.toUpperCase();
-                var button = document.querySelector('.keyboard button[data-key="' + key + '"]');
-                if (button) {
-                    button.click(); // Trigger the button's click event
-                }
-            });
-
-            ['mouth', 'throat'].forEach((name) => {
-                var e = document.getElementById(name);
-                e.onchange = function (e) {
-                    opts[e.target.id] = e.target.value;
-                    document.getElementById(e.target.id + '-lbl').innerText =
-                        e.target.id.charAt(0).toUpperCase() + e.target.id.substr(1) + ': ' + e.target.value;
-                };
-                e.value = opts[name];
-            });
-
-            var throatSlider = document.getElementById('throatSlider');
-            throatSlider.addEventListener('input', function () {
-                opts.throat = this.value; // Update the throat value
-                document.getElementById('throatSlider-lbl').innerText = 'Throat: ' + this.value;
-            });
-        });
+        setInterval(drawWave, 20); // Redraw every 20 milliseconds
     </script>
-
-    <hr>
-    <form id="playground">
-        <div>
-            <label for="speechinput">Text to speak:</label>
-            <input size="60" id="speechinput" name="textfield" value="Hello, my name is SAM.">
-            <hr>
-            <button type="button" id="sayButton">Say Next Syllable</button>
-        </div>
-    </form>
-    <hr>
-    <div class="keyboard">
-        <button data-pitch="64" data-speed="72" data-key="A">A</button>
-        <button data-pitch="72" data-speed="80" data-key="B">B</button>
-        <button data-pitch="80" data-speed="88" data-key="C">C</button>
-        <button data-pitch="88" data-speed="96" data-key="D">D</button>
-        <button data-pitch="96" data-speed="104" data-key="E">E</button>
-        <button data-pitch="104" data-speed="112" data-key="F">F</button>
-        <button data-pitch="112" data-speed="120" data-key="G">G</button>
-        <button data-pitch="120" data-speed="128" data-key="H">H</button>
-        <button data-pitch="128" data-speed="136" data-key="I">I</button>
-        <button data-pitch="136" data-speed="144" data-key="J">J</button>
-    </div>
-    <div class="slider">
-        <input type="range" id="throatSlider" min="0" max="255" value="128">
-        <label id="throatSlider-lbl">Throat: 128</label>
-    </div>
-
 </body>
 
 </html>
