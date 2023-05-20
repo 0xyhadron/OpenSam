@@ -110,23 +110,23 @@
                 <div>
                     piano sam:
                     <input size="60" id="speechinput" name="textfield" value="">
-                    <button type="button" id="sayButton">next</button>
+                    <button type="button" id="sayButton">Say Next Word</button>
                     <hr>
                     on desktop works with keyboard (still needs tuning)
                 </div>
             </form>
             <hr>
             <div class="keyboard" id='playerControls2'>
-                <button class="button" data-pitch="110" data-speed="80" data-key="A">A</button>
-                <button class="buttonb" data-pitch="100" data-speed="80" data-key="S">B</button>
-                <button class="button" data-pitch="90" data-speed="80" data-key="D">C</button>
-                <button class="buttonb" data-pitch="80" data-speed="80" data-key="F">D</button>
-                <button class="button" data-pitch="70" data-speed="80" data-key="G">E</button>
-                <button class="button" data-pitch="60" data-speed="80" data-key="H">F</button>
-                <button class="buttonb" data-pitch="50" data-speed="80" data-key="J">G</button>
-                <button class="button" data-pitch="40" data-speed="80" data-key="K">H</button>
-                <button class="buttonb" data-pitch="30" data-speed="80" data-key="L">I</button>
-                <button class="button" data-pitch="20" data-speed="80" data-key=";">J</button>
+                <button data-pitch="91" data-speed="80" data-key="A">A</button>
+                <button data-pitch="82" data-speed="80" data-key="S">B</button>
+                <button data-pitch="73" data-speed="80" data-key="D">C</button>
+                <button data-pitch="64" data-speed="80" data-key="F">D</button>
+                <button data-pitch="55" data-speed="80" data-key="G">G</button>
+                <button data-pitch="36" data-speed="80" data-key="H">H</button>
+                <button data-pitch="27" data-speed="80" data-key="J">J</button>
+                <button data-pitch="18" data-speed="80" data-key="K">K</button>
+                <button data-pitch="30" data-speed="80" data-key="L">L</button>
+                <button data-pitch="20" data-speed="80" data-key=";">;</button>
             </div>
 
             <div style=" display: flex; margin: 0.4rem; align-items: center; justify-content: center; background-color:rgb(60, 126, 84)"
@@ -265,7 +265,7 @@
                 <script>if (x.currentTime = x.duration) {
                         x.pause;
                     }</script>
-                <script src="https://cdn.jsdelivr.net/npm/sam-js/dist/samjs.min.js"></script>
+                <script src="scripts\samjs.js"></script>
 
                 <script>
                     opts = {
@@ -273,7 +273,8 @@
                         pitch: 64,
                         speed: 72,
                         mouth: 128,
-                        throat: 128
+                        throat: 128,
+                        singmode: true
                     };
                     var speech;
                     var words = [];
