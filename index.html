@@ -102,13 +102,28 @@
                     </tr>
                 </table>
             </div>
-            <div style=" background-color:rgb(34, 75, 49)">
-                EVERTHING BELOW IS STILL IN DEVELOPMENT
-            </div>
 
+            <button type="button" class="collapsible" style="text-align: center;">how to use <span
+                    id="moment"></span></button>
+            <div class="content">
+                <button type="button" class="collapsible">synth SAM</button>
+                <div class="content">
+                    <p>To use this synthesizer, enter words in the input box. When you press the keys, it will iterate
+                        through the existing words and audibly speak them. On desktop, you can play the keys that
+                        correspond to the user interface. You can modify the variables for "mouth" and "throat" to
+                        produce different sounds.</p>
+                </div>
+                <button type="button" class="collapsible">Tape deck</button>
+                <div class="content">
+                    <p> Currently, it just functions as a music player. An interesting thing to note is that the tapes
+                        visually change size based on the progress of the song being played. Feel free to experiment and
+                        discover more about its functionality.</p>
+                </div>
+
+            </div>
             <form id="playground">
                 <div>
-                    piano sam:
+                    SAM SYNTH:
                     <input size="60" id="speechinput" name="textfield" value="">
                     <button type="button" id="sayButton">Next</button>
 
@@ -148,6 +163,8 @@
 
             <div style=" display: flex; margin: 0.4rem; align-items: center; justify-content: center; background-color:rgb(60, 126, 84)"
                 id='playerControls'>
+                <img src="media\dot.png" style="margin-left:15px ;" height="15" width="15">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button id="startButton" onClick=" playAudio(), buttonSVX()"><img
                         src="media\multimedia controlls\play.png" height=20; width=20;></button>
                 <button id="stopButton" onClick="pauseAudio(), buttonSVX()"><img
@@ -158,6 +175,8 @@
                         width=20;></button>
                 <button onClick="buttonSVX()"><img src="media\multimedia controlls\play.png" height=20;
                         width=20;></button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="media\dot.png" style="margin-right:15px ;" height="15" width="15">
             </div>
             <audio id="myAudio" src="music\Frequency.mp3"></audio>
             <audio id="tapeButton" src="music\button.mp3"></audio>
@@ -184,14 +203,9 @@
                     </tr>
                 </table>
 
+                <div1 style="background-color: rgb(34, 75, 49); color: rgb(151, 230, 148); display: flex;">
+                    <button style="background-color:  rgb(62, 134, 89);" onclick=" generatePrompt()">bored?</button>
 
-                <div style="background-color:rgb(34, 75, 49)">
-                    <H>UNDER CONSTRUCTION PLEASE COME AGAIN LATER</H>
-                    <p>editors note - bruh my marquee not looping properly</p>
-                    <br><br><br><br><br><br><br>
-                </div>
-                <button onclick="generatePrompt()">bored?</button>
-                <div1 style="background-color: rgb(34, 112, 53); display: flex;">
                     <label><input type="checkbox" name="category" value="Books">Books</label>
                     <label><input type="checkbox" name="category" value="anime">Anime</label>
                     <label><input type="checkbox" name="category" value="Movies">Movies</label>
@@ -199,6 +213,13 @@
                     <label><input type="checkbox" name="category" value="video games">Games</label>
                 </div1>
                 <p id="prompt"></p>
+
+                <div style="background-color:rgb(34, 75, 49)">
+                    <H>UNDER CONSTRUCTION PLEASE COME AGAIN LATER</H>
+                    <p>editors note - bruh my marquee not looping properly</p>
+                    <br><br><br><br><br><br><br>
+                </div>
+
 
                 <script src="scripts\randomentertainment.js"></script>
                 <script>
