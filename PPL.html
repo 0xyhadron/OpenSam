@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quick OxySplit Generator</title>
+    <style>
+        body {
+            background-color: #babae9;
+        }
+
+
+
+        body {
+            max-width: 13.3cm;
+            margin: 0 auto;
+            font-family: sans-serif;
+        }
+
+        .container {
+
+            margin: 0 auto;
+        }
+
+        .muscle-group {
+            margin-bottom: 10px;
+        }
+
+        .muscle-group label {
+            display: inline-block;
+            width: 150px;
+        }
+
+        .muscle-group input {
+            width: 200px;
+        }
+
+        .exercise-list {
+            margin-top: 10px;
+        }
+
+        .exercise-list-item {
+            margin-bottom: 5px;
+        }
+
+        .collapsible {
+            background-color: #538379;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .active,
+        .collapsible:hover {
+            background-color: #31574b;
+        }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(193, 213, 214);">
+    <div style="background-color:#395a53">
+        <center><img src="media\body-improvement-club-mob-psycho100.gif" width="502px"></center>
+    </div>
+    <div class="container">
+        <div style="background-color:#395a53">
+            &nbsp; PPL-Split Generator
+        </div>
+        <button type="button" class="collapsible">Click for more info</button>
+        <div class="content">
+            <p>
+                this website generates a modified version of the push pull legs split (this generator is in early
+                development)
+            </p>
+            <p> depending on your goals, this generator can create a quick but decent base for your excersize regimen,
+                its
+                always best to review and modify the contents to your prefrences for optimal results. if you have any
+                questions regarding your
+                routine, feel free to hit me up on any of my socials.</p>
+        </div>
+
+        <button type="button" class="collapsible">excersize guide</button>
+        <div class="content">
+            <h1>Push
+            </h1>
+            <h1>Pull</h1>
+            <h1>Legs</h1>
+            <h1>Shoulders</h1>
+        </div>
+
+
+
+
+        <div class="muscle-group">
+            <P>20 sets per muscle group per week is reccomend for maximal growth, if you perfer a minimalist
+                aproach, or a are
+                a beginner, go lower depending in your prefrence</P>
+            <p for="sets-per-muscle-group">Sets Per Muscle Group Per Week:</p>
+            <input type="range" id="sets-per-muscle-group" min="10" max="20" value="20" step="1">
+            <span id="sets-per-week-value"></span>
+        </div>
+
+        <div class="muscle-group">
+            <label for="push-exercise">Push exercises:</label>
+            <input type="text" id="push-exercise">
+            <button onclick="addExercise('push')">Add</button>
+            <ul id="push-exercises" class="exercise-list"></ul>
+        </div>
+
+        <div class="muscle-group">
+            <label for="pull-exercise">Pull exercises:</label>
+            <input type="text" id="pull-exercise">
+            <button onclick="addExercise('pull')">Add</button>
+            <ul id="pull-exercises" class="exercise-list"></ul>
+        </div>
+
+        <div class="muscle-group">
+            <label for="legs-exercise">Legs exercises:</label>
+            <input type="text" id="legs-exercise">
+            <button onclick="addExercise('legs')">Add</button>
+            <ul id="legs-exercises" class="exercise-list"></ul>
+        </div>
+
+        <div class="muscle-group">
+            <label for="shoulders-exercise">Shoulders exercises:</label>
+            <input type="text" id="shoulders-exercise">
+            <button onclick="addExercise('shoulders')">Add</button>
+            <ul id="shoulders-exercises" class="exercise-list"></ul>
+        </div>
+
+        <button onclick="generateRoutine()">Generate Routine</button>
+        <ul id="routine" class="exercise-list"></ul>
+
+    </div>
+
+    <script>
+        var setsPerMuscleGroupSlider = document.getElementById('sets-per-muscle-group');
+        var setsPerWeekValue = document.getElementById('sets-per-week-value');
+        setsPerWeekValue.textContent = setsPerMuscleGroupSlider.value;
+
+        setsPerMuscleGroupSlider.addEventListener('input', function () {
+            setsPerWeekValue.textContent = this.value;
+        });
+
+        var exerciseCounts = {
+            push: 0,
+            pull: 0,
+            legs: 0,
+            shoulders: 0
+        };
+
+        function addExercise(muscleGroup) {
+            var exerciseInput = document.getElementById(muscleGroup + '-exercise');
+            var exercise = exerciseInput.value.trim();
+
+            if (exercise !== '') {
+                var exerciseList = document.getElementById(muscleGroup + '-exercises');
+                var listItem = document.createElement('li');
+                listItem.textContent = exercise;
+                exerciseList.appendChild(listItem);
+
+                exerciseInput.value = '';
+                exerciseCounts[muscleGroup]++;
+            }
+        }
+
+        function generateRoutine() {
+            var pushExercises = Array.from(document.getElementById('push-exercises').children);
+            var pullExercises = Array.from(document.getElementById('pull-exercises').children);
+            var legsExercises = Array.from(document.getElementById('legs-exercises').children);
+            var shouldersExercises = Array.from(document.getElementById('shoulders-exercises').children);
+
+            var routineList = document.getElementById('routine');
+            routineList.innerHTML = '';
+
+            var setsPerMuscleGroupPerWeek = parseInt(setsPerMuscleGroupSlider.value);
+            var numPushDays = 2; // Number of push days (Monday and Thursday)
+            var numPullDays = 2; // Number of pull days (Tuesday and Friday)
+            var numLegsDays = 1; // Number of legs day (Wednesday)
+            var numShouldersDays = 3; // Number of shoulders days (Monday, Wednesday, and Thursday)
+
+            var pushSetsPerExercise = Math.ceil(setsPerMuscleGroupPerWeek / exerciseCounts.push);
+            var pullSetsPerExercise = Math.ceil(setsPerMuscleGroupPerWeek / exerciseCounts.pull);
+            var legsSetsPerExercise = Math.ceil(setsPerMuscleGroupPerWeek / exerciseCounts.legs);
+            var shouldersSetsPerExercise = Math.ceil(setsPerMuscleGroupPerWeek / countShoulderExercises());
+
+            var pushSetsPerDay = Math.round(pushSetsPerExercise / numPushDays);
+            var pullSetsPerDay = Math.round(pullSetsPerExercise / numPullDays);
+            var legsSetsPerDay = Math.round(legsSetsPerExercise / numLegsDays);
+            var shouldersSetsPerDay = Math.round(shouldersSetsPerExercise / numShouldersDays);
+
+
+            var days = [
+                { day: 'Monday (Push)', exercises: pushExercises, setsPerExercise: pushSetsPerDay },
+                { day: 'Tuesday (Pull)', exercises: pullExercises, setsPerExercise: pullSetsPerDay },
+                { day: 'Wednesday (Legs)', exercises: legsExercises, setsPerExercise: legsSetsPerDay },
+                { day: 'Thursday (Push)', exercises: pushExercises, setsPerExercise: pushSetsPerDay },
+                { day: 'Friday (Pull)', exercises: pullExercises, setsPerExercise: pullSetsPerDay }
+            ];
+
+            days.forEach(function (dayObj) {
+                var day = dayObj.day;
+                var exercises = dayObj.exercises;
+                var setsPerExercise = dayObj.setsPerExercise;
+
+                var listItem = document.createElement('li');
+                var dayHeading = document.createElement('h3');
+                dayHeading.textContent = day;
+                listItem.appendChild(dayHeading);
+
+                var exercisesList = document.createElement('ul');
+                exercisesList.classList.add('exercise-list');
+
+                exercises.forEach(function (exercise) {
+                    var exerciseListItem = document.createElement('li');
+                    var setsLabel = document.createElement('span');
+                    setsLabel.textContent = '(' + setsPerExercise + ' sets) ';
+                    exerciseListItem.appendChild(setsLabel);
+                    exerciseListItem.textContent += exercise.textContent;
+                    exercisesList.appendChild(exerciseListItem);
+                });
+
+                // Display shoulder exercises on Monday, Wednesday, and Thursday
+                if (day.includes('Monday') || day.includes('Wednesday') || day.includes('Thursday')) {
+                    var shouldersTab = document.createElement('ul');
+                    shouldersTab.classList.add('exercise-list');
+                    shouldersExercises.forEach(function (exercise) {
+                        var exerciseListItem = document.createElement('li');
+                        var setsLabel = document.createElement('span');
+                        setsLabel.textContent = '(' + shouldersSetsPerDay + ' sets) ';
+                        exerciseListItem.appendChild(setsLabel);
+                        exerciseListItem.textContent += exercise.textContent;
+                        shouldersTab.appendChild(exerciseListItem);
+                    });
+                    listItem.appendChild(shouldersTab);
+                }
+
+                listItem.appendChild(exercisesList);
+                routineList.appendChild(listItem);
+            });
+        }
+
+        function countShoulderExercises() {
+            var shoulderExercises = document.getElementById('shoulders-exercises').children;
+            return shoulderExercises.length;
+        }
+
+    </script>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

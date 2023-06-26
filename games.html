@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Your WebGL Game Title</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #unity-container {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+        }
+
+        .progress {
+            width: 100%;
+            height: 5px;
+            position: fixed;
+            background-color: #0a0;
+        }
+    </style>
+    <script src="game\Build\Consumed Web Build.loader.js"></script>
+    <script>
+        var gameInstance = UnityLoader.instantiate("unity-container", "game\Build\Consumed Web Build.loader.js", { onProgress: UnityProgress });
+    </script>
+</head>
+
+<body>
+    <div class="progress"></div>
+    <div id="unity-container"></div>
+</body>
+
+</html>
