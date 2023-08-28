@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Local Time and Weather</title>
+    <style>
+        .weather-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .weather-icon {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script>
+        var audio;
+        var currentWeather = '';
+
+        function getTime() {
+            var now = new Date();
+            var time = now.toLocaleTimeString();
+            document.getElementById('time').innerHTML = time;
+        }
+
+        function playSound(soundFile) {
+            if (audio) {
+                audio.pause();
+            }
+
+            audio = new Audio(soundFile);
+            audio.volume = document.getElementById('volume').value / 100; // Set the volume based on the slider value
+            audio.addEventListener('timeupdate', function () {
+                var currentTime = audio.currentTime;
+                var duration = audio.duration;
+                var progress = (currentTime / duration) * 100;
+                document.getElementById('timer').innerHTML = 'Timer: ' + currentTime.toFixed(2) + 's / ' + duration.toFixed(2) + 's';
+            });
+            audio.play();
+        }
+
+        function playSunnySound() {
+            playSound('sfx/sunny.mp3');
+        }
+
+        function playRainSound() {
+            playSound('sfx/heavy_rain.mp3');
+        }
+
+        function playCloudSound() {
+            playSound('sfx/gentle_rain.mp3');
+        }
+
+        function playDefaultSound() {
+            playSound('sfx/default_sound.mp3');
+        }
+
+        function getWeather() {
+            var location = document.getElementById('location').value;
+
+            if (location.trim() === '') {
+                alert('Please enter a valid location.');
+                return;
+            }
+
+            var xhr = new XMLHttpRequest();
+            var url = 'https://api.weatherapi.com/v1/current.json?key=6efa381f097b4ba3bc4155652230906&q=' + encodeURIComponent(location);
+            xhr.open('GET', url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    var weather = response.current.condition.text.toLowerCase(); // Convert weather condition to lowercase
+                    var temperature = response.current.temp_c;
+                    var humidity = response.current.humidity;
+                    var windSpeed = response.current.wind_kph;
+                    var icon = response.current.condition.icon;
+
+                    document.getElementById('weather').innerHTML = weather;
+                    document.getElementById('temperature').innerHTML = 'Temperature: ' + temperature + '°C';
+                    document.getElementById('humidity').innerHTML = 'Humidity: ' + humidity + '%';
+                    document.getElementById('windSpeed').innerHTML = 'Wind Speed: ' + windSpeed + ' kph';
+                    document.getElementById('weatherIcon').src = 'https:' + icon;
+
+                    currentWeather = weather;
+                }
+            };
+            xhr.send();
+        }
+
+        // Update time and weather every second
+        setInterval(getTime, 1000);
+
+        var updateWeatherInterval = setInterval(getWeather, 3600000); // Update weather every hour
+
+        var locationInput = document.getElementById('location');
+        locationInput.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                clearInterval(updateWeatherInterval); // Clear previous interval
+                getWeather();
+                updateWeatherInterval = setInterval(getWeather, 3600000); // Update weather every hour
+            }
+        });
+
+        var playSoundButton = document.getElementById('playSoundButton');
+        playSoundButton.addEventListener('click', function () {
+            if (currentWeather.indexOf('sunny') !== -1 || currentWeather.indexOf('clear') !== -1) {
+                playSunnySound();
+            } else if (currentWeather.indexOf('rain') !== -1 || currentWeather.indexOf('shower') !== -1) {
+                playRainSound();
+            } else if (currentWeather.indexOf('cloud') !== -1 || currentWeather.indexOf('overcast') !== -1) {
+                playCloudSound();
+            } else {
+                playDefaultSound();
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Local Time and Weather</h1>
+    <p id="time"></p>
+    <input type="text" id="location" placeholder="Enter location">
+    <button onclick="getWeather()">Get Weather</button>
+    <div class="weather-info">
+        <p id="weather"></p>
+        <p id="temperature"></p>
+        <p id="humidity"></p>
+        <p id="windSpeed"></p>
+        <img id="weatherIcon" class="weather-icon" src="" alt="Weather Icon">
+        <p id="timer"></p>
+        <button id="playSoundButton">Play Sound</button>
+    </div>
+    <div>
+        <input type="range" id="volume" min="0" max="100" value="50">
+        <label for="volume">Volume</label>
+    </div>
+</body>
+
+</html>
