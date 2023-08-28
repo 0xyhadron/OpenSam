@@ -20,6 +20,7 @@
 </head>
 
 <body>
+    
     <div style=" background-color:rgb(34, 75, 49)" class="crt" id="myDIV">
         <nav>
             <div style="display: flex; align-items: center; justify-content: space-between; margin: 0.4rem;">
@@ -53,7 +54,6 @@
                         </button>
 
                         <div class="dropdown-content">
-                            <a href="about.html">about</a>
                             <a href="openSAM.html">opensam</a>
                             <a href="webcomic.html">webcomic</a>
                         </div>
@@ -65,25 +65,87 @@
     <center>
         <h1> HELLO! THIS IS MY SPACESHIP.</h1>
         <hr color=rgb(18, 39, 26)>
+        
         <div style=" background-color:rgb(45, 92, 61)">
-            <center> <img src="media\akira.gif" height="270" width="502"></center>
+            <center> <img src="media\akira.gif"  width="502"></center>
+            <div style=" display: flex; margin: 0.4rem; align-items: center; justify-content: center; background-color:rgb(60, 126, 84)"
+            id='playerControls'>
+           
+            <button id="instagramButton">
+                <img src="media\media\socials\icons8-instagram-30.png" height="20" width="20">
+            </button>
+             
+            <button id="TwitterButton">
+                <img src="media\media\socials\icons8-twitter-50.png" height="20" width="20">
+            </button>
+             
+            <button id="YoutubeButton">
+                <img src="media\media\socials\icons8-youtube-50.png" height="20" width="20">
+            </button>
+             
+
+            <button id="spotifyButton">
+                <img src="media\media\socials\icons8-spotify-50 (1).png" height="20" width="20">
+            </button>
+            
+            <button id="steamButton">
+                <img src="media\media\socials\icons8-steam-50.png" height="20" width="20">
+            </button>
+            
+            <button id="artstationButton">
+                <img src="media\media\socials\icons8-artstation-32 (1).png" height="20" width="20">
+            </button>
+            
+                        <button id="itchButton">
+                            <img src="media\media\socials\icons8-itch-io-48.png" height="20" width="20">
+                        </button>
+                       
+                    
+                       
+        </div>
+        
             <button type="button" class="collapsible" style="text-align: center;">F.A.Q <span
-                    id="moment"></span></button>
+                id="moment"></span></button>
+        <div class="content">
+            <button type="button" class="collapsible">What is this website?</button>
             <div class="content">
-                <button type="button" class="collapsible">What is this website?</button>
-                <div class="content">
-                    <p><img src="media\insanecat.gif" height="70" width="70"></p>
-                </div>
-                <button type="button" class="collapsible">Can i bench 100kg yet? </button>
-                <div class="content">
-                    <p> no >:( </p>
-                </div>
-                <button type="button" class="collapsible">Will i be your boyfriend?</button>
-                <div class="content">
-                    <p>Most likely not, but you can submit your application <a
-                            href="https://youtu.be/ddvdAHkbEec">here</a></p>
-                </div>
+                <p><img src="media\insanecat.gif" height="70" width="70"></p>
             </div>
+            <button type="button" class="collapsible">Can i bench 100kg yet? </button>
+            <div class="content">
+                <p> I DID IT I DID IT <img src="media\crab bench.gif" height="70" width="70"></p>
+            </div>
+            <button type="button" class="collapsible">Will i be your boyfriend?</button>
+            <div class="content">
+                <p>Most likely not, but you can submit your application <a
+                        href="https://youtu.be/ddvdAHkbEec">here</a></p>
+            </div>
+        </div>
+        <button type="button" class="collapsible" style="text-align: center;">homebrew memes</button>
+        <div class="content">
+            <div class="video-container">
+            <div class="slideshow">
+                <video class="slide active" width="640" height="360" controls>
+                    <source src="media\media\BLOODY F CK YOU - Phoenix Write.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <video class="slide" width="640" height="360" controls>
+                    <source src="media\bmo asks an interesting question.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+       
+        </div>
+        <hr color=rgb(18, 39, 26)>
+        <br><br><br>
+        <div style=" display: flex; margin: 0.4rem; align-items: center; justify-content: center; background-color:rgb(60, 126, 84)"
+        id='playerControls'>  
+        <button class="button" onclick="previousSlide()">Previous</button>
+        <button class="button" onclick="nextSlide()">Next</button>  
+        </div>
+        </div>
+       
+       
             <div
                 style=" border: solid; border-color: rgb(34, 75, 49); border-width: 5px; background-color: rgb(60, 126, 84);">
                 <table style="width:100%">
@@ -109,23 +171,29 @@
                 </table>
             </div>
 
-            <button type="button" class="collapsible" style="text-align: center;">how to use <span
-                    id="moment"></span></button>
-            <div class="content">
-                <button type="button" class="collapsible">synth SAM</button>
-                <div class="content">
-                    <p>To use this synthesizer, enter words in the input box. When you press the keys, it will iterate
-                        through the existing words and audibly speak them. On desktop, you can play the keys that
-                        correspond to the user interface. You can modify the variables for "mouth" and "throat" to
-                        produce different sounds.</p>
-                </div>
-                <button type="button" class="collapsible">Tape deck</button>
-                <div class="content">
-                    <p> Currently, it just functions as a music player. An interesting thing to note is that the tapes
-                        visually change size based on the progress of the song being played. </p>
-                </div>
-
-            </div>
+         
+            
+            <script>
+                var slides = document.querySelectorAll('.slide');
+                var currentSlide = 0;
+        
+                function showSlide(n) {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (n + slides.length) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }
+        
+                function previousSlide() {
+                    showSlide(currentSlide - 1);
+                }
+        
+                function nextSlide() {
+                    showSlide(currentSlide + 1);
+                }
+            </script>
+    
+    
+     
             <form id="playground">
                 <div>
                     SAM SYNTH:
@@ -449,6 +517,44 @@
 
                     setInterval(drawWave, 20); // Redraw every 20 milliseconds
                 </script>
+                <script>
+            // Get a reference to the button element
+            const instagramButton = document.getElementById("instagramButton");
+    const spotifyButton = document.getElementById("spotifyButton");
+    const steamButton = document.getElementById("steamButton");
+    const artstationButton = document.getElementById("artstationButton");
+    const YoutubeButton = document.getElementById("YoutubeButton");
+    const TwitterButton = document.getElementById("TwitterButton");
+            const itchButton = document.getElementById("itchButton");
+        
+            // Add a click event listener to the button
+            itchButton.addEventListener("click", function() {
+                // Redirect to the itch.io website
+                window.location.href = "https://oxyhadron.itch.io/";
+            });
+            instagramButton.addEventListener("click", function() {
+        window.location.href = "https://www.instagram.com/oxyhadron/";
+    });
 
+    spotifyButton.addEventListener("click", function() {
+        window.location.href = "https://open.spotify.com/user/b8st4w63ufri0003m7unehml1?si=dcfc7fe777974bbf&nd=1";
+    });
+
+    steamButton.addEventListener("click", function() {
+        window.location.href = "https://steamcommunity.com/id/oxyhadron";
+    });
+
+    artstationButton.addEventListener("click", function() {
+        window.location.href = "https://www.artstation.com/oxyhadron";
+    });
+
+    YoutubeButton.addEventListener("click", function() {
+        window.location.href = "https://www.youtube.com/@oxyhadron1120/about";
+    });
+
+    TwitterButton.addEventListener("click", function() {
+        window.location.href = "https://twitter.com/0xyhadron";
+    });
+</script>
 
 </html>

@@ -609,6 +609,30 @@ input[type="range"] {
     height: 100px;
 }
 
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh; /* Adjust as needed */
+}
+
+.video-container video {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.slideshow {
+    position: relative;
+}
+
+.slide {
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}   
+
 .buttonb {
     background-color: #17a017;
     color: #FFFFFF;
