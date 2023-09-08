@@ -3,6 +3,149 @@
 
 <head>
     <style>
+        /** 
+			#BFBFBF window bg color
+			#01007A window bar color
+			#4ED8B4 arizona
+			**/
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #4ED8B4;
+            font-family: Times New Roman;
+        }
+
+        .container {
+            display: block;
+            max-width: 800px;
+            min-height: 20px;
+            margin: auto;
+        }
+
+        .notepad {
+            background: #BFBFBF;
+            display: block;
+            min-height: 100px;
+            width: 100%;
+            padding: 4px;
+            -webkit-box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.75);
+            box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.75);
+            border: 1.4px solid white;
+        }
+
+        .notepad-bar {
+            width: 100%;
+            background: #01007A;
+            height: 23px;
+        }
+
+        .notepad-title {
+            color: white;
+            letter-spacing: .5px;
+            word-spacing: .5px;
+            padding-left: 5px;
+            float: left;
+            font-weight: 600;
+        }
+
+        .notepad-minimize,
+        .notepad-maximize,
+        .notepad-exit {
+            height: 100%;
+            display: block;
+            float: right;
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+
+        .notepad-exit {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .button-minimize,
+        .button-maximize,
+        .button-exit {
+            background: #BFBFBF;
+            height: 100%;
+            width: 19px;
+            border-right: 2px solid black;
+            border-bottom: 2px solid black;
+            border-left: 1px solid white;
+            border-top: 1px solid white;
+        }
+
+        .button-exit {
+            font-size: 55%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .notepad-icon {
+            height: 100%;
+            float: left;
+            padding-top: 1px;
+        }
+
+        .notepad-icon img {
+            object-fit: fill;
+            display: block;
+            height: 19px;
+            width: 19px;
+        }
+
+        .icon-maximize {
+            border-bottom: 1px solid black;
+            border-top: 3px solid black;
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            height: 80%;
+            width: 80%;
+            display: block;
+            margin: auto;
+            margin-top: 1.2px;
+        }
+
+        .icon-minimize {
+            border-bottom: 2px solid black;
+            width: 80%;
+            height: 80%;
+            display: block;
+            marigin: auto;
+            margin-left: 1.5px;
+        }
+
+        .notepad-settings {
+            width: 100%;
+            float: left;
+            display: inline-flex;
+            margin-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .settings-text {
+            padding-right: 15px;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        .notepad-content {
+            height: 700px;
+            width: 100%;
+            background: white;
+            clear: both;
+            border-radius: 1px;
+            border: 1.2px solid black;
+            overflow: auto;
+            padding: 5px;
+        }
+
         img {
             max-width: 100%;
             height: auto;
@@ -11,7 +154,7 @@
         }
 
         body {
-            background-color: #babae9;
+            background-color: #018281;
         }
 
 
@@ -44,15 +187,50 @@
 </head>
 
 <body>
-    <div class="slideshow">
-        <img class="slide active" src="media\webcomic\1.png">
-        <img class="slide" src="media\webcomic\2.png">
-        <img class="slide" src="media\webcomic\3.png">
-        <img class="slide" src="media\webcomic\4.png">
-    </div>
+    <br>
 
-    <button class="button" onclick="previousSlide()">Previous</button>
-    <button class="button" onclick="nextSlide()">Next</button>
+    <div class="container">
+        <div class="notepad">
+            <div class="notepad-bar">
+                <div class="notepad-icon">
+
+                </div>
+                <div class="notepad-title">eye - onekickrick</div>
+                <div class="notepad-exit">
+                    <div class="button-exit">&#10060;</div>
+                </div>
+                <div class="notepad-maximize">
+                    <div class="button-maximize">
+                        <div class="icon-maximize"></div>
+                    </div>
+                </div>
+                <div class="notepad-minimize">
+                    <div class="button-minimize">
+                        <div class="icon-minimize"></div>
+                    </div>
+                </div>
+            </div> <!-- notepad bar -->
+            <div class="notepad-settings">
+                <div class="settings-text"><span class="underline">F</span>ile</div>
+                <div class="settings-text"><span class="underline">E</span>dit</div>
+                <div class="settings-text"><span class="underline">S</span>earch</div>
+                <div class="settings-text"><span class="underline">H</span>elp</div>
+            </div><!-- notepad settings -->
+            <div class="notepad-content">
+                <div class="slideshow">
+                    <img class="slide active" src="media\page1.png">
+                    <img class="slide" src="media\page2.png">
+
+                </div>
+                <center> <button class="button" onclick="previousSlide()">Previous</button>
+                    <button class="button" onclick="nextSlide()">Next</button>
+                </center>
+                </p>
+            </div> <!-- notepad content -->
+        </div> <!-- notepad -->
+    </div> <!-- container -->
+
+
 
     <script>
         var slides = document.querySelectorAll('.slide');
