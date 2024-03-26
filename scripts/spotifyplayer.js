@@ -15,7 +15,11 @@ function updatePlayer() {
                 return;
             }
             songData = data;
+            // Extract track ID and store it
+            var trackId = data.item.id;
+            document.getElementById("player-ID").innerHTML = trackId;
             document.getElementById("player-song").innerHTML = data.item.name + "  -  " + data.item.artists[0].name;
+
             document.getElementById("player-artist").innerHTML =
                 data.item.artists[0].name;
             document.getElementById("player-status").innerHTML = data.is_playing
@@ -31,6 +35,21 @@ function updatePlayer() {
                     document.getElementById("player-progress").getAttribute("style") +
                     `width: ${(data.progress_ms * 100) / data.item.duration_ms}%`
                 );
+            function createSpotifyEmbedPlayer(trackId) {
+                // Replace the existing iframe with the new Spotify Embed Player
+                var iframe = document.createElement("iframe");
+                iframe.src = `https://open.spotify.com/embed/track/${trackId}`;
+                iframe.width = "300";
+                iframe.height = "380";
+                iframe.frameBorder = "0";
+                iframe.allowtransparency = "true";
+                iframe.allow = "encrypted-media";
+
+                // Replace the existing player container with the new iframe
+                var playerContainer = document.getElementById("player");
+                playerContainer.innerHTML = ""; // Clear existing content
+                playerContainer.appendChild(iframe);
+            }
 
             document.getElementById(
                 "player-background"

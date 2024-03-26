@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open webcomic.html",
-            "file": "s:\\git\\.git\\OpenSam\\webcomic.html"
+            "file": "s:\\git\\.git\\OpenSam\\index.html"
         }
     ]
 }

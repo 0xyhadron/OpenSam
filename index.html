@@ -20,14 +20,14 @@
 </head>
 
 <body>
-    
+
     <div style=" background-color:rgb(34, 75, 49)" class="crt" id="myDIV">
         <nav>
             <div style="display: flex; align-items: center; justify-content: space-between; margin: 0.4rem;">
                 <button style=" background-color: rgb(47, 94, 64); width: 11rem;" id="ASong" id="startButton"
                     onClick=" poop()">
 
-                    enable to poop instantly
+                    enable music
                 </button>
                 <div style=" display: flex; justify-content: flex-end;">
                     <span style="width: 80px; height: 23px;" id="sfc1tultnydt4zu51mr3nr6kwk3jznpq9e2">
@@ -66,536 +66,531 @@
     <center>
         <h1> HELLO! THIS IS MY SPACESHIP.</h1>
         <hr color=rgb(18, 39, 26)>
-        
+
         <div style=" background-color:rgb(45, 92, 61)">
-            <center> <img src="media\akira.gif"  width="502"></center>
+            <center> <img src="media\akira.gif" width="502"></center>
             <div style=" display: flex; margin: 0.4rem; align-items: center; justify-content: center; background-color:rgb(60, 126, 84)"
-            id='playerControls'>
-           
-            <button onClick="buttonSVX()" id="instagramButton">
-                <img src="media\media\socials\icons8-instagram-30.png" height="20" width="20">
-            </button>
-             
-            <button id="TwitterButton">
-                <img src="media\media\socials\icons8-twitter-50.png" height="20" width="20">
-            </button>
-             
-            <button onClick="buttonSVX()" id="YoutubeButton">
-                <img src="media\media\socials\icons8-youtube-50.png" height="20" width="20">
-            </button>
-             
-
-            <button onClick="buttonSVX()" id="spotifyButton">
-                <img src="media\media\socials\icons8-spotify-50 (1).png" height="20" width="20">
-            </button>
-            
-            <button onClick="buttonSVX()" id="steamButton">
-                <img src="media\media\socials\icons8-steam-50.png" height="20" width="20">
-            </button>
-            
-            <button onClick="buttonSVX()" id="artstationButton">
-                <img src="media\media\socials\icons8-artstation-32 (1).png" height="20" width="20">
-            </button>
-            
-                        <button onClick="buttonSVX()"  id="itchButton">
-                            <img src="media\media\socials\icons8-itch-io-48.png" height="20" width="20">
-                        </button>
-             
-        </div>
-        <div
-        style=" border: solid; border-color: rgb(34, 75, 49); border-width: 5px; background-color: rgb(60, 126, 84);">
-        <table style="width:100%">
-            <tr>
-                <th style="width: 11%; text-align:left"> <img id="player-album-art"
-                        style="width: 70px; height: 70px; margin-top: 7px; margin-bottom: 3px; margin-left: 7px;">
-                </th>
-                <th
-                    style=" border: width 10px; width: 40%; border: solid; border-color: rgb(34, 75, 49);  background-image: radial-gradient(rgba(141, 255, 170, 0.75), rgb(39, 100, 39) 120%); text-align:center">
-                    <div style="font-family: 'LCD', sans-serif; background-color: rgba(23, 70, 40, 0); text-align: center;"
-                        id="player-status" style="font-size: 0.2em; color: #01220f; margin: 1em 0 0.5em 0">
-                    </div>
-                    <marquee width="60%" direction="left" height="15px" id="player-song" id="player-artist"
-                        style=" font-family: 'LCD', sans-serif; font-size: 0.9em; color: #01220f;">
-                    </marquee>
-                    <div id="player-artist"
-                        style="font-family: 'LCD', sans-serif; font-size: 0.6em; color: #01220f;"></div>
-                    <div id="player-time"
-                        style="position: relative; float: right; top: -2em; font-weight: bold">
-                    </div>
-                </th>
-            </tr>
-        </table>
-    </div>  
-        <div class="button-container" id='playerControls3'>
-            <button onClick="buttonSVX()" class="collapsible-btn">SAMsynth</button>
-            <button onClick="buttonSVX()" class="collapsible-btn">tapedeck</button>
-            <button onClick="buttonSVX()" class="collapsible-btn">Generate</button>
-            <button onClick="buttonSVX()" class="collapsible-btn">Memes</button>
-            <button onClick="buttonSVX()" class="collapsible-btn">F.A.Q</button>
-          </div>
-          
-          <div class="content-container">
-            <div class="content">
-          
-                <form id="playground">
-                    <div>
-                        SAM SYNTH:
-                        <input size="60" id="speechinput" name="textfield" value="">
-                        <button type="button" id="sayButton">Next</button>
-    
-                        <table style="width:100%;  border: 1px solid rgb(21, 51, 26);">
-                            <tr>
-                                <td><input style="margin-left: 10px;" type="range" id="mouth" min="0" max="255"
-                                        value="128" />
-                                    <span id="mouth-lbl">Mouth: 128</span>
-    
-    
-                                    <input style="margin-left: 10px;" type="range" id="throat" min="0" max="255"
-                                        value="128" />
-                                    <span id="throat-lbl">Throat: 128</span>
-                                </td>
-                                <td> <canvas style="margin-right: 10px;" id="canvas" width="100" height="50"></canvas></td>
-    
-                            </tr>
-                        </table>
-    
-    
-                    </div>
-                </form>
-    
-                <div class="keyboard" id='playerControls2'>
-                    <button data-pitch="91" data-speed="80" data-key="A">A</button>
-                    <button data-pitch="82" data-speed="80" data-key="S">B</button>
-                    <button data-pitch="73" data-speed="80" data-key="D">C</button>
-                    <button data-pitch="64" data-speed="80" data-key="F">D</button>
-                    <button data-pitch="55" data-speed="80" data-key="G">G</button>
-                    <button data-pitch="36" data-speed="80" data-key="H">H</button>
-                    <button data-pitch="27" data-speed="80" data-key="J">J</button>
-                    <button data-pitch="18" data-speed="80" data-key="K">K</button>
-                    <button data-pitch="30" data-speed="80" data-key="L">L</button>
-                    <button data-pitch="20" data-speed="80" data-key=";">;</button>
-                </div>
-    
-            </div>
-            <div class="content">
-                <div style=" display: flex; margin: 0.4rem; align-items: center; justify-content: center; background-color:rgb(60, 126, 84)"
                 id='playerControls'>
-                <img src="media\dot.png" style="margin-left:15px ;" height="15" width="15">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button id="startButton" onClick=" playAudio(), buttonSVX()"><img
-                        src="media\multimedia controlls\play.png" height=20; width=20;></button>
-                <button id="stopButton" onClick="pauseAudio(), buttonSVX()"><img
-                        src="media\multimedia controlls\stop.png" height=20; width=20;></button>
-                <button id="ASong" onClick="getCurTime(), buttonSVX()"><img src="media\multimedia controlls\rewind.png"
-                        height=20; width=20;></button>
-                <button onClick="buttonSVX()"><img src="media\multimedia controlls\fastforward.png" height=20;
-                        width=20;></button>
-                <button onClick="buttonSVX()"><img src="media\multimedia controlls\play.png" height=20;
-                        width=20;></button>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <img src="media\dot.png" style="margin-right:15px ;" height="15" width="15">
-            </div>
-            <audio id="myAudio" src="music\Frequency.mp3"></audio>
-            <audio id="tapeButton" src="music\button.mp3"></audio>
-            <audio id="poopie" src="music\poop.mp3"></audio>
 
-            <! tape player>
-                <table
-                    style=" height: 170px; background-color: rgb(34, 75, 49); border-style: solid; border-color: #01220f; border-radius: 4px; ; display: flex; display: flex; margin: 0.4rem; align-items: center; justify-content: center; ">
+                <button onClick="buttonSVX()" id="instagramButton">
+                    <img src="media\media\socials\icons8-instagram-30.png" height="20" width="20">
+                </button>
+
+                <button id="TwitterButton">
+                    <img src="media\media\socials\icons8-twitter-50.png" height="20" width="20">
+                </button>
+
+                <button onClick="buttonSVX()" id="YoutubeButton">
+                    <img src="media\media\socials\icons8-youtube-50.png" height="20" width="20">
+                </button>
+
+
+                <button onClick="buttonSVX()" id="spotifyButton">
+                    <img src="media\media\socials\icons8-spotify-50 (1).png" height="20" width="20">
+                </button>
+
+                <button onClick="buttonSVX()" id="steamButton">
+                    <img src="media\media\socials\icons8-steam-50.png" height="20" width="20">
+                </button>
+
+                <button onClick="buttonSVX()" id="artstationButton">
+                    <img src="media\media\socials\icons8-artstation-32 (1).png" height="20" width="20">
+                </button>
+
+                <button onClick="buttonSVX()" id="itchButton">
+                    <img src="media\media\socials\icons8-itch-io-48.png" height="20" width="20">
+                </button>
+
+            </div>
+            <div
+                style=" border: solid; border-color: rgb(34, 75, 49); border-width: 5px; background-color: rgb(60, 126, 84);">
+                <table style="width:100%">
                     <tr>
-                        <td>
-                            <div id="myElement">
-                                <img id="secondImage" style="scale: 0.3;" src="media\spool-spokes.png" alt="Image 2">
-                                <img id="myImage" style="scale: 0.3;" src="media\14.png" alt="Image 1">
+                        <th style="width: 11%; text-align:left"> <img id="player-album-art"
+                                style="width: 70px; height: 70px; margin-top: 7px; margin-bottom: 3px; margin-left: 7px;">
+                        </th>
+                        <th
+                            style=" border: width 10px; width: 40%; border: solid; border-color: rgb(34, 75, 49);  background-image: radial-gradient(rgba(141, 255, 170, 0.75), rgb(39, 100, 39) 120%); text-align:center">
+                            <div style="font-family: 'LCD', sans-serif; background-color: rgba(23, 70, 40, 0); text-align: center;"
+                                id="player-status" style="font-size: 0.2em; color: #01220f; margin: 1em 0 0.5em 0">
                             </div>
-                        </td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        </td>
-                        <td>
-                            <div id="myElement">
-                                <img id="reel2" style="scale: 0.3;" src="media\spool-spokes.png" alt="Image 2">
-                                <img id="spool2" style="scale: 0.3;" src="media\14.png" alt="Image 1">
+                            <marquee width="60%" direction="left" height="15px" id="player-song" id="player-artist"
+                                style=" font-family: 'LCD', sans-serif; font-size: 0.9em; color: #01220f;">
+                            </marquee>
+                            <div id="player-artist"
+                                style="font-family: 'LCD', sans-serif; font-size: 0.6em; color: #01220f;"></div>
+                            <div id="player-time"
+                                style="position: relative; float: right; top: -2em; font-weight: bold">
                             </div>
-                        </td>
+                        </th>
                     </tr>
                 </table>
-                </div>
-            
-            <div class="content"> <div1 style="background-color: rgb(34, 75, 49); color: rgb(151, 230, 148); display: flex;">
-                <button style="background-color:  rgb(62, 134, 89);" onclick=" generatePrompt()">bored?</button>
+            </div>
+            <div class="button-container" id='playerControls3'>
+                <button onClick="buttonSVX()" class="collapsible-btn">SAMsynth</button>
+                <button onClick="buttonSVX()" class="collapsible-btn">tapedeck</button>
+                <button onClick="buttonSVX()" class="collapsible-btn">Generate</button>
+                <button onClick="buttonSVX()" class="collapsible-btn">Memes</button>
+                <button onClick="buttonSVX()" class="collapsible-btn">F.A.Q</button>
+            </div>
 
-                <label><input type="checkbox" name="category" value="Books">Books</label>
-                <label><input type="checkbox" name="category" value="anime">Anime</label>
-                <label><input type="checkbox" name="category" value="Movies">Movies</label>
-                <label><input type="checkbox" name="category" value="manga">Manga</label>
-                <label><input type="checkbox" name="category" value="video games">Games</label>
-            </div1>
-            <p id="prompt"></p>
-</div>
-<div class="content">
-    <div class="video-container">
-        <div class="slideshow">
-            <video class="slide active" width="640" height="360" controls>
-                <source src="media\media\BLOODY F CK YOU - Phoenix Write.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <video class="slide" width="640" height="360" controls>
-                <source src="media\bmo asks an interesting question.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-   
-    </div>
-    <hr color=rgb(18, 39, 26)>
-    <br><br><br>
-    <div style=" display: flex; margin: 0.4rem; align-items: center; justify-content: center; background-color:rgb(60, 126, 84)"
-    id='playerControls3'>  
-    <button class="button" onclick="previousSlide()">Previous</button>
-    <button class="button" onclick="nextSlide()">Next</button>  
-    </div>
-</div>
-            <div class="content">
-                <button type="button" class="collapsible">What is this website?</button>
+            <div class="content-container">
                 <div class="content">
-                    <p><img src="media\insanecat.gif" height="70" width="70"></p>
+
+                    <form id="playground">
+                        <div>
+                            SAM SYNTH:
+                            <input size="60" id="speechinput" name="textfield" value="">
+                            <button type="button" id="sayButton">Next</button>
+
+                            <table style="width:100%;  border: 1px solid rgb(21, 51, 26);">
+                                <tr>
+                                    <td><input style="margin-left: 10px;" type="range" id="mouth" min="0" max="255"
+                                            value="128" />
+                                        <span id="mouth-lbl">Mouth: 128</span>
+
+
+                                        <input style="margin-left: 10px;" type="range" id="throat" min="0" max="255"
+                                            value="128" />
+                                        <span id="throat-lbl">Throat: 128</span>
+                                    </td>
+                                    <td> <canvas style="margin-right: 10px;" id="canvas" width="100"
+                                            height="50"></canvas></td>
+
+                                </tr>
+                            </table>
+
+
+                        </div>
+                    </form>
+
+                    <div class="keyboard" id='playerControls2'>
+                        <button data-pitch="91" data-speed="80" data-key="A">A</button>
+                        <button data-pitch="82" data-speed="80" data-key="S">B</button>
+                        <button data-pitch="73" data-speed="80" data-key="D">C</button>
+                        <button data-pitch="64" data-speed="80" data-key="F">D</button>
+                        <button data-pitch="55" data-speed="80" data-key="G">G</button>
+                        <button data-pitch="36" data-speed="80" data-key="H">H</button>
+                        <button data-pitch="27" data-speed="80" data-key="J">J</button>
+                        <button data-pitch="18" data-speed="80" data-key="K">K</button>
+                        <button data-pitch="30" data-speed="80" data-key="L">L</button>
+                        <button data-pitch="20" data-speed="80" data-key=";">;</button>
+                    </div>
+
                 </div>
-                <button type="button" class="collapsible">Can i bench 100kg yet? </button>
                 <div class="content">
-                    <p> I DID IT I DID IT <img src="media\crab bench.gif" height="70" width="70"></p>
+                    <div style=" display: flex; margin: 0.4rem; align-items: center; justify-content: center; background-color:rgb(60, 126, 84)"
+                        id='playerControls'>
+                        <img src="media\dot.png" style="margin-left:15px ;" height="15" width="15">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button id="startButton" onClick=" playAudio(), buttonSVX()"><img
+                                src="media\multimedia controlls\play.png" height=20; width=20;></button>
+                        <button id="stopButton" onClick="pauseAudio(), buttonSVX()"><img
+                                src="media\multimedia controlls\stop.png" height=20; width=20;></button>
+                        <button id="ASong" onClick="getCurTime(), buttonSVX()"><img
+                                src="media\multimedia controlls\rewind.png" height=20; width=20;></button>
+                        <button onClick="buttonSVX()"><img src="media\multimedia controlls\fastforward.png" height=20;
+                                width=20;></button>
+                        <button onClick="buttonSVX()"><img src="media\multimedia controlls\play.png" height=20;
+                                width=20;></button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="media\dot.png" style="margin-right:15px ;" height="15" width="15">
+                    </div>
+                    <audio id="myAudio" src="music\Frequency.mp3"></audio>
+                    <audio id="tapeButton" src="music\button.mp3"></audio>
+                    <audio id="poopie" src="music\poop.mp3"></audio>
+
+                    <! tape player>
+                        <table
+                            style=" height: 170px; background-color: rgb(34, 75, 49); border-style: solid; border-color: #01220f; border-radius: 4px; ; display: flex; display: flex; margin: 0.4rem; align-items: center; justify-content: center; ">
+                            <tr>
+                                <td>
+                                    <div id="myElement">
+                                        <img id="secondImage" style="scale: 0.3;" src="media\spool-spokes.png"
+                                            alt="Image 2">
+                                        <img id="myImage" style="scale: 0.3;" src="media\14.png" alt="Image 1">
+                                    </div>
+                                </td>
+                                <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                </td>
+                                <td>
+                                    <div id="myElement">
+                                        <img id="reel2" style="scale: 0.3;" src="media\spool-spokes.png" alt="Image 2">
+                                        <img id="spool2" style="scale: 0.3;" src="media\14.png" alt="Image 1">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                 </div>
-                <button type="button" class="collapsible">Will i be your boyfriend?</button>
+
                 <div class="content">
-                    <p>Most likely not, but you can submit your application <a
-                            href="https://youtu.be/ddvdAHkbEec">here</a></p>
+                    <div1 style="background-color: rgb(34, 75, 49); color: rgb(151, 230, 148); display: flex;">
+                        <button style="background-color:  rgb(62, 134, 89);" onclick=" generatePrompt()">bored?</button>
+
+                        <label><input type="checkbox" name="category" value="Books">Books</label>
+                        <label><input type="checkbox" name="category" value="anime">Anime</label>
+                        <label><input type="checkbox" name="category" value="Movies">Movies</label>
+                        <label><input type="checkbox" name="category" value="manga">Manga</label>
+                        <label><input type="checkbox" name="category" value="video games">Games</label>
+                    </div1>
+                    <p id="prompt"></p>
+                </div>
+                <div class="content">
+                    <div class="video-container">
+                        <div class="slideshow">
+                            <video class="slide active" width="640" height="360" controls>
+                                <source src="media\media\BLOODY F CK YOU - Phoenix Write.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <video class="slide" width="640" height="360" controls>
+                                <source src="media\bmo asks an interesting question.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+
+                    </div>
+                    <hr color=rgb(18, 39, 26)>
+                    <br><br><br>
+                    <div style=" display: flex; margin: 0.4rem; align-items: center; justify-content: center; background-color:rgb(60, 126, 84)"
+                        id='playerControls3'>
+                        <button class="button" onclick="previousSlide()">Previous</button>
+                        <button class="button" onclick="nextSlide()">Next</button>
+                    </div>
+                </div>
+                <div class="content">
+                    <button type="button" class="collapsible">What is this website?</button>
+                    <div class="content">
+                        <p><img src="media\insanecat.gif" height="70" width="70"></p>
+                    </div>
+
                 </div>
             </div>
-          </div>
-          
-          <script>
-            document.addEventListener("DOMContentLoaded", function() {
-              var collapsibleButtons = document.querySelectorAll(".collapsible-btn");
-              var contents = document.querySelectorAll(".content");
-            
-              // Show the first content section by default
-              contents[0].style.display = "block";
-            
-              collapsibleButtons.forEach(function(button, index) {
-                button.addEventListener("click", function() {
-                  contents.forEach(function(content, contentIndex) {
-                    if (index === contentIndex) {
-                      content.style.display = content.style.display === "block" ? "none" : "block";
-                    } else {
-                      content.style.display = "none";
-                    }
-                  });
-                });
-              });
-            });
-            </script>
-            
-            
-            
-            
-        
-           
-       
-       
-           
 
-         
-            
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    var collapsibleButtons = document.querySelectorAll(".collapsible-btn");
+                    var contents = document.querySelectorAll(".content");
+
+                    // Show the first content section by default
+                    contents[0].style.display = "block";
+
+                    collapsibleButtons.forEach(function (button, index) {
+                        button.addEventListener("click", function () {
+                            contents.forEach(function (content, contentIndex) {
+                                if (index === contentIndex) {
+                                    content.style.display = content.style.display === "block" ? "none" : "block";
+                                } else {
+                                    content.style.display = "none";
+                                }
+                            });
+                        });
+                    });
+                });
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+
             <script>
                 var slides = document.querySelectorAll('.slide');
                 var currentSlide = 0;
-        
+
                 function showSlide(n) {
                     slides[currentSlide].classList.remove('active');
                     currentSlide = (n + slides.length) % slides.length;
                     slides[currentSlide].classList.add('active');
                 }
-        
+
                 function previousSlide() {
                     showSlide(currentSlide - 1);
                 }
-        
+
                 function nextSlide() {
                     showSlide(currentSlide + 1);
                 }
             </script>
-    
-    
-     
-
-           
-
-               
-                <div style="background-color:rgb(34, 75, 49)">
 
 
-                    
-                    <br><br><br><br><br><br><br> <br><br><br><br><br><br><br>
-                </div>
 
 
-                <script src="scripts\randomentertainment.js"></script>
-                <script>
-                    function ToggleCRT() {
-                        var element = document.getElementById("myDIV");
-                        element.classList.toggle("crt");
+
+
+
+            <div style="background-color:rgb(34, 75, 49)">
+
+
+
+                <br><br><br><br><br><br><br> <br><br><br><br><br><br><br>
+            </div>
+
+
+            <script src="scripts\randomentertainment.js"></script>
+            <script>
+                function ToggleCRT() {
+                    var element = document.getElementById("myDIV");
+                    element.classList.toggle("crt");
+                }
+            </script>
+            <script src="scripts\spotifyplayer.js"></script>
+            <script src="scripts/collapsible.js"></script>
+            <script>
+                var x = document.getElementById("myAudio");
+                var b = document.getElementById("tapeButton");
+                var c = document.getElementById("poopie");
+                function playAudio() {
+                    x.play();
+                }
+                function buttonSVX() {
+                    b.play();
+                }
+                function poop() {
+                    c.play();
+                }
+
+
+                function pauseAudio() {
+                    x.pause();
+                }
+
+            </script>
+            <script>
+                var x = document.getElementById("myAudio");
+                function getCurTime() {
+
+                    x.currentTime = x.duration;
+
+                }
+
+            </script>
+            <script>
+                var audio = document.getElementById("myAudio");
+                var image = document.getElementById("myImage");
+                var spol2 = document.getElementById("spool2");
+
+
+                audio.addEventListener("timeupdate", function () {
+                    var currentTime = (audio.currentTime / audio.duration); // Get the current playtime in seconds
+
+                    // Calculate the desired size of the image based on the current playtime
+                    var newSize = currentTime * 250 + 250 + "px";
+                    var newSize2 = currentTime * -250 + 500 + "px";
+                    // Apply the new size to the image
+                    image.style.width = newSize;
+                    spol2.style.width = newSize2;
+                });
+
+            </script>
+            <script>
+                const startButton = document.getElementById('startButton');
+                const stopButton = document.getElementById('stopButton');
+                const myImage = document.getElementById('myImage');
+                const secondImage = document.getElementById('secondImage');
+                const spool2 = document.getElementById('spool2');
+                const reel2 = document.getElementById('reel2');
+                let rotationInterval;
+
+                startButton.addEventListener('click', function () {
+                    myImage.classList.add('rotating');
+                    secondImage.classList.add('rotating'); // Add 'rotating' class to start the rotation animation
+                    spool2.classList.add('rotating');
+                    reel2.classList.add('rotating');
+                });
+
+                stopButton.addEventListener('click', function () {
+                    myImage.classList.remove('rotating'); // Remove 'rotating' class to stop the rotation animation
+                    secondImage.classList.remove('rotating'); // Remove 'rotating' class to stop the rotation animation
+                    spool2.classList.remove('rotating');
+                    reel2.classList.remove('rotating');
+                });
+            </script>
+            <script>if (x.currentTime = x.duration) {
+                    x.pause;
+                }</script>
+            <script src="scripts\samjs.js"></script>
+
+            <script>
+                opts = {
+                    debug: 1,
+                    pitch: 64,
+                    speed: 72,
+                    mouth: 128,
+                    throat: 128,
+                    singmode: true
+                };
+                var speech;
+                var words = [];
+                var wordIndex = 0;
+
+                function speakNextWord() {
+                    if (wordIndex >= words.length) {
+                        wordIndex = 0; // Reset the word index to loop back to the beginning
                     }
-                </script>
-                <script src="scripts\spotifyplayer.js"></script>
-                <script src="scripts/collapsible.js"></script>
-                <script>
-                    var x = document.getElementById("myAudio");
-                    var b = document.getElementById("tapeButton");
-                    var c = document.getElementById("poopie");
-                    function playAudio() {
-                        x.play();
+                    var sam = new SamJs(opts);
+                    if (speech) speech.abort();
+                    sam.speak(words[wordIndex]);
+                    wordIndex++;
+                }
+
+                function speakWord(word, pitch, speed) {
+                    opts.pitch = pitch; // Update the pitch value
+                    opts.speed = speed; // Update the speed value
+                    if (wordIndex >= words.length) {
+                        wordIndex = 0; // Reset the word index to loop back to the beginning
                     }
-                    function buttonSVX() {
-                        b.play();
-                    }
-                    function poop() {
-                        c.play();
-                    }
+                    var sam = new SamJs(opts);
+                    if (speech) speech.abort();
+                    sam.speak(words[wordIndex]);
+                    wordIndex++;
+                }
 
-
-                    function pauseAudio() {
-                        x.pause();
-                    }
-
-                </script>
-                <script>
-                    var x = document.getElementById("myAudio");
-                    function getCurTime() {
-
-                        x.currentTime = x.duration;
-
-                    }
-
-                </script>
-                <script>
-                    var audio = document.getElementById("myAudio");
-                    var image = document.getElementById("myImage");
-                    var spol2 = document.getElementById("spool2");
-
-
-                    audio.addEventListener("timeupdate", function () {
-                        var currentTime = (audio.currentTime / audio.duration); // Get the current playtime in seconds
-
-                        // Calculate the desired size of the image based on the current playtime
-                        var newSize = currentTime * 250 + 250 + "px";
-                        var newSize2 = currentTime * -250 + 500 + "px";
-                        // Apply the new size to the image
-                        image.style.width = newSize;
-                        spol2.style.width = newSize2;
+                document.addEventListener('DOMContentLoaded', function () {
+                    var speechInput = document.getElementById('speechinput');
+                    speechInput.addEventListener('input', function () {
+                        words = speechInput.value.trim().split(' ');
+                        wordIndex = 0;
                     });
 
-                </script>
-                <script>
-                    const startButton = document.getElementById('startButton');
-                    const stopButton = document.getElementById('stopButton');
-                    const myImage = document.getElementById('myImage');
-                    const secondImage = document.getElementById('secondImage');
-                    const spool2 = document.getElementById('spool2');
-                    const reel2 = document.getElementById('reel2');
-                    let rotationInterval;
+                    var sayButton = document.getElementById('sayButton');
+                    sayButton.addEventListener('click', speakNextWord);
 
-                    startButton.addEventListener('click', function () {
-                        myImage.classList.add('rotating');
-                        secondImage.classList.add('rotating'); // Add 'rotating' class to start the rotation animation
-                        spool2.classList.add('rotating');
-                        reel2.classList.add('rotating');
-                    });
-
-                    stopButton.addEventListener('click', function () {
-                        myImage.classList.remove('rotating'); // Remove 'rotating' class to stop the rotation animation
-                        secondImage.classList.remove('rotating'); // Remove 'rotating' class to stop the rotation animation
-                        spool2.classList.remove('rotating');
-                        reel2.classList.remove('rotating');
-                    });
-                </script>
-                <script>if (x.currentTime = x.duration) {
-                        x.pause;
-                    }</script>
-                <script src="scripts\samjs.js"></script>
-
-                <script>
-                    opts = {
-                        debug: 1,
-                        pitch: 64,
-                        speed: 72,
-                        mouth: 128,
-                        throat: 128,
-                        singmode: true
-                    };
-                    var speech;
-                    var words = [];
-                    var wordIndex = 0;
-
-                    function speakNextWord() {
-                        if (wordIndex >= words.length) {
-                            wordIndex = 0; // Reset the word index to loop back to the beginning
+                    var keyboard = document.querySelector('.keyboard');
+                    keyboard.addEventListener('click', function (event) {
+                        if (event.target.tagName === 'BUTTON') {
+                            var word = words[wordIndex];
+                            var pitch = event.target.dataset.pitch; // Get the pitch value from the button's data attribute
+                            var speed = event.target.dataset.speed; // Get the speed value from the button's data attribute
+                            speakWord(word, pitch, speed);
                         }
-                        var sam = new SamJs(opts);
-                        if (speech) speech.abort();
-                        sam.speak(words[wordIndex]);
-                        wordIndex++;
-                    }
-
-                    function speakWord(word, pitch, speed) {
-                        opts.pitch = pitch; // Update the pitch value
-                        opts.speed = speed; // Update the speed value
-                        if (wordIndex >= words.length) {
-                            wordIndex = 0; // Reset the word index to loop back to the beginning
-                        }
-                        var sam = new SamJs(opts);
-                        if (speech) speech.abort();
-                        sam.speak(words[wordIndex]);
-                        wordIndex++;
-                    }
-
-                    document.addEventListener('DOMContentLoaded', function () {
-                        var speechInput = document.getElementById('speechinput');
-                        speechInput.addEventListener('input', function () {
-                            words = speechInput.value.trim().split(' ');
-                            wordIndex = 0;
-                        });
-
-                        var sayButton = document.getElementById('sayButton');
-                        sayButton.addEventListener('click', speakNextWord);
-
-                        var keyboard = document.querySelector('.keyboard');
-                        keyboard.addEventListener('click', function (event) {
-                            if (event.target.tagName === 'BUTTON') {
-                                var word = words[wordIndex];
-                                var pitch = event.target.dataset.pitch; // Get the pitch value from the button's data attribute
-                                var speed = event.target.dataset.speed; // Get the speed value from the button's data attribute
-                                speakWord(word, pitch, speed);
-                            }
-                        });
-
-                        document.addEventListener('keydown', function (event) {
-                            var key = event.key.toUpperCase();
-                            var button = document.querySelector('.keyboard button[data-key="' + key + '"]');
-                            if (button) {
-                                button.click(); // Trigger the button's click event
-                            }
-                        });
-
-                        ['mouth', 'throat'].forEach((name) => {
-                            var e = document.getElementById(name);
-                            e.onchange = function (e) {
-                                opts[e.target.id] = e.target.value;
-                                document.getElementById(e.target.id + '-lbl').innerText =
-                                    e.target.id.charAt(0).toUpperCase() + e.target.id.substr(1) + ': ' + e.target.value;
-                            };
-                            e.value = opts[name];
-                        });
                     });
-                </script>
 
-
-
-                <br>
-                <label for="speed">Speed:</label>
-                <input type="range" id="speed" min="0.1" max="1" step="0.1" value="0.2">
-                <br>
-                <label for="gradientColor1">Gradient Color 1:</label>
-                <input type="color" id="gradientColor1" value="#a8ff7f">
-                <br>
-                <label for="gradientColor2">Gradient Color 2:</label>
-                <input type="color" id="gradientColor2" value="#036114">
-                <br>
-
-
-                <script>
-                    const canvas = document.getElementById('canvas');
-                    const context = canvas.getContext('2d');
-                    const frequencySlider = document.getElementById('mouth');
-                    const amplitudeSlider = document.getElementById('throat');
-                    const speedSlider = document.getElementById('speed');
-                    const gradientColor1Input = document.getElementById('gradientColor1');
-                    const gradientColor2Input = document.getElementById('gradientColor2');
-
-                    let time = 0;
-
-                    function drawWave() {
-                        const frequency = parseFloat(frequencySlider.value);
-                        const amplitude = parseFloat(amplitudeSlider.value);
-                        const speed = parseFloat(speedSlider.value);
-                        const gradientColor1 = gradientColor1Input.value;
-                        const gradientColor2 = gradientColor2Input.value;
-
-                        context.clearRect(0, 0, canvas.width, canvas.height);
-                        context.beginPath();
-                        context.moveTo(0, canvas.height / 2);
-
-                        const gradient = context.createLinearGradient(0, 0, canvas.width, 0);
-                        gradient.addColorStop(0, gradientColor1);
-                        gradient.addColorStop(1, gradientColor2);
-                        context.strokeStyle = gradient;
-
-                        for (let x = 0; x < canvas.width; x++) {
-                            const y = Math.sin((x / canvas.width) * frequency + time) * amplitude + canvas.height / 2;
-                            context.lineTo(x, y);
+                    document.addEventListener('keydown', function (event) {
+                        var key = event.key.toUpperCase();
+                        var button = document.querySelector('.keyboard button[data-key="' + key + '"]');
+                        if (button) {
+                            button.click(); // Trigger the button's click event
                         }
+                    });
 
-                        context.lineWidth = 3;
-                        context.stroke();
+                    ['mouth', 'throat'].forEach((name) => {
+                        var e = document.getElementById(name);
+                        e.onchange = function (e) {
+                            opts[e.target.id] = e.target.value;
+                            document.getElementById(e.target.id + '-lbl').innerText =
+                                e.target.id.charAt(0).toUpperCase() + e.target.id.substr(1) + ': ' + e.target.value;
+                        };
+                        e.value = opts[name];
+                    });
+                });
+            </script>
 
-                        time += speed;
+
+
+            <br>
+            <label for="speed">Speed:</label>
+            <input type="range" id="speed" min="0.1" max="1" step="0.1" value="0.2">
+            <br>
+            <label for="gradientColor1">Gradient Color 1:</label>
+            <input type="color" id="gradientColor1" value="#a8ff7f">
+            <br>
+            <label for="gradientColor2">Gradient Color 2:</label>
+            <input type="color" id="gradientColor2" value="#036114">
+            <br>
+
+
+            <script>
+                const canvas = document.getElementById('canvas');
+                const context = canvas.getContext('2d');
+                const frequencySlider = document.getElementById('mouth');
+                const amplitudeSlider = document.getElementById('throat');
+                const speedSlider = document.getElementById('speed');
+                const gradientColor1Input = document.getElementById('gradientColor1');
+                const gradientColor2Input = document.getElementById('gradientColor2');
+
+                let time = 0;
+
+                function drawWave() {
+                    const frequency = parseFloat(frequencySlider.value);
+                    const amplitude = parseFloat(amplitudeSlider.value);
+                    const speed = parseFloat(speedSlider.value);
+                    const gradientColor1 = gradientColor1Input.value;
+                    const gradientColor2 = gradientColor2Input.value;
+
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                    context.beginPath();
+                    context.moveTo(0, canvas.height / 2);
+
+                    const gradient = context.createLinearGradient(0, 0, canvas.width, 0);
+                    gradient.addColorStop(0, gradientColor1);
+                    gradient.addColorStop(1, gradientColor2);
+                    context.strokeStyle = gradient;
+
+                    for (let x = 0; x < canvas.width; x++) {
+                        const y = Math.sin((x / canvas.width) * frequency + time) * amplitude + canvas.height / 2;
+                        context.lineTo(x, y);
                     }
 
-                    frequencySlider.addEventListener('input', drawWave);
-                    amplitudeSlider.addEventListener('input', drawWave);
-                    speedSlider.addEventListener('input', drawWave);
-                    gradientColor1Input.addEventListener('input', drawWave);
-                    gradientColor2Input.addEventListener('input', drawWave);
+                    context.lineWidth = 3;
+                    context.stroke();
 
-                    drawWave(); // Initial drawing
+                    time += speed;
+                }
 
-                    setInterval(drawWave, 20); // Redraw every 20 milliseconds
-                </script>
-                <script>
-            // Get a reference to the button element
-            const instagramButton = document.getElementById("instagramButton");
-    const spotifyButton = document.getElementById("spotifyButton");
-    const steamButton = document.getElementById("steamButton");
-    const artstationButton = document.getElementById("artstationButton");
-    const YoutubeButton = document.getElementById("YoutubeButton");
-    const TwitterButton = document.getElementById("TwitterButton");
-            const itchButton = document.getElementById("itchButton");
-        
-            // Add a click event listener to the button
-            itchButton.addEventListener("click", function() {
-                // Redirect to the itch.io website
-                window.location.href = "https://oxyhadron.itch.io/";
-            });
-            instagramButton.addEventListener("click", function() {
-        window.location.href = "https://www.instagram.com/oxyhadron/";
-    });
+                frequencySlider.addEventListener('input', drawWave);
+                amplitudeSlider.addEventListener('input', drawWave);
+                speedSlider.addEventListener('input', drawWave);
+                gradientColor1Input.addEventListener('input', drawWave);
+                gradientColor2Input.addEventListener('input', drawWave);
 
-    spotifyButton.addEventListener("click", function() {
-        window.location.href = "https://open.spotify.com/user/b8st4w63ufri0003m7unehml1?si=dcfc7fe777974bbf&nd=1";
-    });
+                drawWave(); // Initial drawing
 
-    steamButton.addEventListener("click", function() {
-        window.location.href = "https://steamcommunity.com/id/oxyhadron";
-    });
+                setInterval(drawWave, 20); // Redraw every 20 milliseconds
+            </script>
+            <script>
+                // Get a reference to the button element
+                const instagramButton = document.getElementById("instagramButton");
+                const spotifyButton = document.getElementById("spotifyButton");
+                const steamButton = document.getElementById("steamButton");
+                const artstationButton = document.getElementById("artstationButton");
+                const YoutubeButton = document.getElementById("YoutubeButton");
+                const TwitterButton = document.getElementById("TwitterButton");
+                const itchButton = document.getElementById("itchButton");
 
-    artstationButton.addEventListener("click", function() {
-        window.location.href = "https://www.artstation.com/oxyhadron";
-    });
+                // Add a click event listener to the button
+                itchButton.addEventListener("click", function () {
+                    // Redirect to the itch.io website
+                    window.location.href = "https://oxyhadron.itch.io/";
+                });
+                instagramButton.addEventListener("click", function () {
+                    window.location.href = "https://www.instagram.com/oxyhadron/";
+                });
 
-    YoutubeButton.addEventListener("click", function() {
-        window.location.href = "https://www.youtube.com/@oxyhadron1120/about";
-    });
+                spotifyButton.addEventListener("click", function () {
+                    window.location.href = "https://open.spotify.com/user/b8st4w63ufri0003m7unehml1?si=dcfc7fe777974bbf&nd=1";
+                });
 
-    TwitterButton.addEventListener("click", function() {
-        window.location.href = "https://twitter.com/0xyhadron";
-    });
-</script>
+                steamButton.addEventListener("click", function () {
+                    window.location.href = "https://steamcommunity.com/id/oxyhadron";
+                });
+
+                artstationButton.addEventListener("click", function () {
+                    window.location.href = "https://www.artstation.com/oxyhadron";
+                });
+
+                YoutubeButton.addEventListener("click", function () {
+                    window.location.href = "https://www.youtube.com/@oxyhadron1120/about";
+                });
+
+                TwitterButton.addEventListener("click", function () {
+                    window.location.href = "https://twitter.com/0xyhadron";
+                });
+            </script>
 
 </html>
