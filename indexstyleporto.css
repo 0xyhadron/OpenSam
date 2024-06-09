@@ -23,7 +23,7 @@ button {
 }
 
 body {
-    background: linear-gradient(#437e56, #91e59f);
+    background: linear-gradient(#506657, #283d2c);
 }
 
 img {
@@ -450,7 +450,7 @@ input[type="range"] {
 
     margin-bottom: 10px;
     float: center;
-    border-radius: 4px;
+    border-radius: 3px;
 }
 
 #playerControls2 {
@@ -744,11 +744,12 @@ input[type="range"] {
 }
 
 
-
 .mySlides1,
 .mySlides2,
-.mySlides3 {
-    display: none
+.mySlides3,
+.mySlides4 {
+    display: none;
+    text-align: center;
 }
 
 
@@ -773,11 +774,11 @@ img {
     width: auto;
     padding: 16px;
     margin-top: -22px;
-    color: white;
+    color: rgb(43, 32, 146);
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
+
     user-select: none;
 
 }
@@ -791,7 +792,7 @@ img {
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover,
 .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    color: rgb(185, 218, 248);
 }
 
 /* Caption text */
