@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Sorting</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Pixel Sorting</h2>
+  <input type="file" id="fileInput" accept="image/*">
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    fileInput.addEventListener('change', handleFile);
+
+    function handleFile(e) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function (event) {
+        const img = new Image();
+        img.onload = function () {
+          canvas.width = img.width;
+          canvas.height = img.height;
+          ctx.drawImage(img, 0, 0);
+          sortPixels();
+        }
+        img.src = event.target.result;
+      }
+      reader.readAsDataURL(file);
+    }
+
+    function sortPixels() {
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imageData.data;
+      const pixels = [];
+
+      // Collect pixels
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        const hsl = rgbToHsl(r, g, b);
+        pixels.push({ r, g, b, h: hsl[0], s: hsl[1], l: hsl[2], a: data[i + 3] });
+      }
+
+      // Sort pixels by saturation
+      pixels.sort((a, b) => a.s - b.s);
+
+      // Put sorted pixels back to the image data
+      for (let i = 0; i < pixels.length; i++) {
+        const pixel = pixels[i];
+        const index = i * 4;
+        data[index] = pixel.r;
+        data[index + 1] = pixel.g;
+        data[index + 2] = pixel.b;
+        data[index + 3] = pixel.a;
+      }
+
+      ctx.putImageData(imageData, 0, 0);
+    }
+
+    // Convert RGB to HSL
+    function rgbToHsl(r, g, b) {
+      r /= 255, g /= 255, b /= 255;
+      const max = Math.max(r, g, b), min = Math.min(r, g, b);
+      let h, s, l = (max + min) / 2;
+
+      if (max === min) {
+        h = s = 0; // achromatic
+      } else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+      }
+      return [h, s, l];
+    }
+  </script>
+</body>
+
+</html>

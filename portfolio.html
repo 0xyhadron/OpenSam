@@ -3,28 +3,150 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Horizontal Scroll Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .gallery-container {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        .scroll-btn {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .gallery {
+            display: flex;
+            overflow-x: hidden;
+            width: 80%;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .gallery-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item {
+            position: relative;
+            min-width: 200px;
+            margin: 0 10px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .info-btn {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .info {
+            display: none;
+            position: absolute;
+            bottom: 40px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            width: 180px;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="gallery-container">
+        <button class="scroll-btn left-btn" onclick="scrollGallery('left')">◀</button>
+        <div class="gallery">
+            <div class="gallery-inner" id="galleryInner">
+                <div class="gallery-item">
+                    <img src="media\chadcat.jpg" alt="Image 1">
+                    <button class="info-btn" onclick="toggleInfo('info1')">More Info</button>
+                    <div class="info" id="info1">
+                        <p>Details about Image 1</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="media\portfolio\revolver.gif" alt="Image 2">
+                    <button class="info-btn" onclick="toggleInfo('info2')">More Info</button>
+                    <div class="info" id="info2">
+                        <p>Dniga etails about Image 2</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="media\portfolio\revolver.gif" alt="Image 3">
+                    <button class="info-btn" onclick="toggleInfo('info2')">More Info</button>
+                    <div class="info" id="info2">
+                        <p>Dniga etails about Image 2</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="media\portfolio\revolver.gif" alt="Image 4">
+                    <button class="info-btn" onclick="toggleInfo('info2')">More Info</button>
+                    <div class="info" id="info2">
+                        <p>Dniga etails about Image 2</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="media\portfolio\revolver.gif" alt="Image 5">
+                    <button class="info-btn" onclick="toggleInfo('info2')">More Info</button>
+                    <div class="info" id="info2">
+                        <p>Dniga etails about Image 2</p>
+                    </div>
+                </div>
+                <!-- Add more gallery items as needed -->
+            </div>
+        </div>
+        <button class="scroll-btn right-btn" onclick="scrollGallery('right')">▶</button>
+    </div>
 
-    <h style="font-family: Times New Roman"> WORK IN PROGRESS</h>
-    <p style="font-family: monospace">This is dummy text. This is more dummy text. This is more dummy text. This is more
-        dummy text. This is more dummy text. This is more dummy text. This is more dummy text. This is more dummy text.
-        This is more dummy text. This is more dummy text. This is more dummy text. This is more dummy text.</p>
-    <nav>
-        <a href="./index.html">Home</a>
-        <a href="./OpenSAm.html">openSAM</a>
-        <a href="./portfolio.html">portfolio</a>
-    </nav>
-    <form>
-        <label for="feedback">Feedback:</label>
-        <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea>
-        <input type="submit" value="Submit">
-    </form>
+    <script>
+        const galleryInner = document.getElementById('galleryInner');
+        let scrollAmount = 0;
+        const itemWidth = 220; // Width of the image plus margin
 
+        function scrollGallery(direction) {
+            const maxScroll = galleryInner.scrollWidth - galleryInner.clientWidth;
+            if (direction === 'left') {
+                scrollAmount -= itemWidth;
+                if (scrollAmount < 0) {
+                    scrollAmount = maxScroll;
+                }
+            } else if (direction === 'right') {
+                scrollAmount += itemWidth;
+                if (scrollAmount > maxScroll) {
+                    scrollAmount = 0;
+                }
+            }
+            galleryInner.style.transform = `translateX(-${scrollAmount}px)`;
+        }
+
+        function toggleInfo(infoId) {
+            const info = document.getElementById(infoId);
+            info.style.display = (info.style.display === 'block' || info.style.display === '') ? 'none' : 'block';
+        }
+    </script>
 </body>
 
 </html>

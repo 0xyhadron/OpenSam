@@ -1,0 +1,858 @@
+a:link {
+    color: rgb(7, 36, 7);
+    background-color: transparent;
+    text-size-adjust: 50%;
+}
+
+a:visited {
+    color: rgb(7, 36, 7);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+button {
+    font-weight: bold;
+    border: #2d5242;
+    border-style: ridge;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#canvas {
+    border: 2px solid rgb(21, 51, 26);
+}
+
+body {
+    background: linear-gradient(#437e56, #91e59f);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
+    /* ie8 */
+}
+
+
+
+body {
+    max-width: 30.3cm;
+    margin: 0 auto;
+    margin-top: -7px;
+    font-family: sans-serif;
+}
+
+
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: large;
+}
+
+h2 {
+    text-align: center;
+}
+
+
+
+p {
+    text-align: center;
+}
+
+p3 {
+    text-align: right;
+}
+
+label,
+input {
+    display: inline-block;
+}
+
+:root {
+    color-scheme: light only;
+}
+
+label {
+    width: 30%
+}
+
+input {
+    width: 60%
+}
+
+input[type="submit"] {
+    width: 100%;
+}
+
+input[type="range"] {
+    transform: rotate(180deg);
+}
+
+.dropbtn {
+    background-color: #095a3c00;
+    color: rgb(0, 0, 0);
+    padding: 0px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+
+    z-index: 1;
+    /* Adjust the position of the dropdown menu here */
+    top: 100%;
+    /* Position it below the button */
+    right: 0;
+    /* Align it to the right edge of the button */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 7px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #e6ffe3;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {}
+
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+.collapsible-btn {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 10px;
+    flex: 1;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.content-container {
+    margin: 10px;
+}
+
+.content {
+    display: none;
+    padding: 10px;
+
+    margin-top: 10px;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+    margin-left: 0px;
+    background-color: rgb(255, 255, 255);
+    ;
+    color: #000000;
+    cursor: pointer;
+    padding: 3px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 13px;
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.27861;
+    }
+
+    5% {
+        opacity: 0.34769;
+    }
+
+    10% {
+        opacity: 0.23604;
+    }
+
+    15% {
+        opacity: 0.90626;
+    }
+
+    20% {
+        opacity: 0.18128;
+    }
+
+    25% {
+        opacity: 0.83891;
+    }
+
+    30% {
+        opacity: 0.65583;
+    }
+
+    35% {
+        opacity: 0.67807;
+    }
+
+    40% {
+        opacity: 0.26559;
+    }
+
+    45% {
+        opacity: 0.84693;
+    }
+
+    50% {
+        opacity: 0.96019;
+    }
+
+    55% {
+        opacity: 0.08594;
+    }
+
+    60% {
+        opacity: 0.20313;
+    }
+
+    65% {
+        opacity: 0.71988;
+    }
+
+    70% {
+        opacity: 0.53455;
+    }
+
+    75% {
+        opacity: 0.37288;
+    }
+
+    80% {
+        opacity: 0.71428;
+    }
+
+    85% {
+        opacity: 0.70419;
+    }
+
+    90% {
+        opacity: 0.7003;
+    }
+
+    95% {
+        opacity: 0.36108;
+    }
+
+    100% {
+        opacity: 0.24387;
+    }
+}
+
+@keyframes textShadow {
+    0% {
+        text-shadow: 0.4389924193300864px 0 1px rgba(0, 30, 255, 0.5), -0.4389924193300864px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    5% {
+        text-shadow: 2.7928974010788217px 0 1px rgba(0, 30, 255, 0.5), -2.7928974010788217px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    10% {
+        text-shadow: 0.02956275843481219px 0 1px rgba(0, 30, 255, 0.5), -0.02956275843481219px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    15% {
+        text-shadow: 0.40218538552878136px 0 1px rgba(0, 30, 255, 0.5), -0.40218538552878136px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    20% {
+        text-shadow: 3.4794037899852017px 0 1px rgba(0, 30, 255, 0.5), -3.4794037899852017px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    25% {
+        text-shadow: 1.6125630401149584px 0 1px rgba(0, 30, 255, 0.5), -1.6125630401149584px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    30% {
+        text-shadow: 0.7015590085143956px 0 1px rgba(0, 30, 255, 0.5), -0.7015590085143956px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    35% {
+        text-shadow: 3.896914047650351px 0 1px rgba(0, 30, 255, 0.5), -3.896914047650351px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    40% {
+        text-shadow: 3.870905614848819px 0 1px rgba(0, 30, 255, 0.5), -3.870905614848819px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    45% {
+        text-shadow: 2.231056963361899px 0 1px rgba(0, 30, 255, 0.5), -2.231056963361899px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    50% {
+        text-shadow: 0.08084290417898504px 0 1px rgba(0, 30, 255, 0.5), -0.08084290417898504px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    55% {
+        text-shadow: 2.3758461067427543px 0 1px rgba(0, 30, 255, 0.5), -2.3758461067427543px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    60% {
+        text-shadow: 2.202193051050636px 0 1px rgba(0, 30, 255, 0.5), -2.202193051050636px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    65% {
+        text-shadow: 2.8638780614874975px 0 1px rgba(0, 30, 255, 0.5), -2.8638780614874975px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    70% {
+        text-shadow: 0.48874025155497314px 0 1px rgba(0, 30, 255, 0.5), -0.48874025155497314px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    75% {
+        text-shadow: 1.8948491305757957px 0 1px rgba(0, 30, 255, 0.5), -1.8948491305757957px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    80% {
+        text-shadow: 0.0833037308038857px 0 1px rgba(0, 30, 255, 0.5), -0.0833037308038857px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    85% {
+        text-shadow: 0.09769827255241735px 0 1px rgba(0, 30, 255, 0.5), -0.09769827255241735px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    90% {
+        text-shadow: 3.443339761481782px 0 1px rgba(0, 30, 255, 0.5), -3.443339761481782px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    95% {
+        text-shadow: 2.1841838852799786px 0 1px rgba(0, 30, 255, 0.5), -2.1841838852799786px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+
+    100% {
+        text-shadow: 2.6208764473832513px 0 1px rgba(0, 30, 255, 0.5), -2.6208764473832513px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+    }
+}
+
+.crt::after {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    background-size: 100000px 2px, 3px 100000px;
+    animation: flicker 0.15s infinite;
+}
+
+.crt::before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 200% 2px, 3px 200%;
+    /* Adjusted background-size values */
+    pointer-events: none;
+}
+
+
+.crt {
+    animation: textShadow 1.6s infinite;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.collapsible:hover {
+    background-color: #18331e;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+
+    display: none;
+    overflow: hidden;
+    background: linear-gradient(#376e49, #478551);
+}
+
+#circlecnv {
+    z-index: -1;
+    padding: 0;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.topBar {
+    position: relative;
+    padding: 0;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: white;
+}
+
+#topcnv {
+    z-index: -1;
+    position: absolute;
+    z-index: -1;
+    padding: 0;
+    display: block;
+    top: 0;
+    left: 0;
+    margin: auto;
+    opacity: .65;
+}
+
+.visualizer {
+    width: 300px;
+    height: 100px;
+    padding: 0;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+
+#playerControls {
+
+    margin-bottom: 10px;
+    float: center;
+    border-radius: 4px;
+}
+
+#playerControls2 {
+
+    margin-bottom: 10px;
+    float: center;
+    border-radius: 4px;
+}
+
+#playerControls3 {
+
+    margin-bottom: 1px;
+    float: center;
+    border-radius: 4px;
+}
+
+#playerControls button {
+    position: relative;
+    font-size: 0.8em;
+    background: #111;
+    color: #e1e1e1;
+    height: 46px;
+    border: 0;
+    border-radius: 2px;
+    border-top: solid 1px #222;
+    width: 60px;
+    margin: 5px 2px;
+    padding: 10px 0px 30px;
+    transition: 0.2s ease-in;
+    transform-origin: top center;
+}
+
+#playerControls3 button {
+    position: relative;
+    font-size: 0.7em;
+    background: #111;
+    color: #e1e1e1;
+    height: 1px;
+    border: 0;
+    border-radius: 2px;
+    border-top: solid 1px #222;
+    width: 60px;
+    margin: 1px 1px;
+    padding: 7px 0px 20px;
+    transition: 0.2s ease-in;
+    transform-origin: top center;
+}
+
+#playerControls2 button {
+    position: relative;
+    font-size: 1.2em;
+    background: #111;
+    color: #75756e;
+    height: 90px;
+    border: 0;
+    border-radius: 2px;
+    border-top: solid 1px #222;
+    width: 60px;
+    margin: 5px 2px;
+    padding: 10px 0px 30px;
+    transition: 0.2s ease-in;
+    transform-origin: top center;
+}
+
+
+#playerControls button:after {
+    content: " ";
+    height: 4px;
+    width: 80%;
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    left: 10%;
+    border-radius: 3px;
+    border-bottom: solid 1px #222;
+
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #333333 0%, #111111 30%, #111111 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #333333 0%, #111111 30%, #111111 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #333333 0%, #111111 30%, #111111 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#111111', GradientType=0);
+    /* IE6-9 */
+}
+
+#playerControls3 button:after {
+    content: " ";
+    height: 4px;
+    width: 80%;
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    left: 10%;
+    border-radius: 3px;
+    border-bottom: solid 1px #222;
+
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #333333 0%, #111111 30%, #111111 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #333333 0%, #111111 30%, #111111 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #333333 0%, #111111 30%, #111111 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#111111', GradientType=0);
+    /* IE6-9 */
+}
+
+#playerControls2 button:after {
+    content: " ";
+    height: 4px;
+    width: 80%;
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    left: 10%;
+    border-radius: 3px;
+    border-bottom: solid 1px #222;
+
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #333333 0%, #111111 30%, #111111 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #333333 0%, #111111 30%, #111111 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #333333 0%, #111111 30%, #111111 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#111111', GradientType=0);
+    /* IE6-9 */
+}
+
+#playerControls button:focus {
+    outline: 0;
+}
+
+#playerControls2 button:focus {
+    outline: 0;
+}
+
+#playerControls3 button:focus {
+    outline: 0;
+}
+
+#playerControls button:hover {
+    opacity: 0.8;
+    transform: perspective(1000px) rotatex(-20deg);
+    color: #009e9e;
+    text-shadow: 0 0 2px #00739e;
+}
+
+#playerControls3 button:hover {
+    opacity: 0.8;
+    transform: perspective(1000px) rotatex(-20deg);
+    color: #009e9e;
+    text-shadow: 0 0 2px #00739e;
+}
+
+#playerControls2 button:hover {
+    opacity: 0.8;
+    transform: perspective(1000px) rotatex(-20deg);
+    color: #009e00;
+    text-shadow: 0 0 2px #00739e;
+}
+
+.imageContainer {
+    position: relative;
+    /* Set the container to relative positioning */
+}
+
+#secondImage {
+    position: absolute;
+    transform-origin: center center;
+    /* Ensure the bottom image is positioned relative to the container */
+    z-index: 1;
+    /* Set a higher z-index to make it appear below the spinning image */
+    top: 600;
+    left: 600;
+}
+
+#reel2 {
+    position: absolute;
+    transform-origin: center center;
+    /* Ensure the bottom image is positioned relative to the container */
+    z-index: 1;
+    /* Set a higher z-index to make it appear below the spinning image */
+    top: 600;
+    left: 600;
+}
+
+#myElement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#myImage {
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    transform-origin: center center;
+    /* Position the spinning image absolutely within the container */
+
+}
+
+#spool2 {
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    transform-origin: center center;
+    /* Position the spinning image absolutely within the container */
+
+}
+
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+        /* Starting rotation angle */
+    }
+
+    100% {
+        transform: rotate(360deg);
+        /* Ending rotation angle */
+    }
+}
+
+.rotating {
+    animation: rotation 2s infinite linear;
+    /* Rotate image continuously */
+}
+
+.button {
+    background-color: #e7ffd7;
+    color: #000000;
+    float: right;
+    padding: 1px;
+    border-radius: 10px;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    height: 100px;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    /* Adjust as needed */
+}
+
+.video-container video {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.slideshow {
+    position: relative;
+}
+
+.slide {
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+.buttonb {
+    background-color: #17a017;
+    color: #FFFFFF;
+    float: right;
+    padding: 1px;
+    border-radius: 10px;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    height: 100px;
+}
+
+.keyboard {
+    display: flex;
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.keyboard button {
+    width: 60%;
+}
+
+
+* {
+    box-sizing: border-box
+}
+
+
+
+.mySlides1,
+.mySlides2,
+.mySlides3 {
+    display: none
+}
+
+
+img {
+    vertical-align: middle;
+}
+
+/* Slideshow container */
+.slideshow-container {
+
+    position: relative;
+    margin: auto;
+    text-align: center;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: relative;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: relative;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: relative;
+    top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+
+    .prev,
+    .next,
+    .text {
+        font-size: 11px
+    }
+}
