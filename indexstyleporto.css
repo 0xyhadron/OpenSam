@@ -770,14 +770,13 @@ img {
 .prev,
 .next {
     cursor: pointer;
-    position: relative;
-    top: 50%;
+    
     width: auto;
-    padding: 16px;
-    margin-top: -22px;
+   
+   
     color: rgb(43, 32, 146);
     font-weight: bold;
-    font-size: 20px;
+    font-size: 15px;
     transition: 0.6s ease;
 
     user-select: none;
