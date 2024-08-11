@@ -4,6 +4,9 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="indexstyleporto.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
     <style>
         /** 
@@ -16,7 +19,45 @@
             box-sizing: border-box;
         }
 
+        .collapsible {
+  background-color:  rgb(47, 54, 94);
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  margin-bottom: 10px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(213, 252, 255);
+}
 
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+        .about-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .about-section div {
+            flex: 1;
+        }
+        .about-section img {
+            margin-left: 20px;
+            max-width: 200px;
+           
+            align-self: flex-start;
+        }
         .container {
             display: block;
 
@@ -89,7 +130,9 @@
             float: left;
             padding-top: 1px;
         }
-
+        body {
+    zoom: 0.8;
+}
         .notepad-icon img {
             object-fit: fill;
             display: block;
@@ -178,8 +221,8 @@
     </style>
 </head>
 
-<body>
-
+<body >
+  
     <div style="background-color:rgb(34, 38, 75)" class="crt" id="myDIV">
         <nav>
             <div
@@ -237,8 +280,8 @@
         <button onClick="buttonSVX()" class="collapsible-btn">SKETCHES</button>
         <button onClick="buttonSVX()" class="collapsible-btn">ABOUT</button>
     </div>
-    <div class="content">
-        <div class="container">
+    <div class="content" >
+        <div class="container" style="margin-top: 15px; margin-bottom: 20px;">
             <div class="notepad">
                 <div class="notepad-bar">
                     <div class="notepad-icon">
@@ -259,7 +302,7 @@
                         </div>
                     </div>
                 </div> <!-- notepad bar -->
-                <div class="notepad-settings">
+                <div class="notepad-settings" style="color: aliceblue;">
                     <div class="settings-text"><span class="underline">F</span>ile</div>
                     <div class="settings-text"><span class="underline">E</span>dit</div>
                     <div class="settings-text"><span class="underline">S</span>earch</div>
@@ -282,8 +325,7 @@
                             <img src="media\portfolio\revolverreload.gif" style="width:60%">
                             <hr color=rgb(18, 39, 26)>
                             <div class="text" style="background-color: rgb(111, 103, 139);">
-                                Revolver 3D model gemaakt voor project vrij, ontworpen in procreate, gemodelleerd en
-                                gerigged in blender, getextured in Substance painter
+                                Revolver 3D model, made for "project vrij" at the HKU. designed in procreate, modelled and rigged in blender, textured in Substance painter
                             </div>
 
                         </div>
@@ -299,8 +341,7 @@
                             <hr color=rgb(18, 39, 26)>
                             <img src="shotgun eject.gif" style="width:70%">
                             <div class="text" style="background-color: rgb(111, 103, 139);">
-                                Shotgun 3D model gemaakt voor project vrij, ontworpen in procreate, gemodelleerd en
-                                gerigged in blender, getextured in Substance painter
+                                Shotgun 3D model, made for "project vrij" at the HKU. designed in procreate, modelled and rigged in blender, textured in Substance painter
                             </div>
                             <hr color=rgb(18, 39, 26)>
 
@@ -311,8 +352,7 @@
                             <img src="revolvehands.gif" style="width:90%">
 
                             <div class="text" style="background-color: rgb(111, 103, 139);">
-                                Robot arm 3D model gemaakt voor project vrij, ontworpen in procreate, gemodelleerd en
-                                gerigged in blender, en getextured in Substance painter
+                               medieval styled robotic arm 3D model, made for "project vrij" at the HKU. designed in procreate, modelled and rigged in blender, textured in Substance painter
                             </div>
                         </div>
                         <div class="mySlides3">
@@ -321,8 +361,7 @@
                             <img src="ezgif-ds-759cc5c146.gif" style="width:90%">
 
                             <div class="text" style="background-color: rgb(111, 103, 139);">
-                                Kunstzinnig projectje, ontworpen in procreate, gemodelleerd in blender, en getextured in
-                                Substance painter
+                               description
                             </div>
                         </div>
                         <div class="mySlides3">
@@ -331,8 +370,21 @@
 
                             <img src="ezgif-4-56cbbfe39f.gif" style="width:90%">
                             <div class="text" style="background-color: rgb(111, 103, 139);">
-                                poging tot short film, gemodelleerd in blender.
+                                poging tot short film,  gemodelleerd in blender.
                             </div>
+
+                        </div>
+                        <div class="mySlides3">
+                            <img src="media\bmxbot.gif" style="width:90%">
+                            <hr color=rgb(18, 39, 26)>
+
+                            <img src="media\bikeanim2.gif" style="width:90%">
+                         
+                            <div class="text" style="background-color: rgb(111, 103, 139);">
+                            Made for Mechjam 2024.
+                            </div>
+
+
 
                         </div>
                         <div class="mySlides3">
@@ -343,7 +395,7 @@
                             <img src="image1.png" style="width:90%">
                             <img src="Untitled_Artworweeek.png" style="width:90%">
                             <div class="text" style="background-color: rgb(111, 103, 139);">
-                                3D modelling class, ontworpen in procreate gemodelleerd in blender, gerenderd in unity.
+                                3D modelling class, designed and modelled in blender, rendered in unity.
                             </div>
 
 
@@ -354,15 +406,15 @@
                 </div>
 
                 </p>
-            </div> <!-- notepad content -->
-        </div> <!-- notepad -->
-    </div> <!-- container -->
+            </div> 
+        </div> 
+    </div> 
 
 
 
 
     <div class="content">
-        <div class="container">
+        <div class="container" style="margin-top: 15px; margin-bottom: 20px;">
             <div class="notepad">
                 <div class="notepad-bar">
                     <div class="notepad-icon">
@@ -382,13 +434,13 @@
                             <div class="icon-minimize"></div>
                         </div>
                     </div>
-                </div> <!-- notepad bar -->
-                <div class="notepad-settings">
+                </div>
+                <div class="notepad-settings"style="color: aliceblue;">
                     <div class="settings-text"><span class="underline">F</span>ile</div>
                     <div class="settings-text"><span class="underline">E</span>dit</div>
                     <div class="settings-text"><span class="underline">S</span>earch</div>
                     <div class="settings-text"><span class="underline">H</span>elp</div>
-                </div><!-- notepad settings -->
+                </div>
                 <div class="notepad-content" style="background-color:rgb(0, 0, 0)">
                     <div>
 
@@ -426,7 +478,7 @@
 
 
     <div class="content">
-        <div class="container">
+        <div class="container" style="margin-top: 15px; margin-bottom: 20px;">
             <div class="notepad">
                 <div class="notepad-bar">
                     <div class="notepad-icon">
@@ -447,7 +499,7 @@
                         </div>
                     </div>
                 </div> <!-- notepad bar -->
-                <div class="notepad-settings">
+                <div class="notepad-settings"style="color: aliceblue;">
                     <div class="settings-text"><span class="underline">F</span>ile</div>
                     <div class="settings-text"><span class="underline">E</span>dit</div>
                     <div class="settings-text"><span class="underline">S</span>earch</div>
@@ -524,14 +576,12 @@
                                 <img src="media\portfolio\s21.png" style="width:60%">
                             </div>
                             <div class="text" style="background-color: rgb(116, 103, 139);">
-                                Deze schetsen zijn gemaakt in Procreate.
+                                device: Ipad ; software: Procreate
                                 <br>
-                                Meestal teken ik meerdere willekeurige elementen op dezelfde pagina. Ik heb honderden
-                                van deze schetsen en ik besef nu hoe ontevreden ik met de meeste daarvan ben. Door deze
-                                schetsen aan mijn portfolio toe te voegen, realiseerde ik me dat ik meer scènes zou
-                                moeten tekenen. Hoewel ik veel schetsen heb, zijn mijn favorieten degene waarin de
-                                personages met elkaar in dezelfde scène omgaan.
+                              i usually start with a blank canvas and without knowing exactly what im gonna draw i try to put down something on paper
+                              my best sketches are those in which i create a scenes which are able to convey a small story or idea
                             </div>
+                   
                         </div>
                     </div>
 
@@ -545,20 +595,56 @@
     </div>
 
 
-    <div class="content">
-        <h2>About This Website</h2>
-        <p>
-            This website was built from scratch using HTML, CSS, and JavaScript to showcase my portfolio pieces. It is
-            hosted using GitHub Pages.
-        </p>
-        <h2>Help</h2>
-        <p>
-            As I am not a professional web developer, I apologize for any unexpected behavior you might encounter. Due
-            to limited resources, I am unable to test the site on multiple devices. Please note that this website is not
-            designed or optimized for mobile use. If you experience any issues, please try using Chrome on a desktop for
-            the best
-            experience.
-        </p>
+    <div class="content" >
+        <div class="about-section" style="background-color:  rgb(47, 54, 94); margin-bottom: 20px; margin-top: 20px;">
+            <div>
+                <h1 style="text-align: left; font-size: 2em; margin-left: 10px; ">ABOUT ME</h1>
+                <p style="text-align: left; margin-left: 10px;">Hello, I'm Rick, a 2D illustrator and 3D generalist. I've been passionate about art since I was a kid, and illustration has always been my creative outlet. Right now, I'm focusing on improving my skills in both 2D and 3D art, with a special emphasis on 3D modeling.</p>
+            </div>
+            <img src="media/portraitsmall.png" alt="Portrait">
+        </div>
+       
+        <button type="button" class="collapsible">BACKGROUND</button>
+        <div class="content">
+            <h2 style="text-align: left; font-size: 1.75em;">Background</h2>
+        
+            My journey in art began at a young age. What started as a simple distraction soon grew into a deep passion, inspired by friends and online artwork. I began drawing and never stopped. In high school, I enrolled in an optional course at the "Koninklijke Academie van Beeldende Kunsten" in The Hague, which pushed me further toward pursuing art professionally. Initially, I studied product design at The Hague University of Applied Sciences, but I felt it didn't challenge me creatively. After my second year, I decided to transfer to the "Hogeschool voor de Kunsten Utrecht," where I'm currently a second-year Game Art student.</p>
+            
+            <img src="media\media\logos2.png" alt="Portrait"> 
+        </div>
+        <button type="button" class="collapsible">INSPIRATION</button>
+        <div class="content" >
+            <h2 style="text-align: left; font-size: 1.75em;">Inspirations</h2>
+            <p style="text-align: left;">
+                My inspirations are drawn from a mix of different worlds and mediums, all of which deeply influence my work. The intricate storytelling of 90s anime and the artistic mastery of creators like Katsuhiro Otomo and Kim Jung Gi have shaped my visual style, pushing me to explore complex characters and dynamic scenes. I’m also captivated by the works of fiction from authors like Stephen King, H.P. Lovecraft, Neil Gaiman, and Orson Scott Card’s Speaker for the Dead.These stories fuel my imagination, inspiring me to create narratives that blur the line between reality and the surreal.
+                <hr color="black">Games like Dark Souls and an endless list of indie media further feed my creativity, offering unique perspectives and challenging the conventional. But perhaps my greatest inspiration comes from the people around me—friends and fellow creators who constantly push the boundaries of what’s possible.<hr color="black">These influences lead me to a fascination with distorting reality, twisting it to reveal hidden wonders. Through my art, I strive to peel back the layers of the mundane, exposing the extraordinary and the bizarre. My goal is to invite viewers to see the world through a different, more whimsical lens, where the ordinary becomes something truly magical.</p>
+        </div>
+        <button type="button" class="collapsible">MEDIUMS</button>
+        <div class="content">
+            <h2 style="text-align: left; font-size: 1.75em; margin-left: 10px; margin-top: 10px;">Mediums</h2>
+            <p style="text-align: left;"> I mainly create 2D digital art using Procreate, Adobe Photoshop, and Aseprite. For illustrations, I stick to industry-standard tools like Procreate and Photoshop, while Aseprite adds a unique pixel art style to my work. In 3D, I use Blender and Substance Painter to create detailed, realistic models, with Aseprite also helping to add a stylized touch to my 3D pieces. Along with software, I work on an iPad and a Huion Kamvas Pro 16. Outside of visual art, I’m into game programming with Visual Studio and C#, as well as web development using Java, CSS, and HTML.</p>
+         <img src="media\logos.png" alt="Portrait"> 
+        </div>
+        <button type="button"  class="collapsible">WEBSITE</button>
+        <div class="content" >
+            <h2 style="text-align: left; font-size: 1.75em;">About This Website</h2>
+            <p style="text-align: left;">This website was built from scratch using HTML, CSS, and JavaScript to showcase my portfolio. It is hosted on GitHub Pages.
+
+                Due to limited resources, I haven't been able to test the site on multiple devices, so please note that it is not optimized for mobile use. For the best experience, I recommend viewing it on Chrome using a desktop. If you encounter any issues or have any questions, feel free to reach out to me at &nbsp; <a href="mailto:richard.den.bakker@gmail.com">richard.den.bakker@gmail.com</a></p>
+            
+        
+        </div>
+        <br>
+        <br>
+        
+             
+
+        </div>
+      
+    
+        </div>
+         
+       
     </div>
     </div>
 
@@ -622,7 +708,22 @@
         <br>
     </div>
 
-
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+              content.style.display = "none";
+            } else {
+              content.style.display = "block";
+            }
+          });
+        }
+        </script>
     <script>
         let slideIndex = [1, 1, 1, 1];
         let slideId = ["mySlides1", "mySlides2", "mySlides3", "mySlides4"];
