@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="colortoolcss.css">
     <title>Very cool color analyser thing</title>
     <style>
-    
+
     </style>
 </head>
 
@@ -15,19 +15,26 @@
     <h1>Magic Analyser</h1>
     <input type="file" id="imageInput" accept="image/*">
     <canvas id="imageCanvas" width="600" height="400"></canvas>
-    <div class="controls" id="playerControls3">
-        <button id="autoPlotButton" >apb </button >
-        <button id="autoPlotByHueButton">apbh</button>
+    <div class="controls">
+        <button id="autoPlotButton">Auto Plot </button>
+        <button id="autoPlotByHueButton">Auto Plot by Hue</button>
 
         <button id="refreshGraphButton">refresh</button>
         <label for="dotSizeSlider">Dot Size: </label>
         <input type="range" id="dotSizeSlider" min="1" max="10" value="2">
     </div>
     <div class="hex-display">
-        <label for="hexCode">Last Selected Color (Hex): </label>
-        <input type="text" id="hexCode" readonly>
+
+        <div class="hex-display">
+            <label for="hexCode">Last Selected Color (Hex): </label>
+            <input type="text" id="hexCode" readonly>
+            <button id="addToSwatchButton">Add to Swatch</button>
+            <button id="removeLastSwatchButton">Remove Last Swatch</button>
+        </div>
+        <div id="swatchContainer"></div>
+
     </div>
-    <div class="controls"id="playerControls3">
+    <div class="controls">
         <button id="hueInputButton">Hue</button>
         <button id="saturationInputButton">Saturation</button>
         <button id="valueInputButton">Value</button>
@@ -39,7 +46,7 @@
 
     <script>
 
-        
+
         // Select elements
         const imageInput = document.getElementById("imageInput");
         const imageCanvas = document.getElementById("imageCanvas");
@@ -236,60 +243,97 @@
 
         const autoPlotByHueButton = document.getElementById("autoPlotByHueButton");
 
-let autoPlotHueEnabled = false;
-let selectedHue = null;
-let hueRange = 5; // Default range ±10
+        let autoPlotHueEnabled = false;
+        let selectedHue = null;
+        let hueRange = 5; // Default range ±10
 
-// Toggle autoplot by hue
-autoPlotByHueButton.addEventListener("click", () => {
-    autoPlotHueEnabled = !autoPlotHueEnabled;
-    autoPlotByHueButton.textContent = autoPlotHueEnabled ? "Disable Auto-Plot By Hue" : "Auto-Plot By Hue";
-});
+        // Toggle autoplot by hue
+        autoPlotByHueButton.addEventListener("click", () => {
+            autoPlotHueEnabled = !autoPlotHueEnabled;
+            autoPlotByHueButton.textContent = autoPlotHueEnabled ? "Disable Auto-Plot By Hue" : "Auto-Plot By Hue";
+        });
 
-// Plot surrounding pixels by hue on canvas click
-imageCanvas.addEventListener("click", (event) => {
-    if (!autoPlotHueEnabled || !imageLoaded) return;
+        // Plot surrounding pixels by hue on canvas click
+        imageCanvas.addEventListener("click", (event) => {
+            if (!autoPlotHueEnabled || !imageLoaded) return;
 
-    const rect = imageCanvas.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+            const rect = imageCanvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
 
-    const pixelData = imageCtx.getImageData(x, y, 1, 1).data;
-    const { r, g, b } = { r: pixelData[0], g: pixelData[1], b: pixelData[2] };
+            const pixelData = imageCtx.getImageData(x, y, 1, 1).data;
+            const { r, g, b } = { r: pixelData[0], g: pixelData[1], b: pixelData[2] };
 
-    const hsv = rgbToHsv(r, g, b);
-    selectedHue = hsv.h;
+            const hsv = rgbToHsv(r, g, b);
+            selectedHue = hsv.h;
 
-    // Auto-plot pixels with matching hues
-    const imageData = imageCtx.getImageData(0, 0, imageCanvas.width, imageCanvas.height);
-    // Auto-plot pixels with matching hues, but skip pixels based on step size
-const step = 20; // Process every 10th pixel
+            // Auto-plot pixels with matching hues
+            const imageData = imageCtx.getImageData(0, 0, imageCanvas.width, imageCanvas.height);
+            // Auto-plot pixels with matching hues, but skip pixels based on step size
+            const step = 20; // Process every 10th pixel
 
-for (let py = 0; py < imageData.height; py += step) {
-    for (let px = 0; px < imageData.width; px += step) {
-        const index = (py * imageData.width + px) * 4;
-        const r = imageData.data[index];
-        const g = imageData.data[index + 1];
-        const b = imageData.data[index + 2];
+            for (let py = 0; py < imageData.height; py += step) {
+                for (let px = 0; px < imageData.width; px += step) {
+                    const index = (py * imageData.width + px) * 4;
+                    const r = imageData.data[index];
+                    const g = imageData.data[index + 1];
+                    const b = imageData.data[index + 2];
 
-        const pixelHsv = rgbToHsv(r, g, b);
-        const color = `rgb(${r},${g},${b})`;
+                    const pixelHsv = rgbToHsv(r, g, b);
+                    const color = `rgb(${r},${g},${b})`;
 
-        // Check if the hue is within the specified range
-        if (Math.abs(pixelHsv.h - selectedHue) <= hueRange) {
-            plotOnGraph(pixelHsv.s, pixelHsv.v, color);
+                    // Check if the hue is within the specified range
+                    if (Math.abs(pixelHsv.h - selectedHue) <= hueRange) {
+                        plotOnGraph(pixelHsv.s, pixelHsv.v, color);
 
-            let inputValue;
-            if (lineGraphInputMode === "hue") inputValue = pixelHsv.h / 360;
-            else if (lineGraphInputMode === "saturation") inputValue = pixelHsv.s;
-            else inputValue = pixelHsv.v;
+                        let inputValue;
+                        if (lineGraphInputMode === "hue") inputValue = pixelHsv.h / 360;
+                        else if (lineGraphInputMode === "saturation") inputValue = pixelHsv.s;
+                        else inputValue = pixelHsv.v;
 
-            plotOnLine(inputValue, color);
-        }
-    }
-}
+                        plotOnLine(inputValue, color);
+                    }
+                }
+            }
 
-});
+        });
+
+
+        const addToSwatchButton = document.getElementById("addToSwatchButton");
+        const removeLastSwatchButton = document.getElementById("removeLastSwatchButton");
+        const swatchContainer = document.getElementById("swatchContainer");
+
+        let swatchColors = []; // To store swatch colors
+
+        // Add selected color to swatch
+        addToSwatchButton.addEventListener("click", () => {
+            const hex = hexCodeInput.value;
+
+            if (!hex || swatchColors.includes(hex)) return; // Avoid duplicates
+            if (swatchColors.length >= 30) {
+                alert("Swatch is full! Maximum 30 colors allowed.");
+                return;
+            }
+
+            swatchColors.push(hex); // Add color to the swatch array
+
+            const swatch = document.createElement("div");
+            swatch.className = "swatch";
+            swatch.style.backgroundColor = hex;
+            swatchContainer.appendChild(swatch); // Add swatch to the grid
+        });
+
+        // Remove the last swatch from the grid
+        removeLastSwatchButton.addEventListener("click", () => {
+            if (swatchColors.length === 0) {
+                alert("No swatches to remove!");
+                return;
+            }
+
+            swatchColors.pop(); // Remove the last color from the array
+            swatchContainer.removeChild(swatchContainer.lastChild); // Remove the last swatch from the grid
+        });
+
 
     </script>
 
