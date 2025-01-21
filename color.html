@@ -47,7 +47,7 @@
 </head>
 
 <body>
-    <h1>Very cool color analyser thing</h1>
+    <h1>Magic Analyser</h1>
     <input type="file" id="imageInput" accept="image/*">
     <canvas id="imageCanvas" width="600" height="400"></canvas>
     <div class="controls">
@@ -59,6 +59,11 @@
     <div class="hex-display">
         <label for="hexCode">Last Selected Color (Hex): </label>
         <input type="text" id="hexCode" readonly>
+    </div>
+    <div class="controls">
+        <button id="hueInputButton">Hue</button>
+        <button id="saturationInputButton">Saturation</button>
+        <button id="valueInputButton">Value</button>
     </div>
     <div class="graphs-container">
         <canvas id="graphCanvas" width="400" height="400"></canvas>
@@ -76,12 +81,18 @@
         const dotSizeSlider = document.getElementById("dotSizeSlider");
         const hexCodeInput = document.getElementById("hexCode");
 
+        const hueInputButton = document.getElementById("hueInputButton");
+        const saturationInputButton = document.getElementById("saturationInputButton");
+        const valueInputButton = document.getElementById("valueInputButton");
+
         const imageCtx = imageCanvas.getContext("2d");
         const graphCtx = graphCanvas.getContext("2d");
         const lineCtx = lineCanvas.getContext("2d");
 
         let imageLoaded = false;
         let dotSize = 6;
+        let lineGraphInputMode = "value"; // Default input for line graph
+        let isMouseDown = false; // For tracking mouse hold
 
         // Load image onto canvas
         imageInput.addEventListener("change", (event) => {
@@ -144,26 +155,19 @@
         }
 
         // Plot on vertical line graph
-        // Plot on vertical line graph with a fixed dot size
-        // Plot on vertical line graph with a fixed square size
-        const rectWidth = 30;  // Fixed width
-        const rectHeight = 7; // Fixed height
-
-        // Plot on vertical line graph with a fixed-size rectangle
-        function plotOnLine(v, color) {
+        function plotOnLine(inputValue, color) {
+            const rectWidth = 30;
+            const rectHeight = 7;
             const lineHeight = lineCanvas.height;
 
-            // Center the rectangle horizontally on the line canvas
-            const x = lineCanvas.width / 2 - rectWidth / 2; // Adjust x to center the rectangle
-            const y = (1 - v) * lineHeight - rectHeight / 2; // Map value to vertical position and adjust for rectangle
+            const x = lineCanvas.width / 2 - rectWidth / 2;
+            const y = (1 - inputValue) * lineHeight - rectHeight / 2;
 
             lineCtx.fillStyle = color;
-            lineCtx.fillRect(x, y, rectWidth, rectHeight); // Draw rectangle with fixed width and height
+            lineCtx.fillRect(x, y, rectWidth, rectHeight);
         }
 
-
-        // Handle canvas clicks
-        imageCanvas.addEventListener("click", (event) => {
+        function plotPixel(event) {
             if (!imageLoaded) return;
 
             const rect = imageCanvas.getBoundingClientRect();
@@ -177,12 +181,31 @@
             const hex = rgbToHex(r, g, b);
 
             plotOnGraph(hsv.s, hsv.v, `rgb(${r},${g},${b})`);
-            plotOnLine(hsv.v, `rgb(${r},${g},${b})`);
 
+            let inputValue;
+            if (lineGraphInputMode === "hue") inputValue = hsv.h / 360;
+            else if (lineGraphInputMode === "saturation") inputValue = hsv.s;
+            else inputValue = hsv.v;
+
+            plotOnLine(inputValue, `rgb(${r},${g},${b})`);
             hexCodeInput.value = hex;
+        }
+
+        imageCanvas.addEventListener("mousedown", (event) => {
+            isMouseDown = true;
+            plotPixel(event);
         });
 
-        // Auto-Plot All Pixels
+        imageCanvas.addEventListener("mousemove", (event) => {
+            if (isMouseDown) {
+                plotPixel(event);
+            }
+        });
+
+        document.addEventListener("mouseup", () => {
+            isMouseDown = false;
+        });
+
         autoPlotButton.addEventListener("click", () => {
             if (!imageLoaded) {
                 alert("Please upload an image first.");
@@ -199,24 +222,32 @@
                     const b = imageData.data[index + 2];
 
                     const hsv = rgbToHsv(r, g, b);
-                    plotOnGraph(hsv.s, hsv.v, `rgb(${r},${g},${b})`);
-                    plotOnLine(hsv.v, `rgb(${r},${g},${b})`);
+                    const color = `rgb(${r},${g},${b})`;
+
+                    let inputValue;
+                    if (lineGraphInputMode === "hue") inputValue = hsv.h / 360;
+                    else if (lineGraphInputMode === "saturation") inputValue = hsv.s;
+                    else inputValue = hsv.v;
+
+                    plotOnGraph(hsv.s, hsv.v, color);
+                    plotOnLine(inputValue, color);
                 }
             }
         });
 
-        // Refresh Graph
+        hueInputButton.addEventListener("click", () => (lineGraphInputMode = "hue"));
+        saturationInputButton.addEventListener("click", () => (lineGraphInputMode = "saturation"));
+        valueInputButton.addEventListener("click", () => (lineGraphInputMode = "value"));
+
         refreshGraphButton.addEventListener("click", () => {
             clearGraph();
             clearLineGraph();
         });
 
-        // Adjust Dot Size
         dotSizeSlider.addEventListener("input", (event) => {
             dotSize = parseInt(event.target.value, 10);
         });
 
-        // Clear the main graph
         function clearGraph() {
             graphCtx.fillStyle = "#eee";
             graphCtx.fillRect(0, 0, graphCanvas.width, graphCanvas.height);
@@ -224,7 +255,6 @@
             graphCtx.strokeRect(0, 0, graphCanvas.width, graphCanvas.height);
         }
 
-        // Clear the vertical line graph
         function clearLineGraph() {
             lineCtx.fillStyle = "#eee";
             lineCtx.fillRect(0, 0, lineCanvas.width, lineCanvas.height);
