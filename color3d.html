@@ -56,9 +56,14 @@
 <body>
     <h1>Magic Analyser</h1>
     <input type="file" id="imageInput" accept="image/*">
+    <label for="stepSizeSlider">Step Size: </label>
+<input type="range" id="stepSizeSlider" min="1" max="20" value="10">
+
     <canvas id="imageCanvas" width="600" height="400"></canvas>
     <div class="controls">
         <button id="autoPlotButton">Auto-Plot All Pixels</button>
+        <button id="autoPlotByHueButton">Auto-Plot By Hue</button>
+
         <button id="refreshGraphButton">Refresh Graph</button>
         <label for="dotSizeSlider">Dot Size: </label>
         <input type="range" id="dotSizeSlider" min="1" max="10" value="2">
@@ -86,6 +91,7 @@
         const plotlyContainer = document.getElementById("plotlyContainer");
 
         const autoPlotButton = document.getElementById("autoPlotButton");
+        
         const refreshGraphButton = document.getElementById("refreshGraphButton");
         const dotSizeSlider = document.getElementById("dotSizeSlider");
         const hexCodeInput = document.getElementById("hexCode");
@@ -328,6 +334,14 @@
 
         clearGraph();
         clearLineGraph();
+
+        const stepSizeSlider = document.getElementById("stepSizeSlider");
+let step = parseInt(stepSizeSlider.value, 10);
+
+stepSizeSlider.addEventListener("input", (event) => {
+    step = parseInt(event.target.value, 10);
+});
+
     </script>
 </body>
 

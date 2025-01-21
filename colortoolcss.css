@@ -1,0 +1,217 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: #929292;
+    
+}
+
+h1 {
+    margin-bottom: 20px;
+    
+}
+
+.controls {
+    margin: 10px 0;
+}
+
+button,
+input {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.hex-display {
+    font-size: 16px;
+    margin: 10px;
+}
+
+.graphs-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+canvas {
+    border: 1px solid #000;
+   
+}
+
+#plotlyContainer {
+    width: 100%;
+    height: 500px;
+    margin-top: 20px;
+}
+
+#playerControls {
+
+    margin-bottom: 10px;
+    float: center;
+    border-radius: 3px;
+}
+
+#playerControls2 {
+
+
+    float: center;
+    border-radius: 4px;
+}
+
+#playerControls3 {
+
+    margin-bottom: 0px;
+    float: center;
+    border-radius: 3px;
+}
+
+#playerControls button {
+    position: relative;
+    font-size: 0.8em;
+    background: #111;
+    color: #e1e1e1;
+    height: 46px;
+    border: 0;
+    border-radius: 2px;
+    border-top: solid 1px #222;
+    width: 60px;
+    margin: 5px 2px;
+
+    transition: 0.2s ease-in;
+    transform-origin: top center;
+}
+
+#playerControls3 button {
+    position: relative;
+    font-size: 0.7em;
+    background: #111;
+    color: #e1e1e1;
+    height: 1px;
+    border: 0;
+    border-radius: 2px;
+    border-top: solid 1px #222;
+    width: 60px;
+    margin: 2px 2px;
+    padding: 7px 0px 20px;
+    transition: 0.2s ease-in;
+    transform-origin: top center;
+}
+
+#playerControls2 button {
+    position: relative;
+    font-size: 1.2em;
+    background: #111;
+    color: #75756e;
+    height: 90px;
+    border: 0;
+    border-radius: 2px;
+    border-top: solid 1px #222;
+    width: 60px;
+    margin: 5px 2px;
+    padding: 10px 0px 30px;
+    transition: 0.2s ease-in;
+    transform-origin: top center;
+}
+
+
+#playerControls button:after {
+    content: " ";
+    height: 4px;
+    width: 80%;
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    left: 10%;
+    border-radius: 3px;
+    border-bottom: solid 1px #222;
+
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #333333 0%, #111111 30%, #111111 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #333333 0%, #111111 30%, #111111 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #333333 0%, #111111 30%, #111111 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#111111', GradientType=0);
+    /* IE6-9 */
+}
+
+#playerControls3 button:after {
+    content: " ";
+    height: 4px;
+    width: 80%;
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    left: 10%;
+    border-radius: 3px;
+    border-bottom: solid 1px #222;
+
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #333333 0%, #111111 30%, #111111 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #333333 0%, #111111 30%, #111111 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #333333 0%, #111111 30%, #111111 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#111111', GradientType=0);
+    /* IE6-9 */
+}
+
+#playerControls2 button:after {
+    content: " ";
+    height: 4px;
+    width: 80%;
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    left: 10%;
+    border-radius: 3px;
+    border-bottom: solid 1px #222;
+
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #333333 0%, #111111 30%, #111111 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #333333 0%, #111111 30%, #111111 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #333333 0%, #111111 30%, #111111 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#111111', GradientType=0);
+    /* IE6-9 */
+}
+
+#playerControls button:focus {
+    outline: 0;
+}
+
+#playerControls2 button:focus {
+    outline: 0;
+}
+
+#playerControls3 button:focus {
+    outline: 0;
+}
+
+#playerControls button:hover {
+    opacity: 0.8;
+    transform: perspective(1000px) rotatex(-20deg);
+    color: #009e9e;
+    text-shadow: 0 0 2px #00739e;
+}
+
+#playerControls3 button:hover {
+    opacity: 0.8;
+    transform: perspective(1000px) rotatex(-20deg);
+    color: #009e9e;
+    text-shadow: 0 0 2px #00739e;
+}
+
+#playerControls2 button:hover {
+    opacity: 0.8;
+    transform: perspective(1000px) rotatex(-20deg);
+    color: #00379e;
+    text-shadow: 0 0 2px #00739e;
+}
+
