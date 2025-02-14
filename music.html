@@ -276,8 +276,13 @@
 
 
     <div class="container">
-        <img id="album" src="media\musicpage\cover imaget.png" alt="">
+
+        <div class="marquee" style="background-color: rgb(59, 19, 51); color: #ffffff; width: 140px;">
+            <span id="currentTrack">empty cassette deck</span> <!-- Marquee to show current track -->
+        </div>
+
         <img id="gif" src="media/musicpage/cassetteopen.png" alt="GIF" />
+
 
         <div class="button-container">
             <div class="song">
@@ -292,22 +297,15 @@
                     onmouseleave="resetButton('stopButton', 'stop')" onmouseover="hoverButton('stopButton', 'stop')"
                     onclick="stopAudio()" alt="Stop Button" />
             </div>
-        </div>
-        <div class="marquee">
-            <span id="currentTrack">empty cassette deck</span> <!-- Marquee to show current track -->
-        </div>
-        <div class="song-list">
             <div class="song">
-                <button id="playButton" onclick="changeImageOnPlay(1, 'circus')">Play</button>
+                <img id="fastForwardButton" src="media/musicpage/buttons/cassettebuttonunpressed.png"
+                    onmousedown="startFastForward()" onmouseup="stopFastForward()" onmouseleave="stopFastForward()"
+                    disabled></button>
             </div>
-            <div class="song">
-                <button id="stopButton" onclick="stopAudio()" disabled>Stop</button>
-            </div>
+
         </div>
-        <div class="song">
-            <button id="fastForwardButton" onmousedown="startFastForward()" onmouseup="stopFastForward()"
-                onmouseleave="stopFastForward()" disabled>Fast Forward</button>
-        </div>
+
+
 
 
     </div>
