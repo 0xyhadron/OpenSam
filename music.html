@@ -111,8 +111,8 @@
         let isPressed = false;
         let isStopPressed = false;
 
-        let stopSoundEffect = new Audio('media/musicpage/cassettefx.mp3');
-        let playSoundEffect = new Audio('media/musicpage/cassette2.mp3');
+        let stopSoundEffect = new Audio('media/musicpage/cassettefx.mp3');  // Stop sound
+        let playSoundEffect = new Audio('media/musicpage/cassette2.mp3');   // Play sound
 
 
         function toggleButtons() {
@@ -134,9 +134,10 @@
         function changeImageOnPlay(gifType, trackName) {
             const img = document.getElementById("gif");
 
+            // Play the play button sound effect
             playSoundEffect.play();
 
-
+            // Update marquee text
             currentTrack = trackName;
             updateMarquee();
 
@@ -166,7 +167,7 @@
             }
 
             currentAudio = new Audio(audioSrc);
-            currentAudio.playbackRate = 1;
+            currentAudio.playbackRate = 1; // Normal speed
             currentAudio.play();
             isFastForwarding = false;
             toggleButtons();
@@ -180,7 +181,8 @@
                 currentAudio.currentTime = 0;
             }
 
-            stopSoundEffect.play();
+            stopSoundEffect.play(); // Play stop/eject sound
+
             img.src = "media/musicpage/cassetteeject.gif";
 
             setTimeout(() => {
@@ -188,20 +190,20 @@
                 toggleButtons();
                 gifPlayed = false;
                 secondGifPlayed = false;
-                isFastForwarding = false;
+                isFastForwarding = false; // Reset fast forward
             }, 2450);
         }
 
         function startFastForward() {
             if (currentAudio) {
-                currentAudio.playbackRate = 6.0;
+                currentAudio.playbackRate = 6.0; // Speed up audio
                 isFastForwarding = true;
             }
         }
 
         function stopFastForward() {
             if (currentAudio) {
-                currentAudio.playbackRate = 1.0;
+                currentAudio.playbackRate = 1.0; // Reset to normal speed
                 isFastForwarding = false;
             }
         }
@@ -214,28 +216,28 @@
             let button = document.getElementById(buttonId);
 
             if (action === "play" && !isPressed) {
-
+                // If the Stop button is pressed, release it when Play is pressed
                 if (isStopPressed) {
                     releaseButton("stopButton", "stop");
                 }
 
-
+                // Play pressing animation
                 button.src = `media/musicpage/buttons/cassettebuttonpressing.gif`;
 
                 setTimeout(() => {
                     button.src = `media/musicpage/buttons/cassettebuttonpressed.png`;
-                    isPressed = true;
+                    isPressed = true; // Mark as playing
                 }, 500);
             } else if (action === "stop" && !isStopPressed) {
-
+                // Stop button pressing animation
                 button.src = `media/musicpage/buttons/cassettebuttonpressing.gif`;
 
                 setTimeout(() => {
                     button.src = `media/musicpage/buttons/cassettebuttonpressed.png`;
-                    isStopPressed = true;
+                    isStopPressed = true; // Mark stop as pressed
                 }, 500);
 
-
+                // Release the Play button when Stop is pressed
                 releasePlayButton();
             }
         }
@@ -244,26 +246,26 @@
             let button = document.getElementById(buttonId);
 
             if (action === "stop" && isStopPressed) {
-
+                // Release the Stop button
                 button.src = `media/musicpage/buttons/cassettebuttonrelease.gif`;
 
                 setTimeout(() => {
                     button.src = `media/musicpage/buttons/cassettebuttonunpressed.png`;
-                    isStopPressed = false;
+                    isStopPressed = false; // Reset stop state
                 }, 500);
             }
         }
 
-
+        // Function to release the Play button when Stop is pressed
         function releasePlayButton() {
             let playButton = document.getElementById("playButton");
 
-
+            // Play the release animation for Play button
             playButton.src = `media/musicpage/buttons/cassettebuttonrelease.gif`;
 
             setTimeout(() => {
                 playButton.src = `media/musicpage/buttons/cassettebuttonunpressed.png`;
-                isPressed = false;
+                isPressed = false; // Reset play state
             }, 500);
         }
     </script>
@@ -274,7 +276,7 @@
 
 
     <div class="container">
-
+        <img id="album" src="media\musicpage\cover imaget.png" alt="">
         <img id="gif" src="media/musicpage/cassetteopen.png" alt="GIF" />
 
         <div class="button-container">
@@ -292,10 +294,15 @@
             </div>
         </div>
         <div class="marquee">
-            <span id="currentTrack">empty cassette deck</span>
+            <span id="currentTrack">empty cassette deck</span> <!-- Marquee to show current track -->
         </div>
         <div class="song-list">
-
+            <div class="song">
+                <button id="playButton" onclick="changeImageOnPlay(1, 'circus')">Play</button>
+            </div>
+            <div class="song">
+                <button id="stopButton" onclick="stopAudio()" disabled>Stop</button>
+            </div>
         </div>
         <div class="song">
             <button id="fastForwardButton" onmousedown="startFastForward()" onmouseup="stopFastForward()"
