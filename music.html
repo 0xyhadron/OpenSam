@@ -16,48 +16,52 @@
             background-color: #f4f4f4;
         }
 
-        .button-container {
-            display: flex;
-            /* Makes the container use flexbox */
-            justify-content: center;
-            /* Centers buttons horizontally */
-            gap: 20px;
-            /* Adds space between buttons */
-        }
-
-        .song img {
-
-            /* Adjust the width as needed */
-            height: auto;
-            /* Keep aspect ratio */
-            cursor: pointer;
-            /* Indicates the button is clickable */
-        }
-
         .container {
             display: flex;
+            flex-direction: column;
+            align-items: center;
             background: white;
             padding: 20px;
-            border-radius: 0px;
+            border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            flex-direction: column;
+            margin: 0 20px;
+            /* Adds spacing between the two containers */
+        }
+
+        .container>.marquee {
+            width: 140px;
+            overflow: hidden;
+            white-space: nowrap;
+            background-color: rgb(59, 19, 51);
+            color: #ffffff;
+        }
+
+        .marquee span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 10s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
             align-items: center;
         }
 
-        img {
+        .song img {
             height: auto;
-            border-radius: 0px;
-            margin-bottom: 20px;
-        }
-
-        .song-list {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .song {
-            margin-bottom: 10px;
+            cursor: pointer;
         }
 
         button {
@@ -78,212 +82,21 @@
             background-color: #cccccc;
             cursor: not-allowed;
         }
-
-        /* Marquee effect using CSS animation */
-        .marquee {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .marquee span {
-            display: inline-block;
-            padding-left: 100%;
-            animation: marquee 10s linear infinite;
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
-        }
     </style>
-    <script>
-        let gifPlayed = false;
-        let secondGifPlayed = false;
-        let currentAudio = null;
-        let currentTrack = "";
-        let isFastForwarding = false;
-        let isPressed = false;
-        let isStopPressed = false;
-
-        let stopSoundEffect = new Audio('media/musicpage/cassettefx.mp3');  // Stop sound
-        let playSoundEffect = new Audio('media/musicpage/cassette2.mp3');   // Play sound
-
-
-        function toggleButtons() {
-            const playButton = document.getElementById("playButton");
-            const stopButton = document.getElementById("stopButton");
-            const fastForwardButton = document.getElementById("fastForwardButton");
-
-            if (currentAudio && !currentAudio.paused) {
-                playButton.disabled = true;
-                stopButton.disabled = false;
-                fastForwardButton.disabled = false;
-            } else {
-                playButton.disabled = false;
-                stopButton.disabled = true;
-                fastForwardButton.disabled = true;
-            }
-        }
-
-        function changeImageOnPlay(gifType, trackName) {
-            const img = document.getElementById("gif");
-
-            // Play the play button sound effect
-            playSoundEffect.play();
-
-            // Update marquee text
-            currentTrack = trackName;
-            updateMarquee();
-
-            if (gifType === 1 && !gifPlayed) {
-                img.src = "media/musicpage/cassetteinsertt.gif";
-                gifPlayed = true;
-
-                setTimeout(() => {
-                    img.src = "media/musicpage/cassetteplay.gif";
-                    playAudio('media/musicpage/circus.mp3');
-                }, 2450);
-            } else if (gifType === 2 && !secondGifPlayed) {
-                img.src = "media/musicpage/secondgif.gif";
-                secondGifPlayed = true;
-
-                setTimeout(() => {
-                    img.src = "media/musicpage/secondgifstatic.png";
-                    playAudio('media/musicpage/clown.mp3');
-                }, 2450);
-            }
-        }
-
-        function playAudio(audioSrc) {
-            if (currentAudio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-            }
-
-            currentAudio = new Audio(audioSrc);
-            currentAudio.playbackRate = 1; // Normal speed
-            currentAudio.play();
-            isFastForwarding = false;
-            toggleButtons();
-        }
-
-        function stopAudio() {
-            const img = document.getElementById("gif");
-
-            if (currentAudio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-            }
-
-            stopSoundEffect.play(); // Play stop/eject sound
-
-            img.src = "media/musicpage/cassetteeject.gif";
-
-            setTimeout(() => {
-                img.src = "media/musicpage/cassetteopen.png";
-                toggleButtons();
-                gifPlayed = false;
-                secondGifPlayed = false;
-                isFastForwarding = false; // Reset fast forward
-            }, 2450);
-        }
-
-        function startFastForward() {
-            if (currentAudio) {
-                currentAudio.playbackRate = 6.0; // Speed up audio
-                isFastForwarding = true;
-            }
-        }
-
-        function stopFastForward() {
-            if (currentAudio) {
-                currentAudio.playbackRate = 1.0; // Reset to normal speed
-                isFastForwarding = false;
-            }
-        }
-
-        function updateMarquee() {
-            document.getElementById("currentTrack").textContent = `Now: ${currentTrack}`;
-        }
-
-        function pressButton(buttonId, action) {
-            let button = document.getElementById(buttonId);
-
-            if (action === "play" && !isPressed) {
-                // If the Stop button is pressed, release it when Play is pressed
-                if (isStopPressed) {
-                    releaseButton("stopButton", "stop");
-                }
-
-                // Play pressing animation
-                button.src = `media/musicpage/buttons/cassettebuttonpressing.gif`;
-
-                setTimeout(() => {
-                    button.src = `media/musicpage/buttons/cassettebuttonpressed.png`;
-                    isPressed = true; // Mark as playing
-                }, 500);
-            } else if (action === "stop" && !isStopPressed) {
-                // Stop button pressing animation
-                button.src = `media/musicpage/buttons/cassettebuttonpressing.gif`;
-
-                setTimeout(() => {
-                    button.src = `media/musicpage/buttons/cassettebuttonpressed.png`;
-                    isStopPressed = true; // Mark stop as pressed
-                }, 500);
-
-                // Release the Play button when Stop is pressed
-                releasePlayButton();
-            }
-        }
-
-        function releaseButton(buttonId, action) {
-            let button = document.getElementById(buttonId);
-
-            if (action === "stop" && isStopPressed) {
-                // Release the Stop button
-                button.src = `media/musicpage/buttons/cassettebuttonrelease.gif`;
-
-                setTimeout(() => {
-                    button.src = `media/musicpage/buttons/cassettebuttonunpressed.png`;
-                    isStopPressed = false; // Reset stop state
-                }, 500);
-            }
-        }
-
-        // Function to release the Play button when Stop is pressed
-        function releasePlayButton() {
-            let playButton = document.getElementById("playButton");
-
-            // Play the release animation for Play button
-            playButton.src = `media/musicpage/buttons/cassettebuttonrelease.gif`;
-
-            setTimeout(() => {
-                playButton.src = `media/musicpage/buttons/cassettebuttonunpressed.png`;
-                isPressed = false; // Reset play state
-            }, 500);
-        }
-    </script>
+ <script></script>
 </head>
 
 <body>
-
-
-
     <div class="container">
 
-        <div class="marquee" style="background-color: rgb(59, 19, 51); color: #ffffff; width: 140px;">
-            <span id="currentTrack">empty cassette deck</span> <!-- Marquee to show current track -->
-        </div>
+
+
+        track 1.
+        track 2
+    </div>
+    <div class="container">
 
         <img id="gif" src="media/musicpage/cassetteopen.png" alt="GIF" />
-
-
         <div class="button-container">
             <div class="song">
                 <img id="playButton" src="media/musicpage/buttons/cassettebuttonunpressed.png"
@@ -299,16 +112,32 @@
             </div>
             <div class="song">
                 <img id="fastForwardButton" src="media/musicpage/buttons/cassettebuttonunpressed.png"
-                    onmousedown="startFastForward()" onmouseup="stopFastForward()" onmouseleave="stopFastForward()"
-                    disabled></button>
+                    onmousedown="startFastForward()" onmouseup="stopFastForward()" onmouseleave="stopFastForward()" />
             </div>
+        </div>
+    </div>
+
+    <!-- Second container -->
+    <div class="container">
+        <div class="marquee">
+            <span id="currentTrack">empty cassette deck</span>
+            <div></div>
 
         </div>
+        <img src="media\musicpage\cover imaget.png" alt="">
+
+        <p>information about</p>
 
 
-
+        <br>
+        <br>
+        <br>
+        <br>
 
     </div>
+
+
 </body>
+
 
 </html>

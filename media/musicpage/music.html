@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Showcase</title>
+    <style>
+        @font-face {
+            font-family: "MyCustomFont";
+            src:
+                url("Digital Play St.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+        .tracklist li.selected {
+            background-color: #525252;
+            color: white;
+            font-weight: bold;
+            /* Makes the selected track bold */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 0 20px;
+            /* Adds spacing between the two containers */
+        }
+
+        .container>.marquee {
+            font-family: "MyCustomFont", Arial, sans-serif;
+            font-size: small;
+            width: 140px;
+            overflow: hidden;
+            white-space: nowrap;
+            background-color: rgb(59, 19, 51);
+            color: #ffffff;
+        }
+
+        .marquee span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 10s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .song img {
+            height: auto;
+            cursor: pointer;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #353535;
+            color: white;
+            border: none;
+            border-radius: 0px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="track-container">
+            <div class="side">
+                <h4>A-Side</h4>
+                <ul class="tracklist" id="aSideTracklist"></ul>
+            </div>
+            <div class="side">
+                <h4>B-Side</h4>
+                <ul class="tracklist" id="bSideTracklist"></ul>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="previousTrack()">Backwards</button>
+            <button onclick="nextTrack()">Forwards</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="marquee">
+            <span id="currentTrack">empty cassette deck</span>
+
+
+        </div>
+
+        <img id="gif" src="cassetteopen.png" alt="GIF" />
+        <div class="button-container">
+            <div class="song">
+                <img id="playButton" src="buttons/cassettebuttonunpressed.png"
+                    onmousedown="pressButton('playButton', 'play')" onmouseup="releaseButton('playButton', 'play')"
+                    onmouseleave="resetButton('playButton', 'play')" onmouseover="hoverButton('playButton', 'play')"
+                    onclick="changeImageOnPlay(1, 'circus')" alt="Play Button" />
+            </div>
+            <div class="song">
+                <img id="stopButton" src="buttons/cassettebuttonunpressed.png"
+                    onmousedown="pressButton('stopButton', 'stop')" onmouseup="releaseButton('stopButton', 'stop')"
+                    onmouseleave="resetButton('stopButton', 'stop')" onmouseover="hoverButton('stopButton', 'stop')"
+                    onclick="stopAudio()" alt="Stop Button" />
+            </div>
+            <div class="song">
+                <img id="fastForwardButton" src="buttons/cassettebuttonunpressed.png" onmousedown="startFastForward()"
+                    onmouseup="stopFastForward()" onmouseleave="stopFastForward()" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Second container -->
+    <div class="container">
+        <!-- Album Cover and Details -->
+        <h2 id="albumTitle">Album Name</h2>
+        <img id="albumImage" class="album-image" src="" alt="Album Cover" />
+        <p id="albumDescription">Album Description</p>
+        <div class="button-container">
+            <button onclick="previousAlbum()">Previous Album</button>
+            <button onclick="nextAlbum()">Next Album</button>
+        </div>
+    </div>
+
+    <script src="buttoncode.js"></script>
+    <script src="tracklist.js"></script>
+</body>
+
+
+</html>
