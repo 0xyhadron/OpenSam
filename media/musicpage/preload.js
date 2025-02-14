@@ -20,7 +20,5 @@ function preloadImages() {
     });
 }
 
-// Call preloadImages() when the page finishes loading
-window.onload = function () {
-    preloadImages();
-};
+// Call this function when the page loads
+window.onload = preloadImages;
