@@ -18,15 +18,20 @@
 
         .button-container {
             display: flex;
+            /* Makes the container use flexbox */
             justify-content: center;
+            /* Centers buttons horizontally */
             gap: 20px;
+            /* Adds space between buttons */
         }
 
         .song img {
-            width: 100px;
-            /* Set a specific width */
+
+            /* Adjust the width as needed */
             height: auto;
+            /* Keep aspect ratio */
             cursor: pointer;
+            /* Indicates the button is clickable */
         }
 
         .container {
@@ -74,6 +79,7 @@
             cursor: not-allowed;
         }
 
+        /* Marquee effect using CSS animation */
         .marquee {
             width: 100%;
             overflow: hidden;
@@ -84,8 +90,6 @@
             display: inline-block;
             padding-left: 100%;
             animation: marquee 10s linear infinite;
-            will-change: transform;
-            /* Optimize animation */
         }
 
         @keyframes marquee {
@@ -110,6 +114,7 @@
         let stopSoundEffect = new Audio('media/musicpage/cassettefx.mp3');  // Stop sound
         let playSoundEffect = new Audio('media/musicpage/cassette2.mp3');   // Play sound
 
+
         function toggleButtons() {
             const playButton = document.getElementById("playButton");
             const stopButton = document.getElementById("stopButton");
@@ -119,20 +124,20 @@
                 playButton.disabled = true;
                 stopButton.disabled = false;
                 fastForwardButton.disabled = false;
-                fastForwardButton.style.cursor = "pointer"; // Enable cursor change
             } else {
                 playButton.disabled = false;
                 stopButton.disabled = true;
                 fastForwardButton.disabled = true;
-                fastForwardButton.style.cursor = "not-allowed"; // Change cursor when disabled
             }
         }
 
         function changeImageOnPlay(gifType, trackName) {
             const img = document.getElementById("gif");
 
+            // Play the play button sound effect
             playSoundEffect.play();
 
+            // Update marquee text
             currentTrack = trackName;
             updateMarquee();
 
@@ -176,7 +181,7 @@
                 currentAudio.currentTime = 0;
             }
 
-            stopSoundEffect.play();
+            stopSoundEffect.play(); // Play stop/eject sound
 
             img.src = "media/musicpage/cassetteeject.gif";
 
@@ -211,24 +216,28 @@
             let button = document.getElementById(buttonId);
 
             if (action === "play" && !isPressed) {
+                // If the Stop button is pressed, release it when Play is pressed
                 if (isStopPressed) {
                     releaseButton("stopButton", "stop");
                 }
 
+                // Play pressing animation
                 button.src = `media/musicpage/buttons/cassettebuttonpressing.gif`;
 
                 setTimeout(() => {
                     button.src = `media/musicpage/buttons/cassettebuttonpressed.png`;
-                    isPressed = true;
+                    isPressed = true; // Mark as playing
                 }, 500);
             } else if (action === "stop" && !isStopPressed) {
+                // Stop button pressing animation
                 button.src = `media/musicpage/buttons/cassettebuttonpressing.gif`;
 
                 setTimeout(() => {
                     button.src = `media/musicpage/buttons/cassettebuttonpressed.png`;
-                    isStopPressed = true;
+                    isStopPressed = true; // Mark stop as pressed
                 }, 500);
 
+                // Release the Play button when Stop is pressed
                 releasePlayButton();
             }
         }
@@ -237,37 +246,37 @@
             let button = document.getElementById(buttonId);
 
             if (action === "stop" && isStopPressed) {
+                // Release the Stop button
                 button.src = `media/musicpage/buttons/cassettebuttonrelease.gif`;
 
                 setTimeout(() => {
                     button.src = `media/musicpage/buttons/cassettebuttonunpressed.png`;
-                    isStopPressed = false;
+                    isStopPressed = false; // Reset stop state
                 }, 500);
             }
         }
 
+        // Function to release the Play button when Stop is pressed
         function releasePlayButton() {
             let playButton = document.getElementById("playButton");
 
+            // Play the release animation for Play button
             playButton.src = `media/musicpage/buttons/cassettebuttonrelease.gif`;
 
             setTimeout(() => {
                 playButton.src = `media/musicpage/buttons/cassettebuttonunpressed.png`;
-                isPressed = false;
+                isPressed = false; // Reset play state
             }, 500);
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add event listeners for play and stop buttons
-            document.getElementById('playButton').addEventListener('click', () => changeImageOnPlay(1, 'circus'));
-            document.getElementById('stopButton').addEventListener('click', stopAudio);
-        });
     </script>
 </head>
 
 <body>
+
+
+
     <div class="container">
-        <img id="album" src="media/musicpage/cover imaged.png" alt="">
+        <img id="album" src="media\musicpage\cover imaget.png" alt="">
         <img id="gif" src="media/musicpage/cassetteopen.png" alt="GIF" />
 
         <div class="button-container">
@@ -275,20 +284,18 @@
                 <img id="playButton" src="media/musicpage/buttons/cassettebuttonunpressed.png"
                     onmousedown="pressButton('playButton', 'play')" onmouseup="releaseButton('playButton', 'play')"
                     onmouseleave="resetButton('playButton', 'play')" onmouseover="hoverButton('playButton', 'play')"
-                    alt="Play Button" />
+                    onclick="changeImageOnPlay(1, 'circus')" alt="Play Button" />
             </div>
             <div class="song">
                 <img id="stopButton" src="media/musicpage/buttons/cassettebuttonunpressed.png"
                     onmousedown="pressButton('stopButton', 'stop')" onmouseup="releaseButton('stopButton', 'stop')"
                     onmouseleave="resetButton('stopButton', 'stop')" onmouseover="hoverButton('stopButton', 'stop')"
-                    alt="Stop Button" />
+                    onclick="stopAudio()" alt="Stop Button" />
             </div>
         </div>
-
         <div class="marquee">
-            <span id="currentTrack">empty cassette deck</span>
+            <span id="currentTrack">empty cassette deck</span> <!-- Marquee to show current track -->
         </div>
-
         <div class="song-list">
             <div class="song">
                 <button id="playButton" onclick="changeImageOnPlay(1, 'circus')">Play</button>
@@ -301,6 +308,8 @@
             <button id="fastForwardButton" onmousedown="startFastForward()" onmouseup="stopFastForward()"
                 onmouseleave="stopFastForward()" disabled>Fast Forward</button>
         </div>
+
+
     </div>
 </body>
 
