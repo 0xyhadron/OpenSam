@@ -61,20 +61,17 @@ function changeImageOnPlay(gifType, trackName) {
     // Play the play button sound effect
     playSoundEffect.play();
 
-    // Update marquee text
-
-
-
-    img.src = "cassetteinsertt.gif";
+    // Force the GIF to reload in Firefox
+    img.src = "cassetteinsertt.gif" + "?t=" + new Date().getTime();
     gifPlayed = true;
 
     setTimeout(() => {
-        img.src = "cassetteplay.gif";
+        img.src = "cassetteplay.gif" + "?t=" + new Date().getTime();
         animationPlaying = false;
-        playSelectedTrack()
+        playSelectedTrack();
     }, 2450);
-
 }
+
 
 function playAudio(audioSrc) {
     if (currentAudio) {
@@ -106,7 +103,7 @@ function stopAudio() {
 
     stopSoundEffect.play(); // Play stop/eject sound
 
-    img.src = "cassetteeject.gif";
+    img.src = "cassetteeject.gif" + "?t=" + new Date().getTime();
 
     setTimeout(() => {
         img.src = "cassetteopen.png";
@@ -128,7 +125,7 @@ function stopThenPlayAudio() {
 
     stopSoundEffect.play(); // Play stop/eject sound
 
-    img.src = "cassetteeject.gif";
+    img.src = "cassetteeject.gif" + "?t=" + new Date().getTime();
 
     setTimeout(() => {
         img.src = "cassetteopen.png";
@@ -154,7 +151,7 @@ function pressButton(buttonId, action) {
         }
 
         // Play pressing animation
-        button.src = `buttons/cassettebuttonpressing.gif`;
+        button.src = `buttons/cassettebuttonpressing.gif` + "?t=" + new Date().getTime();
 
         setTimeout(() => {
             button.src = `buttons/cassettebuttonpressed.png`;
@@ -163,7 +160,7 @@ function pressButton(buttonId, action) {
 
     } else if (action === "stop" && !isStopPressed) {
         // Stop button pressing animation
-        button.src = `buttons/cassettebuttonstoppressing.gif`;
+        button.src = `buttons/cassettebuttonstoppressing.gif` + "?t=" + new Date().getTime();
 
         setTimeout(() => {
             button.src = `buttons/cassettebuttonstoppressed.png`;
@@ -174,7 +171,7 @@ function pressButton(buttonId, action) {
         releasePlayButton();
     } else if (action === "fast") {
         // Stop button pressing animation
-        button.src = `buttons/cassettebuttonpressing.gif`;
+        button.src = `buttons/cassettebuttonpressing.gif` + "?t=" + new Date().getTime();
 
         setTimeout(() => {
             button.src = `buttons/cassettebuttonpressed.png`;
@@ -191,7 +188,7 @@ function releaseButton(buttonId, action) {
 
     if (action === "stop" && isStopPressed) {
         // Release the Stop button
-        button.src = `buttons/cassettebuttonrelease.gif`;
+        button.src = `buttons/cassettebuttonrelease.gif` + "?t=" + new Date().getTime();
 
         setTimeout(() => {
             button.src = `buttons/cassettebuttonunpressed.png`;
@@ -217,7 +214,7 @@ function releasePlayButton() {
     let playButton = document.getElementById("playButton");
 
     // Play the release animation for Play button
-    playButton.src = `buttons/cassettebuttonrelease.gif`;
+    playButton.src = `buttons/cassettebuttonrelease.gif` + "?t=" + new Date().getTime();
 
     setTimeout(() => {
         playButton.src = `buttons/cassettebuttonunpressed.png`;
