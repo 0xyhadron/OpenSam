@@ -117,10 +117,7 @@
                 <ul class="tracklist" id="bSideTracklist"></ul>
             </div>
         </div>
-        <div class="button-container">
-            <button onclick="previousTrack()">Backwards</button>
-            <button onclick="nextTrack()">Forwards</button>
-        </div>
+
     </div>
     <div class="container">
         <div class="marquee">
@@ -132,19 +129,13 @@
         <img id="gif" src="cassetteopen.png" alt="GIF" />
         <div class="button-container">
             <div class="song">
-                <img id="playButton" src="buttons/cassettebuttonunpressed.png"
-                    onmousedown="pressButton('playButton', 'play')" onmouseup="releaseButton('playButton', 'play')"
-                    onmouseleave="resetButton('playButton', 'play')" onmouseover="hoverButton('playButton', 'play')"
-                    onclick="changeImageOnPlay(1, 'circus')" alt="Play Button" />
+                <img id="playButton" src="buttons/cassettebuttonunpressed.png" onmousedown="playhandling()" />
             </div>
             <div class="song">
-                <img id="stopButton" src="buttons/cassettebuttonunpressed.png"
-                    onmousedown="pressButton('stopButton', 'stop')" onmouseup="releaseButton('stopButton', 'stop')"
-                    onmouseleave="resetButton('stopButton', 'stop')" onmouseover="hoverButton('stopButton', 'stop')"
-                    onclick="stopAudio()" alt="Stop Button" />
+                <img id="stopButton" src="buttons/cassettebuttonstop.png" onmousedown="stophandling()" />
             </div>
             <div class="song">
-                <img id="fastForwardButton" src="buttons/cassettebuttonunpressed.png" onmousedown="startFastForward()"
+                <img id="fastForwardButton" src="buttons/cassettebuttonstop.png" onmousedown="startFastForward()"
                     onmouseup="stopFastForward()" onmouseleave="stopFastForward()" />
             </div>
         </div>

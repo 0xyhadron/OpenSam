@@ -6,11 +6,31 @@ let currentTrack = "";
 let isFastForwarding = false;
 let isPressed = false;
 let isStopPressed = false;
-
+let animationPlaying = false;
 let stopSoundEffect = new Audio('cassettefx.mp3');  // Stop sound
 let playSoundEffect = new Audio('cassette2.mp3');   // Play sound
 
+function playhandling() {
+    if (!isPressed & !animationPlaying) {
+        pressButton('playButton', 'play');
 
+        isPressed = true;
+        animationPlaying = true;
+        changeImageOnPlay();
+
+    }
+
+}
+
+function stophandling() {
+    if (isPressed & !animationPlaying) {
+        pressButton('stopButton', 'stop');
+        stopAudio();
+        animationPlaying = true;
+        isPressed = false;
+    }
+
+}
 function toggleButtons() {
     const playButton = document.getElementById("playButton");
     const stopButton = document.getElementById("stopButton");
@@ -34,26 +54,18 @@ function changeImageOnPlay(gifType, trackName) {
     playSoundEffect.play();
 
     // Update marquee text
-    currentTrack = trackName;
-    updateMarquee();
 
-    if (gifType === 1 && !gifPlayed) {
-        img.src = "cassetteinsertt.gif";
-        gifPlayed = true;
 
-        setTimeout(() => {
-            img.src = "cassetteplay.gif";
-            playSelectedTrack()
-        }, 2450);
-    } else if (gifType === 2 && !secondGifPlayed) {
-        img.src = "secondgif.gif";
-        secondGifPlayed = true;
 
-        setTimeout(() => {
-            img.src = "secondgifstatic.png";
-            playAudio('clown.mp3');
-        }, 2450);
-    }
+    img.src = "cassetteinsertt.gif";
+    gifPlayed = true;
+
+    setTimeout(() => {
+        img.src = "cassetteplay.gif";
+        animationPlaying = false;
+        playSelectedTrack()
+    }, 2450);
+
 }
 
 function playAudio(audioSrc) {
@@ -94,6 +106,7 @@ function stopAudio() {
         toggleButtons();
         gifPlayed = false;
         secondGifPlayed = false;
+        animationPlaying = false;
         isFastForwarding = false; // Reset fast forward
     }, 2450);
 }
@@ -132,6 +145,7 @@ function pressButton(buttonId, action) {
             button.src = `buttons/cassettebuttonpressed.png`;
             isPressed = true; // Mark as playing
         }, 500);
+
     } else if (action === "stop" && !isStopPressed) {
         // Stop button pressing animation
         button.src = `buttons/cassettebuttonpressing.gif`;
@@ -182,11 +196,11 @@ function playSelectedTrack() {
         return;
     }
 
-    // Play the selected track with the existing cassette animation
-    changeImageOnPlay(1, track.name);
 
     // Update playAudio function to use selected track
 
     playAudio(track.mp3);
+
+
 
 }
