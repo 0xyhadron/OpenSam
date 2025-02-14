@@ -6,7 +6,7 @@ const albums = [
         image: "cover imaget.png",
         tracks: {
             aSide: [
-                { name: "circus", mp3: "Spider-Man_ The Animated Series (Genesis) Music - Fun House.mp3" },
+                { name: "justice", mp3: "Justice - Stop (Official Video).mp3" },
 
 
             ],
@@ -21,7 +21,7 @@ const albums = [
         image: "cover imaget-export.png",
         tracks: {
             aSide: [
-                { name: "Song A4", mp3: "audio/songA4.mp3" },
+                { name: "Song A4", mp3: "clown.mp3" },
                 { name: "Song A5", mp3: "audio/songA5.mp3" },
                 { name: "Song A6", mp3: "audio/songA6.mp3" }
             ],

@@ -1,9 +1,7 @@
 
-let gifPlayed = false;
-let secondGifPlayed = false;
 let currentAudio = null;
 let currentTrack = "";
-let isFastForwarding = false;
+
 let isPressed = false;
 let isStopPressed = false;
 let animationPlaying = false;
@@ -31,19 +29,29 @@ function stophandling() {
     }
 
 }
-function toggleButtons() {
-    const playButton = document.getElementById("playButton");
-    const stopButton = document.getElementById("stopButton");
-    const fastForwardButton = document.getElementById("fastForwardButton");
 
-    if (currentAudio && !currentAudio.paused) {
-        playButton.disabled = true;
-        stopButton.disabled = false;
-        fastForwardButton.disabled = false;
-    } else {
-        playButton.disabled = false;
-        stopButton.disabled = true;
-        fastForwardButton.disabled = true;
+function switchAlbum() {
+    if (!animationPlaying) {
+        stopThenPlayAudio();
+        if (isPressed) {
+            pressButton('stopButton', 'stop');
+        }
+    }
+}
+function startFastForward() {
+    if (!animationPlaying & isPressed) {
+        currentAudio.playbackRate = 6.0; // Speed up audio
+
+        pressButton('fastForwardButton', 'fast');
+
+    }
+}
+
+function stopFastForward() {
+    if (!animationPlaying) {
+        currentAudio.playbackRate = 1.0; // Reset to normal speed
+
+        releaseButton('fastForwardButton', 'slow');
     }
 }
 
@@ -77,8 +85,7 @@ function playAudio(audioSrc) {
     currentAudio = new Audio(audioSrc);
     currentAudio.playbackRate = 1; // Normal speed
     currentAudio.play();
-    isFastForwarding = false;
-    toggleButtons();
+
 
     // 🔹 When the song ends, move to the next track automatically
     currentAudio.onended = () => {
@@ -103,27 +110,35 @@ function stopAudio() {
 
     setTimeout(() => {
         img.src = "cassetteopen.png";
-        toggleButtons();
+
         gifPlayed = false;
         secondGifPlayed = false;
         animationPlaying = false;
-        isFastForwarding = false; // Reset fast forward
+
     }, 2450);
 }
 
-function startFastForward() {
+function stopThenPlayAudio() {
+    const img = document.getElementById("gif");
+
     if (currentAudio) {
-        currentAudio.playbackRate = 6.0; // Speed up audio
-        isFastForwarding = true;
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
     }
+
+    stopSoundEffect.play(); // Play stop/eject sound
+
+    img.src = "cassetteeject.gif";
+
+    setTimeout(() => {
+        img.src = "cassetteopen.png";
+
+        isPressed = false;
+        playhandling();
+    }, 2450);
 }
 
-function stopFastForward() {
-    if (currentAudio) {
-        currentAudio.playbackRate = 1.0; // Reset to normal speed
-        isFastForwarding = false;
-    }
-}
+
 
 function updateMarquee() {
     document.getElementById("currentTrack").textContent = `Now: ${currentTrack}`;
@@ -148,16 +163,27 @@ function pressButton(buttonId, action) {
 
     } else if (action === "stop" && !isStopPressed) {
         // Stop button pressing animation
-        button.src = `buttons/cassettebuttonpressing.gif`;
+        button.src = `buttons/cassettebuttonstoppressing.gif`;
 
         setTimeout(() => {
-            button.src = `buttons/cassettebuttonpressed.png`;
+            button.src = `buttons/cassettebuttonstoppressed.png`;
             isStopPressed = true; // Mark stop as pressed
         }, 500);
 
         // Release the Play button when Stop is pressed
         releasePlayButton();
+    } else if (action === "fast") {
+        // Stop button pressing animation
+        button.src = `buttons/cassettebuttonpressing.gif`;
+
+        setTimeout(() => {
+            button.src = `buttons/cassettebuttonpressed.png`;
+
+        }, 500);
+
+
     }
+
 }
 
 function releaseButton(buttonId, action) {
@@ -171,6 +197,18 @@ function releaseButton(buttonId, action) {
             button.src = `buttons/cassettebuttonunpressed.png`;
             isStopPressed = false; // Reset stop state
         }, 500);
+    }
+
+    else if (action === "slow") {
+        // Stop button pressing animation
+        button.src = `buttons/cassettebuttonunpressed.png`;
+
+        setTimeout(() => {
+            button.src = `buttons/cassettebuttonunpressed.png`;
+
+        }, 500);
+
+
     }
 }
 
