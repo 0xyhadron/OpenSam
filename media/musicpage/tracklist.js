@@ -36,18 +36,16 @@ const albums = [
 
 let currentAlbumIndex = 0;
 let currentTrackIndex = 0;
-let currentSide = "aSide"; // Start on A-Side
-const audioPlayer = new Audio(); // Create an audio element
+let currentSide = "aSide";
+const audioPlayer = new Audio();
 
 function loadAlbum() {
     const album = albums[currentAlbumIndex];
 
-    // Update album info
     document.getElementById("albumTitle").textContent = album.title;
     document.getElementById("albumDescription").textContent = album.description;
     document.getElementById("albumImage").src = album.image;
 
-    // Load tracks
     loadTracklist();
 }
 
@@ -92,7 +90,7 @@ function updateSelectedTrack() {
         trackElements[currentTrackIndex].classList.add("selected");
     }
 
-    // Get the current track and update audio source
+
     const track = albums[currentAlbumIndex].tracks[currentSide][currentTrackIndex];
     document.getElementById("currentTrack").textContent = `Now Playing: ${track.name}`;
     audioPlayer.src = track.mp3;
@@ -151,5 +149,5 @@ function nextAlbum() {
     loadAlbum();
 }
 
-// Initialize
+
 loadAlbum();

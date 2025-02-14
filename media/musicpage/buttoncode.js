@@ -1,12 +1,11 @@
 
 let currentAudio = null;
 let currentTrack = "";
-
 let isPressed = false;
 let isStopPressed = false;
 let animationPlaying = false;
-let stopSoundEffect = new Audio('cassettefx.mp3');  // Stop sound
-let playSoundEffect = new Audio('cassette2.mp3');   // Play sound
+let stopSoundEffect = new Audio('cassettefx.mp3');
+let playSoundEffect = new Audio('cassette2.mp3');
 
 function playhandling() {
     if (!isPressed & !animationPlaying) {
@@ -40,7 +39,7 @@ function switchAlbum() {
 }
 function startFastForward() {
     if (!animationPlaying & isPressed) {
-        currentAudio.playbackRate = 6.0; // Speed up audio
+        currentAudio.playbackRate = 6.0;
 
         pressButton('fastForwardButton', 'fast');
 
@@ -49,7 +48,7 @@ function startFastForward() {
 
 function stopFastForward() {
     if (!animationPlaying) {
-        currentAudio.playbackRate = 1.0; // Reset to normal speed
+        currentAudio.playbackRate = 1.0;
 
         releaseButton('fastForwardButton', 'slow');
     }
@@ -58,10 +57,10 @@ function stopFastForward() {
 function changeImageOnPlay(gifType, trackName) {
     const img = document.getElementById("gif");
 
-    // Play the play button sound effect
+
     playSoundEffect.play();
 
-    // Force the GIF to reload in Firefox
+
     img.src = "cassetteinsertt.gif" + "?t=" + new Date().getTime();
     gifPlayed = true;
 
@@ -80,11 +79,11 @@ function playAudio(audioSrc) {
     }
 
     currentAudio = new Audio(audioSrc);
-    currentAudio.playbackRate = 1; // Normal speed
+    currentAudio.playbackRate = 1;
     currentAudio.play();
 
 
-    // 🔹 When the song ends, move to the next track automatically
+
     currentAudio.onended = () => {
         nextTrack();
         playSelectedTrack();
@@ -101,8 +100,7 @@ function stopAudio() {
         currentAudio.currentTime = 0;
     }
 
-    stopSoundEffect.play(); // Play stop/eject sound
-
+    stopSoundEffect.play();
     img.src = "cassetteeject.gif" + "?t=" + new Date().getTime();
 
     setTimeout(() => {
@@ -123,7 +121,7 @@ function stopThenPlayAudio() {
         currentAudio.currentTime = 0;
     }
 
-    stopSoundEffect.play(); // Play stop/eject sound
+    stopSoundEffect.play();
 
     img.src = "cassetteeject.gif" + "?t=" + new Date().getTime();
 
@@ -145,32 +143,31 @@ function pressButton(buttonId, action) {
     let button = document.getElementById(buttonId);
 
     if (action === "play" && !isPressed) {
-        // If the Stop button is pressed, release it when Play is pressed
+
         if (isStopPressed) {
             releaseButton("stopButton", "stop");
         }
 
-        // Play pressing animation
+
         button.src = `buttons/cassettebuttonpressing.gif` + "?t=" + new Date().getTime();
 
         setTimeout(() => {
             button.src = `buttons/cassettebuttonpressed.png`;
-            isPressed = true; // Mark as playing
+            isPressed = true;
         }, 500);
 
     } else if (action === "stop" && !isStopPressed) {
-        // Stop button pressing animation
+
         button.src = `buttons/cassettebuttonstoppressing.gif` + "?t=" + new Date().getTime();
 
         setTimeout(() => {
             button.src = `buttons/cassettebuttonstoppressed.png`;
-            isStopPressed = true; // Mark stop as pressed
+            isStopPressed = true;
         }, 500);
 
-        // Release the Play button when Stop is pressed
         releasePlayButton();
     } else if (action === "fast") {
-        // Stop button pressing animation
+
         button.src = `buttons/cassettebuttonpressing.gif` + "?t=" + new Date().getTime();
 
         setTimeout(() => {
@@ -187,17 +184,17 @@ function releaseButton(buttonId, action) {
     let button = document.getElementById(buttonId);
 
     if (action === "stop" && isStopPressed) {
-        // Release the Stop button
+
         button.src = `buttons/cassettebuttonrelease.gif` + "?t=" + new Date().getTime();
 
         setTimeout(() => {
             button.src = `buttons/cassettebuttonunpressed.png`;
-            isStopPressed = false; // Reset stop state
+            isStopPressed = false;
         }, 500);
     }
 
     else if (action === "slow") {
-        // Stop button pressing animation
+
         button.src = `buttons/cassettebuttonunpressed.png`;
 
         setTimeout(() => {
@@ -209,20 +206,20 @@ function releaseButton(buttonId, action) {
     }
 }
 
-// Function to release the Play button when Stop is pressed
+
 function releasePlayButton() {
     let playButton = document.getElementById("playButton");
 
-    // Play the release animation for Play button
+
     playButton.src = `buttons/cassettebuttonrelease.gif` + "?t=" + new Date().getTime();
 
     setTimeout(() => {
         playButton.src = `buttons/cassettebuttonunpressed.png`;
-        isPressed = false; // Reset play state
+        isPressed = false;
     }, 500);
 }
 function playSelectedTrack() {
-    // Get the selected track details
+
     const album = albums[currentAlbumIndex];
     const track = album.tracks[currentSide][currentTrackIndex];
 
@@ -232,7 +229,6 @@ function playSelectedTrack() {
     }
 
 
-    // Update playAudio function to use selected track
 
     playAudio(track.mp3);
 
