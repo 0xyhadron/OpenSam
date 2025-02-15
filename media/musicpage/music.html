@@ -14,6 +14,10 @@
             font-style: normal;
         }
 
+        body.dark {
+            background-color: #121212;
+            color: #ffffff;
+        }
 
         .tracklist li.selected {
             background-color: #525252;
@@ -29,14 +33,15 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: #f4f4f4;
+            background-color: #202020;
         }
 
         .container {
             display: flex;
+            color: #cccccc;
             flex-direction: column;
             align-items: center;
-            background: white;
+            background: rgb(88, 88, 88);
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -106,7 +111,7 @@
 
 <body>
 
-    <div class="container">
+    <div class="container" style="height: 280px;">
 
         <div class="track-container">
             <div class="side">
@@ -120,7 +125,7 @@
         </div>
 
     </div>
-    <div class="container">
+    <div class="container" style="height: 280px;">
         <div class="marquee">
             <span id="currentTrack">empty cassette deck</span>
 
@@ -145,13 +150,23 @@
 
     <div class="container">
 
-        <h2 id="albumTitle">Album Name</h2>
-        <img id="albumImage" class="album-image" src="" alt="Album Cover" />
-        <p id="albumDescription">Album Description</p>
+
+        <img id="albumImage" class="album-image" src="" alt="Album Cover" style="height: auto; width: 280px;" />
+
+
+    </div>
+
+    <div class="track-container">
+        <div class="side">
+
+        </div>
         <div class="button-container">
+            <button onclick="document.body.classList.toggle('dark')">Toggle Dark Mode</button>
             <button onclick="previousAlbum(),switchAlbum()">Previous Album</button>
             <button onclick="nextAlbum(),switchAlbum()">Next Album</button>
         </div>
+        <h2 id="albumTitle">Album Name</h2>
+        <p id="albumDescription">Album Description</p>
     </div>
 
     <script src="buttoncode.js"></script>

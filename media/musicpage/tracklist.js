@@ -1,17 +1,18 @@
 // Album Data
 const albums = [
     {
-        title: "Album 1",
+        title: "Woman",
         description: "This is the first album.",
-        image: "cover imaget.png",
+        image: "scrap.gif",
         tracks: {
             aSide: [
-                { name: "justice", mp3: "Justice - Stop (Official Video).mp3" },
+                { name: "unmaiden", mp3: "music/unmaiden.mp3" },
+                { name: "stroke2", mp3: "music/stroke2.wav" },
 
 
             ],
             bSide: [
-                { name: "clown", mp3: "clown.mp3" },
+
             ]
         }
     },
