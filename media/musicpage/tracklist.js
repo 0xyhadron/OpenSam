@@ -1,8 +1,8 @@
 // Album Data
 const albums = [
     {
-        title: "Woman",
-        description: "This is the first album.",
+        title: "THREE",
+        description: "",
         image: "scrap.gif",
         tracks: {
             aSide: [
@@ -22,14 +22,10 @@ const albums = [
         image: "cover imaget-export.png",
         tracks: {
             aSide: [
-                { name: "Song A4", mp3: "clown.mp3" },
-                { name: "Song A5", mp3: "audio/songA5.mp3" },
-                { name: "Song A6", mp3: "audio/songA6.mp3" }
+
             ],
             bSide: [
-                { name: "Song B4", mp3: "audio/songB4.mp3" },
-                { name: "Song B5", mp3: "audio/songB5.mp3" },
-                { name: "Song B6", mp3: "audio/songB6.mp3" }
+
             ]
         }
     }
