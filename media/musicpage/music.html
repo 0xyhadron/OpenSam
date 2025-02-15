@@ -27,21 +27,25 @@
         }
 
         body {
+
             font-family: Arial, sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: #202020;
+            background-color: #2a162e;
         }
 
         .container {
+            background-image: url("music/14a4f46bbdcgiygast.gif");
+
+            background-repeat: repeat;
             display: flex;
             color: #cccccc;
             flex-direction: column;
             align-items: center;
-            background: rgb(88, 88, 88);
+
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -161,9 +165,9 @@
 
         </div>
         <div class="button-container">
-            <button onclick="document.body.classList.toggle('dark')">Toggle Dark Mode</button>
-            <button onclick="previousAlbum(),switchAlbum()">Previous Album</button>
-            <button onclick="nextAlbum(),switchAlbum()">Next Album</button>
+
+            <button onclick="previousAlbum(),switchAlbum()">^</button>
+            <button onclick="nextAlbum(),switchAlbum()">v</button>
         </div>
         <h2 id="albumTitle">Album Name</h2>
         <p id="albumDescription">Album Description</p>
