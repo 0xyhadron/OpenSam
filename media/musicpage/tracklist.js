@@ -1,31 +1,36 @@
 // Album Data
 const albums = [
     {
-        title: "THREE",
+        title: "First Album",
         description: "",
         image: "scrap.gif",
         tracks: {
             aSide: [
-                { name: "unmaiden", mp3: "music/unmaiden.mp3" },
-                { name: "stroke2", mp3: "music/stroke2.wav" },
+                { name: "SunMint-E", mp3: "music/SunMint.mp3" },
+
+
 
 
             ],
             bSide: [
-
+                { name: "unmaiden", mp3: "music/unmaiden.mp3" },
             ]
         }
     },
     {
-        title: "Album 2",
-        description: "This is the second album.",
-        image: "cover imaget-export.png",
+        title: "TWOO",
+        description: "",
+        image: "album.png",
         tracks: {
             aSide: [
+                { name: "SunMint-E", mp3: "music/SunMint-E.mp3" },
+
+
+
 
             ],
             bSide: [
-
+                { name: "unmaiden", mp3: "music/unmaiden.mp3" },
             ]
         }
     }

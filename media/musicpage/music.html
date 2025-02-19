@@ -14,14 +14,57 @@
             font-style: normal;
         }
 
+        .toggle-container {
+
+
+            position: relavtive;
+
+            display: flex;
+            color: #202020;
+            flex-direction: column;
+            align-items: center;
+            background: #c9c9c9;
+            padding: 20px;
+            border-radius: 2px;
+            border-color: #121212;
+            border-width: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 0 20px;
+        }
+
+        .toggle-header {
+            background-color: #353535;
+            padding: 10px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .toggle-content {
+            display: none;
+            padding: 10px;
+            background-color: #454545;
+        }
+
+        .toggle-container.open .toggle-content {
+            display: block;
+        }
+
+        .hover-info {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 14px;
+            color: #76ee9e;
+        }
+
         body.dark {
             background-color: #121212;
             color: #ffffff;
         }
 
         .tracklist li.selected {
-            background-color: #525252;
-            color: white;
+            background-color: #76ee9e;
+            color: rgb(38, 131, 87);
             font-weight: bold;
 
         }
@@ -34,10 +77,26 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: #2a162e;
+            background: #121212;
         }
 
         .container {
+
+            display: flex;
+            color: #8d8d8d;
+            flex-direction: column;
+            align-items: center;
+            background: #000000;
+            padding: 20px;
+            border-radius: 2px;
+            border-color: #121212;
+            border-width: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 0 20px;
+
+        }
+
+        .container2 {
             background-image: url("music/14a4f46bbdcgiygast.gif");
 
             background-repeat: repeat;
@@ -47,7 +106,7 @@
             align-items: center;
 
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 2px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin: 0 20px;
 
@@ -82,7 +141,7 @@
         .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 0px;
             align-items: center;
         }
 
@@ -92,7 +151,7 @@
         }
 
         button {
-            padding: 10px;
+            padding: 0px;
             font-size: 16px;
             cursor: pointer;
             background-color: #353535;
@@ -145,14 +204,17 @@
                 <img id="stopButton" src="buttons/cassettebuttonstop.png" onmousedown="stophandling()" />
             </div>
             <div class="song">
-                <img id="fastForwardButton" src="buttons/cassettebuttonstop.png" onmousedown="startFastForward()"
+                <img id="fastForwardButton" src="buttons/cassettebuttonforward.png" onmousedown="startFastForward()"
                     onmouseup="stopFastForward()" onmouseleave="stopFastForward()" />
+            </div>
+            <div class="song">
+                <img id="loopButton" src="buttons/cassettebuttonloop.png" />
             </div>
         </div>
     </div>
 
 
-    <div class="container">
+    <div class="container2">
 
 
         <img id="albumImage" class="album-image" src="" alt="Album Cover" style="height: auto; width: 280px;" />
@@ -164,14 +226,31 @@
         <div class="side">
 
         </div>
+        <!--
+            <button onclick="previousAlbum(),switchAlbum()">^</button>
+            <button onclick="nextAlbum(),switchAlbum()">v</button>  -->
         <div class="button-container">
 
-            <button onclick="previousAlbum(),switchAlbum()">^</button>
-            <button onclick="nextAlbum(),switchAlbum()">v</button>
         </div>
         <h2 id="albumTitle">Album Name</h2>
         <p id="albumDescription">Album Description</p>
     </div>
+
+    <div class="hover-info" id="hoverText">Hover over a button for info</div>
+    <script>
+        function toggleInfo() {
+            document.querySelector(".toggle-container").classList.toggle("open");
+        }
+
+        document.querySelectorAll(".song img").forEach(button => {
+            button.addEventListener("mouseover", function () {
+                document.getElementById("hoverText").innerText = this.id;
+            });
+            button.addEventListener("mouseout", function () {
+                document.getElementById("hoverText").innerText = "Hover over a button for info";
+            });
+        });
+    </script>
 
     <script src="buttoncode.js"></script>
     <script src="tracklist.js"></script>
